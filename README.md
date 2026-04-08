@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/cloe-bench_banner.png" alt="cloe-bench logo" width="500">
+  <img src="docs/cloe-bench.png" alt="cloe-bench logo" width="500">
 </p>
 
 
