@@ -3,4 +3,4 @@
 </p>
 
 
-**Scientific validation of cloelib and cloelike observables**  Compute validation benchmarks to test the scientific accuracy of cloelib and cloelike for cosmological analyses purposes
+**Scientific validation of cloelib and cloelike observables**  Compute validation benchmarks to test the scientific accuracy and speed of cloelib and cloelike for cosmological analyses purposes
