@@ -1,0 +1,52 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  1/6: full  26.869 s | likelihood-only 21.468 s | tracers she 2x 2.000 s, pos 2x 1.462 s | get_Cl 3x 14.040 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  2/6: full   7.559 s | likelihood-only 2.261 s | tracers she 2x 0.920 s, pos 2x 0.926 s | get_Cl 3x 0.390 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  3/6: full   7.743 s | likelihood-only 2.257 s | tracers she 2x 0.920 s, pos 2x 0.925 s | get_Cl 3x 0.388 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  4/6: full   7.614 s | likelihood-only 2.287 s | tracers she 2x 0.923 s, pos 2x 0.928 s | get_Cl 3x 0.398 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  5/6: full   7.711 s | likelihood-only 2.395 s | tracers she 2x 0.922 s, pos 2x 1.037 s | get_Cl 3x 0.398 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+call  6/6: full   7.637 s | likelihood-only 2.280 s | tracers she 2x 0.919 s, pos 2x 0.924 s | get_Cl 3x 0.397 s | constructors bg/lp/nlp 3/3/3
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+
+median of calls 2-6: full 7.637 s, likelihood-only 2.280 s
+profile (self time, one call): camb 5.369s, jax/xla 4.227s, builtins/C 0.774s, numpy/scipy 0.111s, other python 0.108s, cloelike 0.015s, cloelib 0.006s, cloelib cosmology (CAMB wrappers) 0.000s
+written <WORKDIR>/speedcheck_reanalysis/results/cloelike_june_nojit.json

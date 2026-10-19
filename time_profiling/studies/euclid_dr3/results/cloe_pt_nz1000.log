@@ -1,0 +1,6 @@
+[camb] `camb` module loaded successfully from <WORKDIR>/env/cloe-former/lib/python3.9/site-packages/camb
+[camb] `camb` module loaded successfully from <WORKDIR>/env/cloe-former/lib/python3.9/site-packages/camb
+[model] *WARNING* Theories {camb.transfers, camb} do not appear to be actually used for anything
+CLOE model init 18.6 s | first logposterior (incl. CAMB) 4.2 s
+n_ell=   32 | CLOE from scratch   2.458s  first call   2.464s  (passing_requirements 0.001s, update_cosmo_dic 2.026s, create_photo_theory 0.435s) 351 spectra
+written <WORKDIR>/results_cloe_vs_cloelib_13bins/cloe_pt_nz1000.json

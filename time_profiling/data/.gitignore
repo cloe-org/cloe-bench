@@ -1,0 +1,7 @@
+# The payload of this folder lives on Zenodo (fetch_data.py); only the tooling is tracked.
+*
+!.gitignore
+!README.md
+!MANIFEST.sha256
+!fetch_data.py
+!make_zenodo_bundle.sh

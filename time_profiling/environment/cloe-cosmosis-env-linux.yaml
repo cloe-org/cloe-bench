@@ -1,0 +1,66 @@
+# =====================================================================
+# cloe-cosmosis - Conda/Mamba Environment
+# ---------------------------------------------------------------------
+# Purpose:
+#   - validate cloelib's non-linear galaxy bias (cloelib PR #596,
+#     branch 384-implement-nonlinear-galaxy-bias-in-positionstracer)
+#     against CosmoSIS (cosmosis-standard-library, project_2d with
+#     nlgal-nlgal / nlgal-shear, pt_type = oneloop_eul_bk) and CCL.
+#
+# Base: cloe-org-environments/environments/cloe-org-env-linux-v2026.2.yaml
+# Added:
+#   - cosmosis (conda-forge) + build deps for the standard library
+#     (gfortran, gsl, fftw, cfitsio, lapack, make)
+#   - pyccl (conda-forge) for the CCL cross-check
+#   - camb==1.6.5 (cloelib[camb] pin) and fast-pt via pip
+#
+# Install with  ./setup_env.sh  (creates the env, builds the CSL,
+# installs the cloelib branch in editable mode).
+# =====================================================================
+
+name: cloe-cosmosis
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  # ---- cloe-org-env v2026.2 base ----
+  - python=3.12
+  - cpython
+  - pip
+  - setuptools
+  - wheel
+  - gsl
+  - libgfortran5
+  - scipy=1.17.1
+  - gcc=15.2.0
+  - gxx=15.2.0
+  - ipython
+  - ipykernel
+  - jupyter
+  - matplotlib
+  # ---- CosmoSIS + standard-library build toolchain ----
+  - cosmosis
+  - gfortran=15.2.0
+  - make
+  - fftw
+  - cfitsio
+  - lapack
+  - openblas
+  - astropy
+  - pyyaml
+  - cython            # needed by the CSL build of classy (--no-build-isolation)
+  - git
+  # ---- CCL cross-check ----
+  - pyccl
+  - pip:
+      - euclidlib
+      - nautilus-sampler==1.0.6
+      - seaborn
+      # tf-keras==2.20.* (base env) dropped: pulls a 620 MB tensorflow wheel, unused here
+      - pre-commit
+      # cloelib optional backends used here
+      - camb==1.6.5
+      - fast-pt
+      - requests

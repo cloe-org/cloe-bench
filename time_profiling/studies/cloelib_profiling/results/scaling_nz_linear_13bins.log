@@ -1,0 +1,12 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 13 bins N_Z=  100 (P(k,z) 100) n_ell=   32 | from scratch   0.097 s | first call   2.09 s | 351 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 13 bins N_Z=  250 (P(k,z) 250) n_ell=   32 | from scratch   0.160 s | first call   2.13 s | 351 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 13 bins N_Z=  600 (P(k,z) 250) n_ell=   32 | from scratch   0.223 s | first call   2.13 s | 351 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 13 bins N_Z= 1000 (P(k,z) 250) n_ell=   32 | from scratch   0.171 s | first call   2.24 s | 351 spectra

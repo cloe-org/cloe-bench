@@ -1,0 +1,22 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+linear_TATT: max |C/C_ref - 1| [%] (each version vs its own n_t = 3201), before -> after the fix
+  n_t            GG_1_1            GG_7_7           GE_3_11            EE_1_1           EE_7_13          EE_13_13
+  100   0.252 ->  0.252   0.206 ->  0.207   0.143 ->  0.045   3.487 ->  0.993   0.211 ->  0.162   0.072 ->  0.041
+  101   2.801 ->  0.830   0.440 ->  0.254   0.110 ->  0.101   2.231 ->  1.808   0.303 ->  0.090   0.087 ->  0.059
+  150   0.270 ->  0.270   0.043 ->  0.044   0.052 ->  0.011   1.009 ->  0.758   0.057 ->  0.034   0.014 ->  0.014
+  151   0.846 ->  0.640   0.418 ->  0.016   0.065 ->  0.014   0.830 ->  0.881   0.080 ->  0.072   0.042 ->  0.014
+  200   0.354 ->  0.354   0.084 ->  0.084   0.014 ->  0.019   0.416 ->  0.444   0.027 ->  0.017   0.020 ->  0.007
+  201   0.156 ->  0.309   0.309 ->  0.025   0.040 ->  0.009   0.315 ->  0.555   0.079 ->  0.021   0.023 ->  0.008
+  250   0.063 ->  0.063   0.010 ->  0.010   0.022 ->  0.002   0.245 ->  0.203   0.022 ->  0.014   0.003 ->  0.004
+  251   0.349 ->  0.020   0.072 ->  0.009   0.056 ->  0.001   0.395 ->  0.200   0.021 ->  0.016   0.008 ->  0.006
+converged result, after vs before the fix [%]: {'GG_1_1': np.float64(0.0001), 'GG_7_7': np.float64(0.0007), 'GE_3_11': np.float64(0.0002), 'EE_1_1': np.float64(0.0034), 'EE_7_13': np.float64(0.0001), 'EE_13_13': np.float64(0.0)}

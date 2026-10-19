@@ -1,0 +1,50 @@
+# ---- images and documents (notebooks embed their figures; regenerate them by running the notebooks)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.eps
+*.pdf
+*.tif
+*.tiff
+# repository banner and documentation images
+!docs/**
+
+# ---- data (inputs live on Zenodo, see time_profiling/data/fetch_data.py)
+*.fits
+*.fits.gz
+*.fit
+*.h5
+*.hdf5
+*.npy
+*.npz
+# small committed results of the studies
+!**/results/*.npz
+*.pkl
+*.pickle
+*.dat
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.gz
+
+# ---- environments, external code and generated files
+**/environment/envs/
+**/external/
+**/work/
+env/
+.venv/
+venv/
+
+# ---- Python / Jupyter / editors / OS
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+*.swp

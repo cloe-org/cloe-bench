@@ -1,0 +1,642 @@
+[
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "cloelib",
+  "n_ell": 32,
+  "median_s": 0.322,
+  "first_call_s": 5.22
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "pyccl",
+  "n_ell": 32,
+  "median_s": 0.456,
+  "first_call_s": 0.479
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CosmoSIS",
+  "n_ell": 32,
+  "median_s": 0.774,
+  "first_call_s": 0.815
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CLOE (former)",
+  "n_ell": 32,
+  "median_s": 1.26,
+  "first_call_s": 1.294
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "cloelib",
+  "n_ell": 100,
+  "median_s": 0.405,
+  "first_call_s": 5.285
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "pyccl",
+  "n_ell": 100,
+  "median_s": 0.48,
+  "first_call_s": 1.136
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CosmoSIS",
+  "n_ell": 100,
+  "median_s": 0.918,
+  "first_call_s": 0.916
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CLOE (former)",
+  "n_ell": 100,
+  "median_s": 1.369,
+  "first_call_s": 1.37
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "cloelib",
+  "n_ell": 500,
+  "median_s": 0.69,
+  "first_call_s": 5.468
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "pyccl",
+  "n_ell": 500,
+  "median_s": 0.69,
+  "first_call_s": 0.625
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CosmoSIS",
+  "n_ell": 500,
+  "median_s": 1.756,
+  "first_call_s": 1.745
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CLOE (former)",
+  "n_ell": 500,
+  "median_s": 2.046,
+  "first_call_s": 2.042
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "cloelib",
+  "n_ell": 1000,
+  "median_s": 0.969,
+  "first_call_s": 5.477
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "pyccl",
+  "n_ell": 1000,
+  "median_s": 1.16,
+  "first_call_s": 1.029
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CosmoSIS",
+  "n_ell": 1000,
+  "median_s": 2.727,
+  "first_call_s": 2.738
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CLOE (former)",
+  "n_ell": 1000,
+  "median_s": 2.896,
+  "first_call_s": 2.88
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "cloelib",
+  "n_ell": 3000,
+  "median_s": 2.088,
+  "first_call_s": 6.035
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "pyccl",
+  "n_ell": 3000,
+  "median_s": 2.151,
+  "first_call_s": 2.548
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CosmoSIS",
+  "n_ell": 3000,
+  "median_s": 6.722,
+  "first_call_s": 6.735
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "128 cores",
+  "code": "CLOE (former)",
+  "n_ell": 3000,
+  "median_s": 6.41,
+  "first_call_s": 7.379
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "cloelib",
+  "n_ell": 32,
+  "median_s": 0.248,
+  "first_call_s": 14.344
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "pyccl",
+  "n_ell": 32,
+  "median_s": 0.867,
+  "first_call_s": 0.877
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CosmoSIS",
+  "n_ell": 32,
+  "median_s": 0.812,
+  "first_call_s": 0.826
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CLOE (former)",
+  "n_ell": 32,
+  "median_s": 1.256,
+  "first_call_s": 1.263
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "cloelib",
+  "n_ell": 100,
+  "median_s": 0.301,
+  "first_call_s": 14.552
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "pyccl",
+  "n_ell": 100,
+  "median_s": 1.9,
+  "first_call_s": 1.894
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CosmoSIS",
+  "n_ell": 100,
+  "median_s": 0.947,
+  "first_call_s": 0.948
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CLOE (former)",
+  "n_ell": 100,
+  "median_s": 1.366,
+  "first_call_s": 1.365
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "cloelib",
+  "n_ell": 500,
+  "median_s": 0.598,
+  "first_call_s": 14.868
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "pyccl",
+  "n_ell": 500,
+  "median_s": 7.267,
+  "first_call_s": 7.324
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CosmoSIS",
+  "n_ell": 500,
+  "median_s": 1.699,
+  "first_call_s": 1.7
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CLOE (former)",
+  "n_ell": 500,
+  "median_s": 2.037,
+  "first_call_s": 2.036
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "cloelib",
+  "n_ell": 1000,
+  "median_s": 0.961,
+  "first_call_s": 15.109
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "pyccl",
+  "n_ell": 1000,
+  "median_s": 13.512,
+  "first_call_s": 13.521
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CosmoSIS",
+  "n_ell": 1000,
+  "median_s": 2.625,
+  "first_call_s": 2.629
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CLOE (former)",
+  "n_ell": 1000,
+  "median_s": 2.877,
+  "first_call_s": 2.875
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "cloelib",
+  "n_ell": 3000,
+  "median_s": 2.394,
+  "first_call_s": 16.754
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "pyccl",
+  "n_ell": 3000,
+  "median_s": 38.464,
+  "first_call_s": 38.957
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CosmoSIS",
+  "n_ell": 3000,
+  "median_s": 6.341,
+  "first_call_s": 6.338
+ },
+ {
+  "study": "Euclid DR3, 13 bins",
+  "cpus": "1 core",
+  "code": "CLOE (former)",
+  "n_ell": 3000,
+  "median_s": 6.398,
+  "first_call_s": 7.325
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "cloelib",
+  "n_ell": 32,
+  "median_s": 0.1563,
+  "first_call_s": 4.0287
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "cloelib",
+  "n_ell": 100,
+  "median_s": 0.2701,
+  "first_call_s": 3.7861
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "cloelib",
+  "n_ell": 500,
+  "median_s": 0.386,
+  "first_call_s": 4.1149
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "cloelib",
+  "n_ell": 1000,
+  "median_s": 0.5568,
+  "first_call_s": 4.2423
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "cloelib",
+  "n_ell": 3000,
+  "median_s": 1.2242,
+  "first_call_s": 4.4721
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "pyccl",
+  "n_ell": 32,
+  "median_s": 0.3335,
+  "first_call_s": 0.352
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "pyccl",
+  "n_ell": 100,
+  "median_s": 0.3636,
+  "first_call_s": 0.3638
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "pyccl",
+  "n_ell": 500,
+  "median_s": 0.5201,
+  "first_call_s": 0.519
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "pyccl",
+  "n_ell": 1000,
+  "median_s": 0.7052,
+  "first_call_s": 0.7052
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "pyccl",
+  "n_ell": 3000,
+  "median_s": 1.4028,
+  "first_call_s": 1.4063
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 32,
+  "median_s": 0.3655,
+  "first_call_s": 0.3924
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 100,
+  "median_s": 0.4019,
+  "first_call_s": 0.4101
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 500,
+  "median_s": 0.612,
+  "first_call_s": 0.6105
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 1000,
+  "median_s": 0.8702,
+  "first_call_s": 0.8664
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 3000,
+  "median_s": 1.8781,
+  "first_call_s": 1.8732
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 32,
+  "median_s": 1.2017,
+  "first_call_s": 1.233
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 100,
+  "median_s": 1.2445,
+  "first_call_s": 1.2445
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 500,
+  "median_s": 1.4899,
+  "first_call_s": 1.4883
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 1000,
+  "median_s": 1.796,
+  "first_call_s": 1.8032
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "8 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 3000,
+  "median_s": 3.0693,
+  "first_call_s": 3.1509
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "cloelib",
+  "n_ell": 32,
+  "median_s": 0.2062,
+  "first_call_s": 3.7967
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "cloelib",
+  "n_ell": 100,
+  "median_s": 0.2415,
+  "first_call_s": 3.7061
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "cloelib",
+  "n_ell": 500,
+  "median_s": 0.4143,
+  "first_call_s": 4.0014
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "cloelib",
+  "n_ell": 1000,
+  "median_s": 0.5623,
+  "first_call_s": 4.0592
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "cloelib",
+  "n_ell": 3000,
+  "median_s": 1.1453,
+  "first_call_s": 4.2066
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "pyccl",
+  "n_ell": 32,
+  "median_s": 0.3355,
+  "first_call_s": 0.3519
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "pyccl",
+  "n_ell": 100,
+  "median_s": 0.3382,
+  "first_call_s": 0.3385
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "pyccl",
+  "n_ell": 500,
+  "median_s": 0.366,
+  "first_call_s": 0.3692
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "pyccl",
+  "n_ell": 1000,
+  "median_s": 0.4012,
+  "first_call_s": 0.4035
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "pyccl",
+  "n_ell": 3000,
+  "median_s": 0.5373,
+  "first_call_s": 0.5383
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 32,
+  "median_s": 0.3669,
+  "first_call_s": 0.3951
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 100,
+  "median_s": 0.4037,
+  "first_call_s": 0.4026
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 500,
+  "median_s": 0.6135,
+  "first_call_s": 0.6123
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 1000,
+  "median_s": 0.8686,
+  "first_call_s": 0.8675
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CosmoSIS",
+  "n_ell": 3000,
+  "median_s": 1.8801,
+  "first_call_s": 1.875
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 32,
+  "median_s": 1.2058,
+  "first_call_s": 1.2444
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 100,
+  "median_s": 1.249,
+  "first_call_s": 1.2484
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 500,
+  "median_s": 1.4954,
+  "first_call_s": 1.4937
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 1000,
+  "median_s": 1.8092,
+  "first_call_s": 1.803
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "cpus": "96 CPUs",
+  "code": "CLOE (former)",
+  "n_ell": 3000,
+  "median_s": 3.0673,
+  "first_call_s": 3.3296
+ }
+]

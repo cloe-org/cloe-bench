@@ -1,0 +1,279 @@
+{
+ "cloelib": "<WORKDIR>/speedcheck_reanalysis/cloelib-2026-06/cloelib/__init__.py",
+ "cloelike": "<WORKDIR>/speedcheck_reanalysis/cloelike-2026-04/cloelike/__init__.py",
+ "jax": "0.11.2",
+ "jax_disable_jit": "1",
+ "clear_cache": false,
+ "n_cpu": 8,
+ "calls": [
+  {
+   "full": 26.868503727018833,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.07572733238339424,
+   "lp_s": 1.5281826294958591,
+   "nlp_s": 3.796798870898783,
+   "she_tracer_s": 2.000468830578029,
+   "pos_tracer_s": 1.461744180880487,
+   "get_Cl_s": 14.039986827410758,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 21.467794894240797
+  },
+  {
+   "full": 7.558684726245701,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.06450613215565681,
+   "lp_s": 1.5017635188996792,
+   "nlp_s": 3.731343266554177,
+   "she_tracer_s": 0.9203679831698537,
+   "pos_tracer_s": 0.926420439966023,
+   "get_Cl_s": 0.3896055016666651,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 2.2610718086361885
+  },
+  {
+   "full": 7.742911138571799,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.09804260823875666,
+   "lp_s": 1.560825139284134,
+   "nlp_s": 3.827161818742752,
+   "she_tracer_s": 0.9201766801998019,
+   "pos_tracer_s": 0.9249933427199721,
+   "get_Cl_s": 0.38798011373728514,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 2.256881572306156
+  },
+  {
+   "full": 7.613629881292582,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.09486926253885031,
+   "lp_s": 1.4773978274315596,
+   "nlp_s": 3.7548147588968277,
+   "she_tracer_s": 0.923477316275239,
+   "pos_tracer_s": 0.9275429518893361,
+   "get_Cl_s": 0.3978842245414853,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 2.286548032425344
+  },
+  {
+   "full": 7.710864000022411,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.08586621098220348,
+   "lp_s": 1.4683417649939656,
+   "nlp_s": 3.761781216599047,
+   "she_tracer_s": 0.92225631326437,
+   "pos_tracer_s": 1.036942258477211,
+   "get_Cl_s": 0.3983406377956271,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 2.394874807447195
+  },
+  {
+   "full": 7.636638290248811,
+   "loglike": -32262406.351773065,
+   "bg_s": 0.09076644480228424,
+   "lp_s": 1.4768730523064733,
+   "nlp_s": 3.789055331610143,
+   "she_tracer_s": 0.9193409690633416,
+   "pos_tracer_s": 0.9242397360503674,
+   "get_Cl_s": 0.3966897903010249,
+   "bg_n": 3,
+   "lp_n": 3,
+   "nlp_n": 3,
+   "she_tracer_n": 2,
+   "pos_tracer_n": 2,
+   "get_Cl_n": 3,
+   "likelihood_only": 2.2799434615299106
+  }
+ ],
+ "median": {
+  "full": 7.636638290248811,
+  "loglike": -32262406.351773065,
+  "bg_s": 0.09076644480228424,
+  "lp_s": 1.4773978274315596,
+  "nlp_s": 3.761781216599047,
+  "she_tracer_s": 0.9203679831698537,
+  "pos_tracer_s": 0.926420439966023,
+  "get_Cl_s": 0.3966897903010249,
+  "bg_n": 3.0,
+  "lp_n": 3.0,
+  "nlp_n": 3.0,
+  "she_tracer_n": 2.0,
+  "pos_tracer_n": 2.0,
+  "get_Cl_n": 3.0,
+  "likelihood_only": 2.2799434615299106
+ },
+ "profile_groups": {
+  "other python": 0.10778733400000001,
+  "builtins/C": 0.7738216459999999,
+  "numpy/scipy": 0.111273912,
+  "jax/xla": 4.227323566000002,
+  "cloelib": 0.005539905,
+  "cloelike": 0.01497857,
+  "camb": 5.3687576570000015,
+  "cloelib cosmology (CAMB wrappers)": 0.0004938789999999999
+ },
+ "profile_total": 10.609976469000008,
+ "profile_call": {
+  "full": 10.622147417627275,
+  "loglike": -32262406.351773065,
+  "bg_s": 0.09041814226657152,
+  "lp_s": 1.4791462859138846,
+  "nlp_s": 3.796985720284283,
+  "she_tracer_s": 2.1798574505373836,
+  "pos_tracer_s": 2.188165252096951,
+  "get_Cl_s": 0.8534847125411034,
+  "bg_n": 3,
+  "lp_n": 3,
+  "nlp_n": 3,
+  "she_tracer_n": 2,
+  "pos_tracer_n": 2,
+  "get_Cl_n": 3,
+  "likelihood_only": 5.255597269162536
+ },
+ "profile_top": [
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/camb/results.py:339(calc_transfers)",
+   6,
+   3.8703,
+   3.8704
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/camb/results.py:804(get_linear_matter_power_spectrum)",
+   15,
+   1.4052,
+   1.4062
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/dispatch.py:81(apply_primitive)",
+   30233,
+   0.482,
+   0.5085
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:686(bind)",
+   76896,
+   0.2845,
+   3.3817
+  ],
+  [
+   "~:0(<built-in method builtins.isinstance>)",
+   1850628,
+   0.2336,
+   0.2528
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/interpreters/batching.py:253(process_primitive)",
+   29388,
+   0.1718,
+   2.6489
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/lax/lax.py:1709(_convert_element_type)",
+   33566,
+   0.1364,
+   1.0175
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:2001(typeof)",
+   214318,
+   0.1248,
+   0.3786
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:2493(__new__)",
+   31730,
+   0.0936,
+   0.1636
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/array.py:1114(_get_aval_array)",
+   76616,
+   0.0913,
+   0.1955
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/camb/results.py:328(calc_background)",
+   3,
+   0.0897,
+   0.0897
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/interpreters/partial_eval.py:1750(default_process_primitive)",
+   16074,
+   0.0864,
+   0.2458
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/dtypes.py:991(dtype)",
+   96269,
+   0.083,
+   0.18
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:1457(set_trace)",
+   274256,
+   0.0816,
+   0.0816
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:735(bind_with_trace)",
+   74146,
+   0.0812,
+   2.9425
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/core.py:1311(process_primitive)",
+   30233,
+   0.0708,
+   0.6787
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/named_sharding.py:228(update)",
+   27208,
+   0.0649,
+   0.0887
+  ],
+  [
+   "~:0(<jaxlib.utils.safe_map>)",
+   106018,
+   0.0642,
+   0.1736
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/lax/lax.py:8336(_select_batch_rule)",
+   7686,
+   0.0635,
+   0.8049
+  ],
+  [
+   "<WORKDIR>/env/cloe-cosmosis/lib/python3.12/site-packages/jax/_src/source_info_util.py:210(current)",
+   46927,
+   0.0565,
+   0.0835
+  ]
+ ]
+}

@@ -1,0 +1,148 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    63s] E1 linear_TATT  simpson   n_t=  100 n_p= 255 ( 62.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    67s] E1 linear_TATT  simpson   n_t=  101 n_p= 255 (  4.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    73s] E1 linear_TATT  simpson   n_t=  150 n_p= 255 (  5.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    78s] E1 linear_TATT  simpson   n_t=  151 n_p= 255 (  5.5s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    84s] E1 linear_TATT  simpson   n_t=  200 n_p= 255 (  6.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    90s] E1 linear_TATT  simpson   n_t=  201 n_p= 255 (  6.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    97s] E1 linear_TATT  simpson   n_t=  250 n_p= 255 (  6.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   104s] E1 linear_TATT  simpson   n_t=  251 n_p= 255 (  6.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   112s] E1 linear_TATT  simpson   n_t=  400 n_p= 255 (  8.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   121s] E1 linear_TATT  simpson   n_t=  401 n_p= 255 (  8.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   136s] E1 linear_TATT  simpson   n_t=  800 n_p= 255 ( 14.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   150s] E1 linear_TATT  simpson   n_t=  801 n_p= 255 ( 14.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   180s] E1 linear_TATT  simpson   n_t= 1600 n_p= 255 ( 30.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   213s] E1 linear_TATT  simpson   n_t= 1601 n_p= 255 ( 32.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   283s] E1 linear_TATT  simpson   n_t= 3200 n_p= 255 ( 69.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   386s] E1 linear_TATT  simpson   n_t= 3201 n_p= 255 (103.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   391s] E1 linear_TATT  trapezoid n_t=  100 n_p= 255 (  4.2s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   395s] E1 linear_TATT  trapezoid n_t=  101 n_p= 255 (  4.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   399s] E1 linear_TATT  trapezoid n_t=  150 n_p= 255 (  4.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   402s] E1 linear_TATT  trapezoid n_t=  151 n_p= 255 (  3.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   406s] E1 linear_TATT  trapezoid n_t=  200 n_p= 255 (  3.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   410s] E1 linear_TATT  trapezoid n_t=  201 n_p= 255 (  3.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   414s] E1 linear_TATT  trapezoid n_t=  250 n_p= 255 (  4.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   418s] E1 linear_TATT  trapezoid n_t=  251 n_p= 255 (  3.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   422s] E1 linear_TATT  trapezoid n_t=  400 n_p= 255 (  4.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   427s] E1 linear_TATT  trapezoid n_t=  401 n_p= 255 (  4.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   431s] E1 linear_TATT  trapezoid n_t=  800 n_p= 255 (  3.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   434s] E1 linear_TATT  trapezoid n_t=  801 n_p= 255 (  3.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   438s] E1 linear_TATT  trapezoid n_t= 1600 n_p= 255 (  4.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   442s] E1 linear_TATT  trapezoid n_t= 1601 n_p= 255 (  3.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   448s] E1 linear_TATT  trapezoid n_t= 3200 n_p= 255 (  5.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   453s] E1 linear_TATT  trapezoid n_t= 3201 n_p= 255 (  5.6s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   499s] E2 linear_TATT  logabs    n_t= 1601 n_p=  50 ( 45.6s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   544s] E2 linear_TATT  logabs    n_t= 1601 n_p=  51 ( 45.0s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   594s] E2 linear_TATT  logabs    n_t= 1601 n_p= 100 ( 50.4s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   647s] E2 linear_TATT  logabs    n_t= 1601 n_p= 101 ( 52.3s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   707s] E2 linear_TATT  logabs    n_t= 1601 n_p= 150 ( 60.4s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   766s] E2 linear_TATT  logabs    n_t= 1601 n_p= 151 ( 58.4s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   826s] E2 linear_TATT  logabs    n_t= 1601 n_p= 200 ( 60.7s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   889s] E2 linear_TATT  logabs    n_t= 1601 n_p= 201 ( 62.7s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   941s] E2 linear_TATT  logabs    n_t= 1601 n_p= 254 ( 52.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   978s] E2 linear_TATT  logabs    n_t= 1601 n_p= 255 ( 37.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1011s] E3 linear_TATT  linear_p  n_t= 1601 n_p=  50 ( 32.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1040s] E3 linear_TATT  linear_p  n_t= 1601 n_p=  51 ( 29.2s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1071s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 100 ( 30.5s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1101s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 101 ( 30.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1130s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 150 ( 29.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1161s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 151 ( 30.5s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1192s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 200 ( 31.2s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1250s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 201 ( 58.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1284s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 254 ( 33.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1318s] E3 linear_TATT  linear_p  n_t= 1601 n_p= 255 ( 34.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1323s] E0 linear_TATT  coupled   n_t=  100 n_p= 100 (  4.7s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1329s] E0 linear_TATT  coupled   n_t=  101 n_p= 101 (  6.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1338s] E0 linear_TATT  coupled   n_t=  150 n_p= 150 (  8.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1347s] E0 linear_TATT  coupled   n_t=  151 n_p= 151 (  8.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1355s] E0 linear_TATT  coupled   n_t=  200 n_p= 200 (  8.5s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1361s] E0 linear_TATT  coupled   n_t=  201 n_p= 201 (  6.2s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1398s] E0 linear_TATT  coupled   n_t=  250 n_p= 250 ( 36.4s)
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1425s] E0 linear_TATT  coupled   n_t=  251 n_p= 251 ( 26.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[  1434s] E0 linear_TATT  coupled   n_t=  255 n_p= 255 (  9.1s)
+done 366 spectra
+exit 0

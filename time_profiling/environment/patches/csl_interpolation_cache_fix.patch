@@ -1,0 +1,23 @@
+diff --git a/structure/projection/projection_tools/pk2cl_tools.py b/structure/projection/projection_tools/pk2cl_tools.py
+index a4aaf373..a37d1882 100644
+--- a/structure/projection/projection_tools/pk2cl_tools.py
++++ b/structure/projection/projection_tools/pk2cl_tools.py
+@@ -464,10 +464,15 @@ def limber_integral(ells, kernel1, kernel2, pk_interp_logk, chimin, chimax, dchi
+             PK_VALS = pk_interp_logk(CHI_VALS, np.log(K_VALS), grid=False)
+         else:
+             key = (float(chimin), float(chimax), float(dchi), hash(ells.tobytes()), id(pk_interp_logk))
+-            PK_VALS = interpolation_cache.get(key)
+-            if PK_VALS is None:
++            # Store the spline itself with the values and check identity: id() alone is reused by
++            # Python once a spline is garbage-collected (e.g. the per-bin-pair splines of the
++            # nlgal-* spectra), which silently returned another bin pair's P(k).
++            cached = interpolation_cache.get(key)
++            if cached is not None and cached[0] is pk_interp_logk:
++                PK_VALS = cached[1]
++            else:
+                 PK_VALS = pk_interp_logk(CHI_VALS, np.log(K_VALS), grid=False)
+-                interpolation_cache[key] = PK_VALS
++                interpolation_cache[key] = (pk_interp_logk, PK_VALS)
+ 
+ 
+         #compute integral via trapezium rule

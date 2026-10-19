@@ -1,0 +1,114 @@
+[
+ {
+  "model": "linear bias, NLA",
+  "n_z": 100,
+  "code": "cloelib",
+  "median_s": 0.0995,
+  "first_call_s": 2.1633
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 100,
+  "code": "CLOE (former)",
+  "median_s": 0.0971,
+  "first_call_s": 0.0978
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 250,
+  "code": "cloelib",
+  "median_s": 0.1284,
+  "first_call_s": 2.1881
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 250,
+  "code": "CLOE (former)",
+  "median_s": 0.1793,
+  "first_call_s": 0.1811
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 600,
+  "code": "cloelib",
+  "median_s": 0.1852,
+  "first_call_s": 2.2727
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 600,
+  "code": "CLOE (former)",
+  "median_s": 0.2926,
+  "first_call_s": 0.2931
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 1000,
+  "code": "cloelib",
+  "median_s": 0.1732,
+  "first_call_s": 2.2118
+ },
+ {
+  "model": "linear bias, NLA",
+  "n_z": 1000,
+  "code": "CLOE (former)",
+  "median_s": 0.542,
+  "first_call_s": 0.558
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 100,
+  "code": "cloelib",
+  "median_s": 0.2359,
+  "first_call_s": 4.6554
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 100,
+  "code": "CLOE (former)",
+  "median_s": 1.2595,
+  "first_call_s": 1.2634
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 250,
+  "code": "cloelib",
+  "median_s": 0.34,
+  "first_call_s": 4.3941
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 250,
+  "code": "CLOE (former)",
+  "median_s": 2.1401,
+  "first_call_s": 2.1537
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 600,
+  "code": "cloelib",
+  "median_s": 0.4768,
+  "first_call_s": 4.3584
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 600,
+  "code": "CLOE (former)",
+  "median_s": 2.252,
+  "first_call_s": 2.2621
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 1000,
+  "code": "cloelib",
+  "median_s": 0.5104,
+  "first_call_s": 4.4637
+ },
+ {
+  "model": "one-loop bias, TATT",
+  "n_z": 1000,
+  "code": "CLOE (former)",
+  "median_s": 2.4583,
+  "first_call_s": 2.4643
+ }
+]

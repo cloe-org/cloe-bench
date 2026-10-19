@@ -1,0 +1,50 @@
+[
+ {
+  "case": "CLOE, their set-up",
+  "code": "CLOE (former)",
+  "where": "speedcheck (EPYC 7742)",
+  "time_s": 0.087
+ },
+ {
+  "case": "cloelike, June 2026",
+  "code": "cloelib",
+  "where": "speedcheck (EPYC 7742)",
+  "time_s": 0.228
+ },
+ {
+  "case": "cloelike, June, no JIT",
+  "code": "cloelib",
+  "where": "speedcheck (EPYC 7742)",
+  "time_s": 3.753
+ },
+ {
+  "case": "CLOE, their set-up",
+  "code": "CLOE (former)",
+  "where": "re-run here",
+  "time_s": 0.0498
+ },
+ {
+  "case": "cloelike, June 2026",
+  "code": "cloelib",
+  "where": "re-run here",
+  "time_s": 0.1026
+ },
+ {
+  "case": "cloelike, June, no JIT",
+  "code": "cloelib",
+  "where": "re-run here",
+  "time_s": 2.2799
+ },
+ {
+  "case": "cloelike, today",
+  "code": "cloelib",
+  "where": "re-run here",
+  "time_s": 0.0865
+ },
+ {
+  "case": "CLOE, one-loop and TATT",
+  "code": "CLOE (former)",
+  "where": "re-run here",
+  "time_s": 0.4343
+ }
+]

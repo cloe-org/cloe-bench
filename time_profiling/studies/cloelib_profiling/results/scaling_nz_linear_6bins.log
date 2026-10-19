@@ -1,0 +1,12 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 6 bins N_Z=  100 (P(k,z) 100) n_ell=   32 | from scratch   0.042 s | first call   1.94 s | 78 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 6 bins N_Z=  250 (P(k,z) 250) n_ell=   32 | from scratch   0.062 s | first call   1.91 s | 78 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 6 bins N_Z=  600 (P(k,z) 250) n_ell=   32 | from scratch   0.072 s | first call   1.95 s | 78 spectra
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 6 bins N_Z= 1000 (P(k,z) 250) n_ell=   32 | from scratch   0.123 s | first call   2.01 s | 78 spectra

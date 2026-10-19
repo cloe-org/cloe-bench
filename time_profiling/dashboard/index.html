@@ -1,0 +1,466 @@
+<style>
+.tp { max-width: 76rem; margin-inline: auto; display: grid; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); }
+.tp-head { display: grid; gap: var(--cds-gap-sm); }
+.tp-head h1 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); text-wrap: balance; }
+.tp-lede { margin: 0; max-width: 62ch; font-size: var(--cds-font-size-body); color: var(--color-fg); }
+.tp-lede b, .tp-tile b { font-weight: 600; }
+.tp-sub { margin: 0; max-width: 70ch; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.tp-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--cds-gap-md); }
+.tp-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+.tp-tile .lab { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.tp-tile .big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tp-tile .note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.tp-sec { display: grid; gap: var(--cds-gap-md); }
+.tp-sec > h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+.tp-sec > p { margin: 0; max-width: 70ch; color: var(--color-fg-muted); font-size: var(--cds-font-size-body); }
+.tp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+.tp-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); min-width: 0; align-content: start; }
+.tp-card h3 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+.tp-card .note { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.tp-chart { position: relative; min-height: 300px; }
+.tp-chart.short { min-height: 240px; }
+.tp-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; white-space: nowrap; z-index: 2; }
+.tp-tip .t { color: var(--cds-text-secondary); margin-bottom: 2px; }
+.tp-tip .r { display: flex; align-items: center; gap: 6px; }
+.tp-tip .sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+.tp-tip .v { margin-left: auto; padding-left: 12px; }
+.tp-seg { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+.tp-seg button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-radius: var(--cds-radius); border: 1px solid var(--color-border-line); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+.tp-seg button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+.tp-seg button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.tp-why { margin: 0; padding-left: 1.2rem; display: grid; gap: var(--cds-gap-xs); max-width: 72ch; font-size: var(--cds-font-size-body); }
+.tp-table-wrap { overflow-x: auto; }
+.tp-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.tp-table th, .tp-table td { text-align: left; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.tp-table th { color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); }
+.tp-table code, .tp-sec code, .tp-sub code { font-size: 0.92em; }
+.tp svg text { fill: var(--color-fg-muted); font-size: 11px; font-family: var(--font-anthropic-sans); }
+.tp svg .endlab { fill: var(--color-fg); font-size: 12px; }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+.tp-stack { position: relative; display: grid; gap: var(--cds-gap-sm); }
+.tp-stack .row { display: grid; grid-template-columns: minmax(6rem, 9rem) 1fr; gap: var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); }
+.tp-stack .bar { display: flex; height: 22px; gap: 2px; }
+.tp-stack .seg { border-radius: 4px; min-width: 2px; }
+.tp-stack .legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.tp-stack .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; background: var(--c); }
+.tp-fail { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: inherit; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.tp-fail::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); }
+</style>
+
+<div class="tp">
+  <header class="tp-head" id="top">
+    <h1>cloelib time profiling</h1>
+    <p class="tp-lede">At the analysis set-up (13 bins, 32 ℓ, 600 redshift points), cloelib computes a full 3x2pt
+      <b data-source="speedup_600" data-field="speedup_txt" data-where="model=linear bias, NLA" class="dash-skeleton">—</b> faster than former CLOE with linear bias, NLA, and
+      <b data-source="speedup_600" data-field="speedup_txt" data-where="model=one-loop bias, TATT" class="dash-skeleton">—</b> faster with one-loop bias, TATT.</p>
+    <p class="tp-sub">Every time is one full photometric 3x2pt evaluation from scratch with CAMB excluded: each code's own interpolators, tracers, FAST-PT loops and Limber integrals, nothing cached. Median of 3–5 evaluations. Code, scripts and notebooks: <code>cloe-bench/time_profiling</code>.</p>
+  </header>
+
+  <section class="tp-tiles" aria-label="Headline figures at the analysis set-up">
+    <div class="tp-tile"><span class="lab">Speed-up vs former CLOE, linear bias, NLA</span>
+      <span class="big dash-skeleton" data-source="speedup_600" data-field="speedup_txt" data-where="model=linear bias, NLA">—</span>
+      <span class="note">13 bins, 32 ℓ, N<sub>Z</sub> = 600, 8 CPUs</span></div>
+    <div class="tp-tile"><span class="lab">Speed-up vs former CLOE, one-loop bias, TATT</span>
+      <span class="big dash-skeleton" data-source="speedup_600" data-field="speedup_txt" data-where="model=one-loop bias, TATT">—</span>
+      <span class="note">13 bins, 32 ℓ, N<sub>Z</sub> = 600, 8 CPUs</span></div>
+    <div class="tp-tile"><span class="lab">cloelib, one evaluation, one-loop bias, TATT</span>
+      <span class="big dash-skeleton" data-source="speedup_600" data-field="cloelib_txt" data-where="model=one-loop bias, TATT">—</span>
+      <span class="note">former CLOE: <span data-source="speedup_600" data-field="cloe_txt" data-where="model=one-loop bias, TATT">—</span></span></div>
+    <div class="tp-tile"><span class="lab">cloelib one-off JAX compilation, one-loop bias, TATT</span>
+      <span class="big dash-skeleton" data-source="speedup_600" data-field="jit_txt" data-where="model=one-loop bias, TATT">—</span>
+      <span class="note">paid once per array shape; recovered after <span data-source="speedup_600" data-field="breakeven_txt" data-where="model=one-loop bias, TATT">—</span> evaluations</span></div>
+  </section>
+
+  <section class="tp-sec" id="analysis-setup">
+    <h2>Former CLOE vs cloelib as the number of redshift points grows</h2>
+    <p>13 bins, 351 spectra, 32 ℓ, 8 CPUs. N<sub>Z</sub> points for n(z), kernels and the Limber integral; the CAMB P(k, z) grid has at most 250, because CAMB accepts at most 256 redshifts. Dashed: cloelib's first call at a new array shape, which includes JAX compilation.</p>
+    <div class="tp-grid">
+      <div class="tp-card"><h3 id="nz-linear-title">Linear bias + NLA</h3>
+        <p class="note">The model of the July 2026 speedcheck: no perturbation-theory terms, so CLOE never runs FAST-PT.</p>
+        <div class="tp-chart" id="nz-linear" data-source="analysis_setup"></div></div>
+      <div class="tp-card"><h3 id="nz-pt-title">One-loop bias + TATT</h3>
+        <p class="note">CLOE rebuilds its FAST-PT objects on every evaluation: 2 s of its time per call.</p>
+        <div class="tp-chart" id="nz-pt" data-source="analysis_setup"></div></div>
+    </div>
+  </section>
+
+  <section class="tp-sec" id="four-codes">
+    <h2>Against pyccl and CosmoSIS, by number of ℓ values</h2>
+    <p>TATT + one-loop bias, N<sub>Z</sub> = 100, all spectra. Only pyccl uses extra CPUs (an OpenMP loop over ℓ in each of its <code>angular_cl</code> calls); CosmoSIS and former CLOE are single-threaded, and cloelib's XLA thread pool does not pay off at this size.</p>
+    <div class="tp-seg" role="group" aria-label="Study and CPU budget" id="sweep-pick"></div>
+    <div class="tp-grid">
+      <div class="tp-card"><h3 id="sweep-title">Time per evaluation</h3>
+        <p class="note" id="sweep-note">Log–log. Dashed: first call, which for cloelib includes JAX compilation.</p>
+        <div class="tp-chart" id="sweep-time" data-source="nell_sweeps"></div></div>
+      <div class="tp-card"><h3>Relative to cloelib</h3>
+        <p class="note">Time of each code divided by cloelib's, same study and CPUs. Above 1: slower than cloelib.</p>
+        <div class="tp-chart" id="sweep-ratio" data-source="nell_sweeps"></div></div>
+    </div>
+  </section>
+
+  <section class="tp-sec" id="speedcheck">
+    <h2>Why the July 2026 speedcheck found former CLOE faster</h2>
+    <p>Its exact set-up re-run here: 10 bins, 20 ℓ, 100 redshift points, linear bias, NLA, cloelike/cloelib as of June 2026. The result reproduces; it is specific to that small, linear problem.</p>
+    <div class="tp-grid">
+      <div class="tp-card"><h3>Likelihood time per evaluation, CAMB excluded</h3>
+        <p class="note">Bars: muted, the speedcheck's own numbers (AMD EPYC 7742); solid, re-run here (AMD EPYC 9454, 8 CPUs). Log scale.</p>
+        <div class="tp-chart" id="speedcheck-bars" data-source="speedcheck"></div></div>
+      <div class="tp-card"><h3>What explains it</h3>
+        <ol class="tp-why">
+          <li><b>A tiny problem.</b> 10 bins × 20 ℓ × 100 redshifts is microseconds of arithmetic; cloelib spends its time on about 1,600 JAX operations dispatched one at a time, each with a fixed cost.</li>
+          <li><b>No perturbation theory.</b> With linear bias, NLA, CLOE skips FAST-PT; switch on TATT + one-loop bias and CLOE takes <span data-source="speedcheck_txt" data-field="time_txt" data-where="case=CLOE, one-loop and TATT&amp;where=re-run here">—</span>.</li>
+          <li><b>An older cloelike.</b> The June 2026 version rebuilt CAMB and the tracers for each probe, three times per call (fixed in September; today <span data-source="speedcheck_txt" data-field="time_txt" data-where="case=cloelike, today&amp;where=re-run here">—</span>).</li>
+          <li><b>"No JAX" was <code>JAX_DISABLE_JIT=1</code>,</b> a debugging mode that runs compiled code one primitive at a time, not cloelib without JAX.</li>
+        </ol></div>
+    </div>
+  </section>
+
+  <section class="tp-sec" id="cloelib">
+    <h2>Inside cloelib</h2>
+    <p>cloelib <code>main</code> on its own, 8 CPUs unless stated. At small sizes its time is mostly JAX operations dispatched one at a time (about 2,000 per evaluation); with perturbation theory, the one-loop P(k, z) evaluated at every Limber point takes over as ℓ grows. CAMB, outside these times, costs about 5 s per cosmology.</p>
+    <div class="tp-grid">
+      <div class="tp-card"><h3 id="stages-title">Where one evaluation spends its time</h3>
+        <p class="note">13 bins, 32 ℓ, N<sub>Z</sub> = 600. Medians per stage; tracers include the FAST-PT loop computers.</p>
+        <div class="tp-stack" id="stages" data-source="cloelib_profile"></div></div>
+      <div class="tp-card"><h3 id="nell-cost-title">Cost against the number of ℓ values</h3>
+        <p class="note">N<sub>Z</sub> = 600. Solid: 13 bins; dashed: 6 bins. With one-loop + TATT, 6 and 13 bins cost the same at high ℓ: the work grows with ℓ × z, not with the number of spectra.</p>
+        <div class="tp-chart" id="nell-cost" data-source="cloelib_profile"></div></div>
+    </div>
+    <div class="tp-card"><h3 id="cpu-title">CPU budget</h3>
+      <p class="note">13 bins, N<sub>Z</sub> = 600, median of 5. More CPUs help only the large one-loop problem; at 32 ℓ, 96 CPUs are slower than 8. The 96-CPU column ran while the node's load rose to about 40.</p>
+      <div class="tp-table-wrap"><table class="tp-table" id="cpu-table" data-source="cpu_budget" data-row-key="case">
+        <thead><tr><th data-field="case">Model, ℓ values</th><th data-field="cpu1_txt">1 CPU</th><th data-field="cpu8_txt">8 CPUs</th><th data-field="cpu96_txt">96 CPUs</th></tr></thead>
+        <tbody></tbody></table></div></div>
+  </section>
+
+  <section class="tp-sec" id="studies">
+    <h2>Studies</h2>
+    <p>Compare codes within one study; absolute times differ between machines.</p>
+    <div class="tp-card"><div class="tp-table-wrap">
+      <table class="tp-table" id="studies-table" data-source="studies" data-row-key="study">
+        <thead><tr><th data-field="study">Study</th><th data-field="setup">Set-up</th><th data-field="hardware">Hardware</th><th data-field="cloelib">cloelib</th><th data-field="date">Run</th><th data-field="folder">Folder</th></tr></thead>
+        <tbody></tbody>
+      </table></div></div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const CODES = ['cloelib', 'pyccl', 'CosmoSIS', 'CLOE (former)'];
+  const colorOf = (code) => dash.colors[CODES.indexOf(code)];
+  const fmtS = (s) => s < 1 ? `${d3.format('.0f')(s * 1000)} ms` : `${d3.format('.2f')(s)} s`;
+  const fmtX = (r) => `${d3.format('.1f')(r)}×`;
+  const where = (el) => Object.fromEntries(el.dataset.where.split('&').map((kv) => kv.split('=').map(decodeURIComponent)));
+
+  dash.calc('speedcheck_txt', {
+    inputs: ['speedcheck'],
+    title: 'Speedcheck times, formatted',
+    description: 'Each speedcheck row with its time written in ms or s, for the text.',
+    fn: (speedcheck) => speedcheck.map((r) => ({ case: r.case, where: r.where,
+      time_txt: Number(r.time_s) < 1 ? `${Math.round(Number(r.time_s) * 1000)} ms` : `${Number(r.time_s).toFixed(2)} s` })),
+  });
+
+  dash.calc('speedup_600', {
+    inputs: ['analysis_setup'],
+    title: 'Speed-up at N_Z = 600',
+    description: 'Former CLOE time divided by cloelib time at N_Z = 600, per model; cloelib compilation is its first call minus its median.',
+    fn: (analysis_setup) => {
+      const at = (model, code) => analysis_setup.find((r) => r.model === model && r.code === code && Number(r.n_z) === 600);
+      return ['linear bias, NLA', 'one-loop bias, TATT'].map((model) => {
+        const lib = at(model, 'cloelib'), cloe = at(model, 'CLOE (former)');
+        const speedup = cloe.median_s / lib.median_s, jit = lib.first_call_s - lib.median_s;
+        const breakeven = Math.ceil(jit / (cloe.median_s - lib.median_s));
+        return {
+          model, speedup, jit_s: jit, cloelib_s: lib.median_s, cloe_s: cloe.median_s, breakeven,
+          speedup_txt: `${speedup.toFixed(1)}×`, cloelib_txt: lib.median_s < 1 ? `${Math.round(lib.median_s * 1000)} ms` : `${lib.median_s.toFixed(2)} s`,
+          cloe_txt: cloe.median_s < 1 ? `${Math.round(cloe.median_s * 1000)} ms` : `${cloe.median_s.toFixed(2)} s`,
+          jit_txt: `${jit.toFixed(1)} s`, breakeven_txt: `${breakeven}`,
+        };
+      });
+    },
+  });
+
+  const MODEL_NAME = { linear: 'linear bias, NLA', pt: 'one-loop bias, TATT' };
+  dash.calc('cpu_budget', {
+    inputs: ['cloelib_profile'],
+    title: 'cloelib by CPU budget',
+    description: 'Median time per evaluation at 13 bins and N_Z = 600 from the 1-, 8- and 96-CPU runs, per model and number of ell values.',
+    fn: (cloelib_profile) => {
+      const runs = cloelib_profile.filter((r) => String(r.run).startsWith('cpus_'));
+      const cases = [];
+      for (const model of ['linear', 'pt']) for (const n_ell of [32, 3000]) {
+        const t = (n) => runs.find((r) => r.model === model && Number(r.n_cpu) === n && Number(r.n_ell) === n_ell);
+        const f = (r) => !r ? '—' : Number(r.median_s) < 1 ? `${Math.round(Number(r.median_s) * 1000)} ms` : `${Number(r.median_s).toFixed(2)} s`;
+        cases.push({ case: `${model === 'linear' ? 'linear bias, NLA' : 'one-loop bias, TATT'}, ${n_ell} ℓ`, cpu1_txt: f(t(1)), cpu8_txt: f(t(8)), cpu96_txt: f(t(96)) });
+      }
+      return cases;
+    },
+  });
+
+  // ------------------------------------------------------------------ shared drawing helpers
+  const logTicks = (lo, hi) => {
+    const t = [];
+    for (let e = Math.floor(Math.log10(lo)); e <= Math.ceil(Math.log10(hi)); e++)
+      for (const m of [1, 2, 5]) { const v = m * 10 ** e; if (v >= lo * 0.999 && v <= hi * 1.001) t.push(v); }
+    return t;
+  };
+  const tickFmt = (v) => v < 1 ? (v < 0.1 ? d3.format('.2~f')(v) : d3.format('.1~f')(v)) : d3.format('~g')(v);
+
+  function tip(box) {
+    let el = box.querySelector('.tp-tip');
+    if (!el) { el = document.createElement('div'); el.className = 'tp-tip'; el.hidden = true; box.appendChild(el); }
+    return {
+      show(title, lines, x, y) {
+        el.replaceChildren();
+        const t = document.createElement('div'); t.className = 't'; t.textContent = title; el.appendChild(t);
+        for (const l of lines) {
+          const r = document.createElement('div'); r.className = 'r';
+          if (l.color) { const s = document.createElement('span'); s.className = 'sw'; s.style.background = l.color; r.appendChild(s); }
+          const n = document.createElement('span'); n.textContent = l.name; r.appendChild(n);
+          const v = document.createElement('span'); v.className = 'v'; v.textContent = l.value; r.appendChild(v);
+          el.appendChild(r);
+        }
+        el.hidden = false;
+        const bw = box.clientWidth, w = el.offsetWidth, h = el.offsetHeight;
+        el.style.left = `${Math.max(0, Math.min(bw - w, x + 12))}px`;
+        el.style.top = `${Math.max(0, y - h - 8)}px`;
+      },
+      hide() { el.hidden = true; },
+    };
+  }
+
+  function failed(box, id) {
+    const st = dash.data(id).status;
+    if (st === 'ok') return false;
+    box.replaceChildren();
+    if (st === 'error' || st === 'connect' || st === 'declined' || st === 'missing') {
+      const f = document.createElement('div'); f.className = 'tp-fail'; f.textContent = 'Failed to load'; box.appendChild(f);
+    }
+    return true;
+  }
+
+  // series: [{name, color, points:[{x, y}], dashed?, label?}] ; log x and log y
+  function lineChart(box, series, o) {
+    box.querySelectorAll('svg').forEach((s) => s.remove());
+    const W = Math.max(280, box.clientWidth), H = o.height || 300;
+    const pts = series.flatMap((s) => s.points);
+    const xs = [...new Set(pts.map((p) => p.x))].sort((a, b) => a - b);
+    const yLo = o.yMin ?? d3.min(pts, (p) => p.y) / 1.25, yHi = d3.max(pts, (p) => p.y) * 1.25;
+    const yTicks = logTicks(yLo, yHi);
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', o.aria);
+    const meas = svg.append('g');
+    const widest = (labels, cls) => d3.max(labels, (l) => meas.append('text').attr('class', cls || null).text(l).node().getComputedTextLength()) || 0;
+    const labelled = series.filter((s) => s.label);
+    const mL = widest(yTicks.map(tickFmt)) + 14, mR = widest(labelled.map((s) => s.label), 'endlab') + 14;
+    meas.remove();
+    const m = { l: mL, r: mR, t: 10, b: 38 };
+    const x = d3.scaleLog([xs[0] / 1.08, xs[xs.length - 1] * 1.08], [m.l, W - m.r]);
+    const y = d3.scaleLog([yLo, yHi], [H - m.b, m.t]);
+    const g = svg.append('g');
+    g.selectAll('line.grid').data(yTicks).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
+      .attr('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 1);
+    g.selectAll('text.yt').data(yTicks).join('text').attr('x', m.l - 8).attr('y', (d) => y(d)).attr('dy', '0.32em').attr('text-anchor', 'end').text(tickFmt);
+    g.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', H - m.b).attr('y2', H - m.b).attr('stroke', 'var(--cds-chart-axis)');
+    g.selectAll('text.xt').data(xs).join('text').attr('x', (d) => x(d)).attr('y', H - m.b + 16).attr('text-anchor', 'middle').text((d) => d3.format('~g')(d));
+    g.append('text').attr('x', (m.l + W - m.r) / 2).attr('y', H - 4).attr('text-anchor', 'middle').text(o.xLabel);
+    const line = d3.line().x((p) => x(p.x)).y((p) => y(p.y));
+    for (const s of series) {
+      g.append('path').attr('d', line(s.points)).attr('fill', 'none').attr('stroke', s.color).attr('stroke-width', s.dashed ? 1.25 : 2)
+        .attr('stroke-dasharray', s.dashed ? '4 3' : null).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round');
+      if (!s.dashed) g.selectAll(null).data(s.points).join('circle').attr('cx', (p) => x(p.x)).attr('cy', (p) => y(p.y)).attr('r', 3.5)
+        .attr('fill', s.color).attr('stroke', 'var(--color-panel)').attr('stroke-width', 1.5);
+    }
+    // end labels, nudged apart
+    const ends = labelled.map((s) => ({ s, y: y(s.points[s.points.length - 1].y) })).sort((a, b) => a.y - b.y);
+    for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
+    g.selectAll('text.endlab').data(ends).join('text').attr('class', 'endlab').attr('x', W - m.r + 8).attr('y', (d) => d.y).attr('dy', '0.32em').text((d) => d.s.label);
+    if (o.reference) {
+      g.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(o.reference)).attr('y2', y(o.reference))
+        .attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '4 3');
+    }
+    // hover: nearest x, every series' value there
+    const t = tip(box), rule = g.append('line').attr('y1', m.t).attr('y2', H - m.b).attr('stroke', 'var(--cds-chart-axis)').attr('opacity', 0);
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [px] = d3.pointer(ev);
+        const xv = xs.reduce((a, b) => Math.abs(x(b) - px) < Math.abs(x(a) - px) ? b : a);
+        rule.attr('x1', x(xv)).attr('x2', x(xv)).attr('opacity', 1);
+        const lines = series.filter((s) => !s.hideInTip).map((s) => {
+          const p = s.points.find((q) => q.x === xv);
+          return p ? { name: s.name, color: s.color, value: o.fmt(p.y) } : null;
+        }).filter(Boolean);
+        const scale = W / box.clientWidth;
+        t.show(o.tipTitle(xv), lines, x(xv) / scale, m.t + 10);
+      })
+      .on('pointerleave', () => { rule.attr('opacity', 0); t.hide(); });
+  }
+
+  // ------------------------------------------------------------------ section: analysis set-up
+  function drawNz() {
+    for (const [id, model] of [['nz-linear', 'linear bias, NLA'], ['nz-pt', 'one-loop bias, TATT']]) {
+      const box = document.getElementById(id);
+      if (failed(box, 'analysis_setup')) continue;
+      const rows = dash.data('analysis_setup').data.filter((r) => r.model === model);
+      const series = [];
+      for (const code of ['cloelib', 'CLOE (former)']) {
+        const pts = rows.filter((r) => r.code === code).map((r) => ({ x: Number(r.n_z), y: Number(r.median_s) })).sort((a, b) => a.x - b.x);
+        series.push({ name: code, color: colorOf(code), points: pts, label: code });
+      }
+      const first = rows.filter((r) => r.code === 'cloelib').map((r) => ({ x: Number(r.n_z), y: Number(r.first_call_s) })).sort((a, b) => a.x - b.x);
+      series.push({ name: 'cloelib, first call', color: colorOf('cloelib'), points: first, dashed: true });
+      lineChart(box, series, { xLabel: 'redshift points, N_Z', aria: `Time per evaluation against N_Z, ${model}`, fmt: fmtS,
+        tipTitle: (v) => `N_Z = ${v}`, yMin: 0.05 });
+    }
+  }
+
+  // ------------------------------------------------------------------ section: four codes
+  const PICKS = [
+    { study: 'Euclid DR3, 13 bins', cpus: '1 core' }, { study: 'Euclid DR3, 13 bins', cpus: '128 cores' },
+    { study: 'Euclid DR1, 6 bins', cpus: '8 CPUs' }, { study: 'Euclid DR1, 6 bins', cpus: '96 CPUs' },
+  ];
+  let pick = 0;
+  const seg = document.getElementById('sweep-pick');
+  PICKS.forEach((p, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.id = `sweep-pick-${i}`;
+    b.textContent = `${p.study.split(',')[0]}, ${p.cpus}`; b.setAttribute('aria-pressed', String(i === pick));
+    b.addEventListener('click', () => { pick = i; seg.querySelectorAll('button').forEach((x, j) => x.setAttribute('aria-pressed', String(j === pick))); drawSweep(); });
+    seg.appendChild(b);
+  });
+
+  function drawSweep() {
+    const boxT = document.getElementById('sweep-time'), boxR = document.getElementById('sweep-ratio');
+    if (failed(boxT, 'nell_sweeps') | failed(boxR, 'nell_sweeps')) return;
+    const p = PICKS[pick];
+    document.getElementById('sweep-title').textContent = `Time per evaluation: ${p.study}, ${p.cpus}`;
+    const rows = dash.data('nell_sweeps').data.filter((r) => r.study === p.study && r.cpus === p.cpus);
+    const by = (code, key) => rows.filter((r) => r.code === code).map((r) => ({ x: Number(r.n_ell), y: Number(r[key]) })).sort((a, b) => a.x - b.x);
+    const series = CODES.map((code) => ({ name: code, color: colorOf(code), points: by(code, 'median_s'), label: code }));
+    series.push({ name: 'cloelib, first call', color: colorOf('cloelib'), points: by('cloelib', 'first_call_s'), dashed: true });
+    lineChart(boxT, series, { xLabel: 'number of ℓ values', aria: `Time per evaluation against number of ell values, ${p.study}, ${p.cpus}`,
+      fmt: fmtS, tipTitle: (v) => `${v} ℓ values` });
+    const lib = by('cloelib', 'median_s');
+    const ratio = CODES.slice(1).map((code) => ({ name: code, color: colorOf(code), label: code,
+      points: by(code, 'median_s').map((q) => ({ x: q.x, y: q.y / lib.find((l) => l.x === q.x).y })) }));
+    const rmin = d3.min(ratio.flatMap((s) => s.points), (q) => q.y);
+    lineChart(boxR, ratio, { xLabel: 'number of ℓ values', aria: 'Time relative to cloelib', fmt: fmtX,
+      tipTitle: (v) => `${v} ℓ values`, reference: 1, yMin: Math.min(0.4, rmin / 1.25) });
+  }
+
+  // ------------------------------------------------------------------ section: speedcheck
+  function drawSpeedcheck() {
+    const box = document.getElementById('speedcheck-bars');
+    if (failed(box, 'speedcheck')) return;
+    box.querySelectorAll('svg').forEach((s) => s.remove());
+    const rows = dash.data('speedcheck').data.map((r) => ({ ...r, time_s: Number(r.time_s) }));
+    const cases = [...new Set(rows.map((r) => r.case))];
+    const W = Math.max(280, box.clientWidth), bar = 12, gap = 3, groupH = 2 * bar + gap + 16;
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('role', 'img').attr('aria-label', 'Likelihood time per case');
+    const meas = svg.append('g');
+    const lw = Math.min(W * 0.45, d3.max(cases, (c) => meas.append('text').text(c).node().getComputedTextLength()) + 12);
+    const vw = d3.max(rows, (r) => meas.append('text').text(fmtS(r.time_s)).node().getComputedTextLength()) + 8;
+    meas.remove();
+    const H = cases.length * groupH + 30;
+    svg.attr('viewBox', `0 0 ${W} ${H}`);
+    const x = d3.scaleLog([0.02, d3.max(rows, (r) => r.time_s) * 1.4], [lw, W - vw]);
+    const g = svg.append('g');
+    const ticks = logTicks(0.02, d3.max(rows, (r) => r.time_s) * 1.4).filter((v, i, a) => a.length < 8 || [1, 5].includes(Math.round(v / 10 ** Math.floor(Math.log10(v)))));
+    g.selectAll('line').data(ticks).join('line').attr('x1', (d) => x(d)).attr('x2', (d) => x(d)).attr('y1', 0).attr('y2', H - 24).attr('stroke', 'var(--cds-chart-grid)');
+    g.selectAll('text.xt').data(ticks).join('text').attr('x', (d) => x(d)).attr('y', H - 8).attr('text-anchor', 'middle').text((d) => fmtS(d));
+    const t = tip(box);
+    cases.forEach((c, i) => {
+      const y0 = i * groupH + 4;
+      g.append('text').attr('x', lw - 10).attr('y', y0 + bar + gap / 2).attr('dy', '0.32em').attr('text-anchor', 'end').text(c);
+      ['speedcheck (EPYC 7742)', 're-run here'].forEach((where, j) => {
+        const r = rows.find((q) => q.case === c && q.where === where);
+        if (!r) return;
+        const yb = y0 + j * (bar + gap), color = where === 're-run here' ? colorOf(r.code) : 'var(--cds-chart-muted)';
+        g.append('rect').attr('x', lw).attr('y', yb).attr('height', bar).attr('width', Math.max(2, x(r.time_s) - lw)).attr('rx', 4).attr('fill', color)
+          .on('pointermove', (ev) => { const [px, py] = d3.pointer(ev, box); t.show(c, [{ name: where, color, value: fmtS(r.time_s) }], px, py); })
+          .on('pointerleave', () => t.hide());
+        g.append('text').attr('x', x(r.time_s) + 6).attr('y', yb + bar / 2).attr('dy', '0.32em').text(fmtS(r.time_s));
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------ section: inside cloelib
+  function drawCloelib() {
+    const stages = document.getElementById('stages');
+    if (!failed(stages, 'cloelib_profile')) {
+      stages.replaceChildren();
+      const rows = dash.data('cloelib_profile').data.filter((r) => String(r.run).startsWith('reference_'));
+      const keys = [['stage_tracers', 'tracers'], ['stage_get_Cl_GG', 'get_Cl GG'], ['stage_get_Cl_GE', 'get_Cl GE'], ['stage_get_Cl_EE', 'get_Cl EE']];
+      const cols = ['var(--cds-chart-muted)', dash.colors[0], dash.colors[1], dash.colors[2]];
+      const max = d3.max(rows, (r) => d3.sum(keys, ([k]) => Number(r[k] || 0)));
+      const t = tip(stages);
+      for (const model of ['linear', 'pt']) {
+        const r = rows.find((q) => q.model === model);
+        if (!r) continue;
+        const row = document.createElement('div'); row.className = 'row';
+        const lab = document.createElement('span'); lab.textContent = `${MODEL_NAME[model]}: ${fmtS(Number(r.median_s))}`; row.appendChild(lab);
+        const bar = document.createElement('div'); bar.className = 'bar';
+        keys.forEach(([k, name], i) => {
+          const v = Number(r[k] || 0), seg = document.createElement('div'); seg.className = 'seg';
+          seg.style.width = `${(v / max) * 100}%`; seg.style.background = cols[i];
+          seg.addEventListener('pointermove', (ev) => {
+            const b = stages.getBoundingClientRect();
+            t.show(MODEL_NAME[model], [{ name, color: cols[i], value: fmtS(v) }], ev.clientX - b.left, ev.clientY - b.top);
+          });
+          seg.addEventListener('pointerleave', () => t.hide());
+          bar.appendChild(seg);
+        });
+        row.appendChild(bar); stages.appendChild(row);
+      }
+      const lg = document.createElement('div'); lg.className = 'legend';
+      keys.forEach(([, name], i) => { const sp = document.createElement('span'); sp.style.setProperty('--c', cols[i]); sp.textContent = name; lg.appendChild(sp); });
+      stages.appendChild(lg);
+    }
+    const box = document.getElementById('nell-cost');
+    if (!failed(box, 'cloelib_profile')) {
+      const rows = dash.data('cloelib_profile').data.filter((r) => String(r.run).startsWith('scaling_nell_'));
+      const series = [];
+      for (const [model, ci] of [['linear', 0], ['pt', 3]]) for (const nb of [13, 6]) {
+        const pts = rows.filter((r) => r.model === model && Number(r.n_bins) === nb).map((r) => ({ x: Number(r.n_ell), y: Number(r.median_s) })).sort((a, b) => a.x - b.x);
+        series.push({ name: `${MODEL_NAME[model]}, ${nb} bins`, color: dash.colors[ci], points: pts, dashed: nb === 6, label: nb === 13 ? MODEL_NAME[model] : null });
+      }
+      lineChart(box, series, { xLabel: 'number of ℓ values', aria: 'cloelib time against number of ell values', fmt: fmtS, tipTitle: (v) => `${v} ℓ values` });
+    }
+    const cb = dash.data('cpu_budget'), tb = document.querySelector('#cpu-table tbody');
+    tb.replaceChildren();
+    if (cb.status === 'ok') for (const r of cb.data) {
+      const tr = document.createElement('tr');
+      for (const k of ['case', 'cpu1_txt', 'cpu8_txt', 'cpu96_txt']) { const td = document.createElement('td'); td.textContent = r[k]; tr.appendChild(td); }
+      tb.appendChild(tr);
+    }
+  }
+
+  // ------------------------------------------------------------------ table and text marks
+  function fill() {
+    const sc = dash.data('speedcheck_txt');
+    document.querySelectorAll('[data-source="speedcheck_txt"]').forEach((el) => {
+      if (sc.status !== 'ok') { el.textContent = '—'; return; }
+      const w = where(el);
+      const r = sc.data.find((q) => q.case === w.case && q.where === w.where);
+      el.textContent = r ? r.time_txt : '—';
+    });
+    const sp = dash.data('speedup_600');
+    document.querySelectorAll('[data-source="speedup_600"]').forEach((el) => {
+      el.classList.remove('dash-skeleton');
+      if (sp.status !== 'ok') { el.textContent = '—'; return; }
+      const model = where(el).model;
+      const r = sp.data.find((q) => q.model === model);
+      el.textContent = r ? String(r[el.dataset.field]) : '—';
+    });
+    const st = dash.data('studies'), tb = document.querySelector('#studies-table tbody');
+    tb.replaceChildren();
+    if (st.status === 'ok') for (const r of st.data) {
+      const tr = document.createElement('tr');
+      for (const k of ['study', 'setup', 'hardware', 'cloelib', 'date', 'folder']) { const td = document.createElement('td'); td.textContent = r[k]; tr.appendChild(td); }
+      tb.appendChild(tr);
+    }
+  }
+
+  dash.onData(() => { fill(); drawNz(); drawSweep(); drawSpeedcheck(); drawCloelib(); });
+})();
+</script>
