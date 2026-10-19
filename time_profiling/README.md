@@ -37,7 +37,7 @@ time_profiling/
 │   ├── euclid_dr1/                 four codes, 6 bins, 8 and 96 CPUs
 │   ├── speedcheck_reanalysis/      the July 2026 speedcheck, re-run and explained
 │   └── _archive/early_exploration/ first exploration (September 2026), record only
-├── data/                         inputs, on Zenodo (fetch_data.py)
+├── data/                         inputs, on Zenodo (record 23480065; fetch_data.py)
 ├── environment/                  conda YAMLs, exact locks, set-up scripts, patches (README inside)
 ├── dashboard/                    the shared results dashboard: its datasets and page, built from the results
 ├── external/                     (git-ignored) code checkouts, by environment/setup_external.sh
@@ -66,4 +66,6 @@ Every path can be redirected (`TP_EXTERNAL`, `TP_ENVS`, `TP_DATA`, `TP_WORK`; se
 
 ## Data (Zenodo)
 
-`data/` holds the inputs: the DR1 and DR3 n(z), and the July 2026 speedcheck's inputs and files. The payload (8 MB) lives on Zenodo; git tracks only `fetch_data.py`, `make_zenodo_bundle.sh`, `MANIFEST.sha256` and the README. Results (JSON, logs) are small and stay in git next to each notebook.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23480065.svg)](https://doi.org/10.5281/zenodo.23480065)
+
+`data/` holds the inputs: the DR1 and DR3 n(z), and the July 2026 speedcheck's inputs. The payload lives on Zenodo, in record [23480065](https://zenodo.org/records/23480065) (DOI [`10.5281/zenodo.23480065`](https://doi.org/10.5281/zenodo.23480065)); git tracks only `fetch_data.py`, `make_zenodo_bundle.sh`, `MANIFEST.sha256` and the README. Results (JSON, logs) are small and stay in git next to each notebook.

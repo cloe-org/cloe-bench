@@ -16,7 +16,7 @@ much of CLOE's time depends on the model.
 Run with the cloe-former python (tp_paths.PY_CLOE_FORMER):
     python cloe_speedcheck.py --out out.json
 Their CLOE configs must be in tp_paths.CLOE / 'configs' (environment/setup_external.sh copies them from
-tp_paths.SPEEDCHECK / 'their_files/cloefiles/configs').
+tp_paths.SPEEDCHECK_FILES / 'cloefiles/configs').
 """
 import argparse
 import importlib.util
@@ -35,8 +35,7 @@ import tp_paths  # noqa: E402
 
 CLOE_DIR = str(tp_paths.CLOE)
 CONFIG = 'configs/config_default_speedtest_3x2pt_linear_standardized_fixedparams.yaml'
-STANDARDIZED_PHOTO = str(tp_paths.SPEEDCHECK / 'their_files' / 'cloefiles' / 'cloe' / 'photometric_survey'
-                         / 'photo_standardized.py')
+STANDARDIZED_PHOTO = str(tp_paths.SPEEDCHECK_FILES / 'cloefiles' / 'cloe' / 'photometric_survey' / 'photo_standardized.py')
 
 
 def main():

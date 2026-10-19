@@ -6,6 +6,8 @@ Defaults assume the layout created by `environment/setup_external.sh`, `environm
     TP_EXTERNAL  external code checkouts (CLOE, CosmoSIS standard library, cloelib/cloelike versions)
     TP_ENVS      conda environments (cloe-cosmosis, cloe-former)
     TP_DATA      benchmark input data (the Zenodo record)
+    TP_SPEEDCHECK_FILES  the July 2026 speedcheck's own notebooks, configs and code (not public; see
+                 studies/speedcheck_reanalysis/README.md)
     TP_WORK      files the notebooks generate (n(z) tables, CosmoSIS values files, temporary files)
 
 Plain stdlib, so both environments (Python 3.12 and the Python 3.9 of cloe-former) can import it.
@@ -50,6 +52,8 @@ PIPELINE_INI = BENCHMARKS / 'cosmosis' / 'pipeline_3x2pt_tatt_nlbias.ini'
 NZ_SPV3 = DATA / 'nz' / 'nzTabSPV3.fits'                       # 13 bins, Euclid DR3-like
 NZ_DR1 = DATA / 'nz' / 'nz_example.fits'                       # 6 bins, Euclid DR1-like (= she-cal nzDR1like.fits)
 SPEEDCHECK = DATA / 'speedcheck_2026-07'                       # inputs of the July 2026 speedcheck
+# the speedcheck's own files (CLOE configs, modified photo.py, notebooks): not in the Zenodo record
+SPEEDCHECK_FILES = Path(os.environ.get('TP_SPEEDCHECK_FILES', EXTERNAL / 'speedcheck_2026-07_their_files'))
 
 # ---------------------------------------------------------------- generated
 INI_WORK = WORK / 'cosmosis_ini'                               # n(z) tables and values files for CosmoSIS

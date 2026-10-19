@@ -56,10 +56,12 @@ clone "$CLOELIB" cloelib-main-a59f0a4 a59f0a4f6d9ce9f1b35207c3c694d5d9de9a6fb9  
 clone "$CLOELIKE" cloelike-2026-04-b8c8bdc b8c8bdc79dd3e37821de0ddf7109f1c792f23ca7       # July 2026 speedcheck
 clone "$CLOELIKE" cloelike-main-2d240ea 2d240ea4910c4ec30674c8f994ea8c5a5529158d
 
-# The speedcheck's CLOE configs, copied into CLOE's configs/ (new files only); needs the data (fetch_data.py)
-SC="$DATA/speedcheck_2026-07/their_files/cloefiles/configs"
+# The speedcheck's CLOE configs, copied into CLOE's configs/ (new files only). They are not public: put the
+# speedcheck's files in $SPEEDCHECK_FILES (see studies/speedcheck_reanalysis/README.md) to run that study.
+SPEEDCHECK_FILES="${TP_SPEEDCHECK_FILES:-$EXT/speedcheck_2026-07_their_files}"
+SC="$SPEEDCHECK_FILES/cloefiles/configs"
 if [ -d "$SC" ]; then
     cp -rn "$SC/." "$EXT/cloe/configs/" && echo "  copied the speedcheck CLOE configs into cloe/configs"
 else
-    echo "  (speedcheck data not found in $DATA: run data/fetch_data.py, then this script again)"
+    echo "  (speedcheck files not found in $SPEEDCHECK_FILES: only studies/speedcheck_reanalysis needs them)"
 fi
