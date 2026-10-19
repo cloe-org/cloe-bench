@@ -16,8 +16,8 @@ import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-# TODO: fill in after the first upload (Zenodo record -> Files -> link of the archive), and the DOI in README.md
-ZENODO_URL = os.environ.get('TP_ZENODO_URL', 'https://zenodo.org/records/<RECORD_ID>/files/time_profiling_data_v1.tar.gz')
+# Zenodo record https://zenodo.org/records/23480065 (DOI 10.5281/zenodo.23480065); TP_ZENODO_URL overrides it, e.g. for a newer version of the record
+ZENODO_URL = os.environ.get('TP_ZENODO_URL', 'https://zenodo.org/records/23480065/files/time_profiling_data_v1.tar.gz')
 
 
 def verify():
@@ -43,8 +43,6 @@ def main():
     if not args.verify_only:
         archive = Path(args.archive) if args.archive else HERE / Path(ZENODO_URL).name
         if not archive.exists():
-            if '<RECORD_ID>' in ZENODO_URL:
-                sys.exit('The Zenodo record is not set yet: set TP_ZENODO_URL or ZENODO_URL in fetch_data.py.')
             print(f'downloading {ZENODO_URL}')
             urllib.request.urlretrieve(ZENODO_URL, archive)
         with tarfile.open(archive) as tar:

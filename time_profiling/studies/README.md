@@ -16,7 +16,7 @@ Each study times **one full photometric 3x2pt evaluation from scratch, CAMB excl
 ## Shared pieces
 
 - The timing tools are in [`../benchmarks/`](../benchmarks): `cloelib_benchmark.py`, `cloe_former_benchmark.py` (run in the cloe-former env as a subprocess) and the CosmoSIS pipeline `cosmosis/pipeline_3x2pt_tatt_nlbias.ini` (its values and n(z) files are generated into `TP_WORK`).
-- The inputs are in [`../data/`](../data), on Zenodo (`fetch_data.py`).
+- The inputs are in [`../data/`](../data), downloaded by `fetch_data.py` from Zenodo record [23480065](https://zenodo.org/records/23480065).
 - All paths come from [`../tp_paths.py`](../tp_paths.py).
 
 ## Running a study

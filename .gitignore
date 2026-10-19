@@ -11,7 +11,7 @@
 # repository banner and documentation images
 !docs/**
 
-# ---- data (inputs live on Zenodo, see time_profiling/data/fetch_data.py)
+# ---- data (inputs live on Zenodo, record 23480065: see time_profiling/data/fetch_data.py)
 *.fits
 *.fits.gz
 *.fit

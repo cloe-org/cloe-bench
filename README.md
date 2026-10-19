@@ -9,5 +9,5 @@
 
 | module | what |
 |---|---|
-| [`time_profiling/`](time_profiling) | time profiling of cloelib on its own and against former CLOE, pyccl and CosmoSIS ([`studies/`](time_profiling/studies)) and the shared timing tools ([`benchmarks/`](time_profiling/benchmarks)); input data on Zenodo |
+| [`time_profiling/`](time_profiling) | time profiling of cloelib on its own and against former CLOE, pyccl and CosmoSIS ([`studies/`](time_profiling/studies)) and the shared timing tools ([`benchmarks/`](time_profiling/benchmarks)); input data on Zenodo ([DOI 10.5281/zenodo.23480065](https://doi.org/10.5281/zenodo.23480065)) |
 | [`numerical_validation/`](numerical_validation) | numerical validation of cloelib: redshift convergence of its Limber $C_\ell$ ([`limber_z_convergence/`](numerical_validation/limber_z_convergence)); uses `time_profiling/`'s paths, environments and data |
