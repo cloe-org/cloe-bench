@@ -1,0 +1,8 @@
+=== 2026-10-09 08:59:36  taskset -c 48-55 (8 CPUs) -> time_comparison_Euclid_DR1_8cpu.ipynb
+[NbConvertApp] Converting notebook <WORKDIR>/time_comparison_Euclid_DR1.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 1219488 bytes to <WORKDIR>/time_comparison_Euclid_DR1_8cpu.ipynb
+=== 2026-10-09 09:06:54  taskset -c 48-95,144-191 (96 CPUs) -> time_comparison_Euclid_DR1.ipynb
+[NbConvertApp] Converting notebook <WORKDIR>/time_comparison_Euclid_DR1.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[NbConvertApp] Writing 1372201 bytes to <WORKDIR>/time_comparison_Euclid_DR1.ipynb

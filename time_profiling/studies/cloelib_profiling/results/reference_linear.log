@@ -1,0 +1,4 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+cloelib linear 13 bins N_Z=  600 (P(k,z) 250) n_ell=   32 | from scratch   0.131 s | first call   2.21 s | 351 spectra
+profile (N_Z=600, n_ell=32, 0.206 s): JAX/XLA 0.136s, NumPy/SciPy 0.029s, builtins / C 0.026s, CAMB library calls 0.006s, cloelib 0.005s, other Python 0.004s | 2041 eager JAX dispatches

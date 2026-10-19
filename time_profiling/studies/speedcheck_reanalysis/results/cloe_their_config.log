@@ -1,0 +1,5579 @@
+ 2026-10-09 19:21:30,510 [model] *WARNING* Ignored blocks/options: ['force', 'resume']
+ 2026-10-09 19:21:30,658 [model] Input info updated with defaults (dumped to YAML):
+theory:
+  camb:
+    version: null
+    path: null
+    speed: 0.3
+    stop_at_error: true
+    extra_args:
+      num_nu_massive: 1
+      dark_energy_model: ppf
+      halofit_version: mead2020_feedback
+    ignore_obsolete: false
+    use_renames: false
+    external_primordial_pk: false
+    renames:
+      omegabh2: ombh2
+      omegach2: omch2
+      omegal: omega_de
+      omegak: omk
+      yhe: YHe
+      yheused: YHe
+      YpBBN: Y_p
+likelihood:
+  Euclid:
+    aliases:
+    - euclid
+    speed: 500
+    solver: camb
+    params:
+      M1_z0_cen_bacco_0: 10.5
+      M1_z0_cen_bacco_bin1: 11.340025775544985
+      M1_z0_cen_bacco_bin10: 11.360811343412026
+      M1_z0_cen_bacco_bin11: 11.360811343412026
+      M1_z0_cen_bacco_bin12: 11.360811343412026
+      M1_z0_cen_bacco_bin13: 11.360811343412026
+      M1_z0_cen_bacco_bin2: 11.30961906881156
+      M1_z0_cen_bacco_bin3: 11.366002025818862
+      M1_z0_cen_bacco_bin4: 11.423530231429538
+      M1_z0_cen_bacco_bin5: 11.479266623369345
+      M1_z0_cen_bacco_bin6: 11.529947744472405
+      M1_z0_cen_bacco_bin7: 11.569052829475833
+      M1_z0_cen_bacco_bin8: 11.578833725581436
+      M1_z0_cen_bacco_bin9: 11.496367669453079
+      M_c_bacco_0: 13.25
+      M_c_bacco_bin1: 14.158079090897681
+      M_c_bacco_bin10: 15.179943239223197
+      M_c_bacco_bin11: 15.179943239223197
+      M_c_bacco_bin12: 15.179943239223197
+      M_c_bacco_bin13: 15.179943239223197
+      M_c_bacco_bin2: 14.413536974582364
+      M_c_bacco_bin3: 14.513655381066439
+      M_c_bacco_bin4: 14.59501140993621
+      M_c_bacco_bin5: 14.667602932620955
+      M_c_bacco_bin6: 14.736117785720888
+      M_c_bacco_bin7: 14.803902874910724
+      M_c_bacco_bin8: 14.873354165369339
+      M_c_bacco_bin9: 14.947678648592403
+      M_inn_bacco_0: 13.4
+      M_inn_bacco_bin1: 12.472
+      M_inn_bacco_bin10: 8.119132619254136
+      M_inn_bacco_bin11: 8.119132619254136
+      M_inn_bacco_bin12: 8.119132619254136
+      M_inn_bacco_bin13: 8.119132619254136
+      M_inn_bacco_bin2: 11.098133175636903
+      M_inn_bacco_bin3: 10.685545014634902
+      M_inn_bacco_bin4: 10.379401082211185
+      M_inn_bacco_bin5: 10.124549632511826
+      M_inn_bacco_bin6: 9.89485323082124
+      M_inn_bacco_bin7: 9.669674533440968
+      M_inn_bacco_bin8: 9.423522683043274
+      M_inn_bacco_bin9: 9.086255671995564
+      Psn_spectro_bin1: 0.0
+      Psn_spectro_bin2: 0.0
+      Psn_spectro_bin3: 0.0
+      Psn_spectro_bin4: 0.0
+      a1_ia: 1.72
+      a2_ia: 2
+      aP_spectro_bin1: 0.0
+      aP_spectro_bin2: 0.0
+      aP_spectro_bin3: 0.0
+      aP_spectro_bin4: 0.0
+      b0_mag_poly: 0.0
+      b1_0_poly_photo: 0.830703
+      b1_1_poly_photo: 1.190547
+      b1_2_poly_photo: -0.928357
+      b1_3_poly_photo: 0.423292
+      b1_ia: 1
+      b1_mag_poly: 0.0
+      b1_photo_bin1: 1.0997727037892875
+      b1_photo_bin10: 1.7429859437184225
+      b1_photo_bin11: 1.7429859437184225
+      b1_photo_bin12: 1.7429859437184225
+      b1_photo_bin13: 1.7429859437184225
+      b1_photo_bin2: 1.220245876862528
+      b1_photo_bin3: 1.2723993083933989
+      b1_photo_bin4: 1.316624471897739
+      b1_photo_bin5: 1.35812370570578
+      b1_photo_bin6: 1.3998214171814918
+      b1_photo_bin7: 1.4446452851824907
+      b1_photo_bin8: 1.4964959071110084
+      b1_photo_bin9: 1.5652475842498528
+      b1_spectro_bin1: 1.46
+      b1_spectro_bin2: 1.61
+      b1_spectro_bin3: 1.75
+      b1_spectro_bin4: 1.9
+      b2_0_poly_photo: 0.0
+      b2_1_poly_photo: 0.0
+      b2_2_poly_photo: 0.0
+      b2_3_poly_photo: 0.0
+      b2_mag_poly: 0.0
+      b2_photo_bin1: 0.0
+      b2_photo_bin10: 0.0
+      b2_photo_bin11: 0.0
+      b2_photo_bin12: 0.0
+      b2_photo_bin13: 0.0
+      b2_photo_bin2: 0.0
+      b2_photo_bin3: 0.0
+      b2_photo_bin4: 0.0
+      b2_photo_bin5: 0.0
+      b2_photo_bin6: 0.0
+      b2_photo_bin7: 0.0
+      b2_photo_bin8: 0.0
+      b2_photo_bin9: 0.0
+      b2_spectro_bin1: 0.0
+      b2_spectro_bin2: 0.0
+      b2_spectro_bin3: 0.0
+      b2_spectro_bin4: 0.0
+      b3_mag_poly: 0.0
+      bG2_0_poly_photo: 0.0
+      bG2_1_poly_photo: 0.0
+      bG2_2_poly_photo: 0.0
+      bG2_3_poly_photo: 0.0
+      bG2_photo_bin1: 0.0
+      bG2_photo_bin10: 0.0
+      bG2_photo_bin11: 0.0
+      bG2_photo_bin12: 0.0
+      bG2_photo_bin13: 0.0
+      bG2_photo_bin2: 0.0
+      bG2_photo_bin3: 0.0
+      bG2_photo_bin4: 0.0
+      bG2_photo_bin5: 0.0
+      bG2_photo_bin6: 0.0
+      bG2_photo_bin7: 0.0
+      bG2_photo_bin8: 0.0
+      bG2_photo_bin9: 0.0
+      bG2_spectro_bin1: 0.0
+      bG2_spectro_bin2: 0.0
+      bG2_spectro_bin3: 0.0
+      bG2_spectro_bin4: 0.0
+      bG3_0_poly_photo: 0.0
+      bG3_1_poly_photo: 0.0
+      bG3_2_poly_photo: 0.0
+      bG3_3_poly_photo: 0.0
+      bG3_photo_bin1: 0.0
+      bG3_photo_bin10: 0.0
+      bG3_photo_bin11: 0.0
+      bG3_photo_bin12: 0.0
+      bG3_photo_bin13: 0.0
+      bG3_photo_bin2: 0.0
+      bG3_photo_bin3: 0.0
+      bG3_photo_bin4: 0.0
+      bG3_photo_bin5: 0.0
+      bG3_photo_bin6: 0.0
+      bG3_photo_bin7: 0.0
+      bG3_photo_bin8: 0.0
+      bG3_photo_bin9: 0.0
+      bG3_spectro_bin1: 0.0
+      bG3_spectro_bin2: 0.0
+      bG3_spectro_bin3: 0.0
+      bG3_spectro_bin4: 0.0
+      beta1_ia: 0.0
+      beta_bacco_0: -0.22
+      beta_bacco_bin1: -0.1401597529600361
+      beta_bacco_bin10: -0.1180328507054961
+      beta_bacco_bin11: -0.1180328507054961
+      beta_bacco_bin12: -0.1180328507054961
+      beta_bacco_bin13: -0.1180328507054961
+      beta_bacco_bin2: -0.14602731261184787
+      beta_bacco_bin3: -0.15945179021822595
+      beta_bacco_bin4: -0.1717165402260191
+      beta_bacco_bin5: -0.18260340867450087
+      beta_bacco_bin6: -0.1914516575772147
+      beta_bacco_bin7: -0.19665359534532956
+      beta_bacco_bin8: -0.1938633002915493
+      beta_bacco_bin9: -0.16799956045034847
+      c0_spectro_bin1: 0.0
+      c0_spectro_bin2: 0.0
+      c0_spectro_bin3: 0.0
+      c0_spectro_bin4: 0.0
+      c2_spectro_bin1: 0.0
+      c2_spectro_bin2: 0.0
+      c2_spectro_bin3: 0.0
+      c2_spectro_bin4: 0.0
+      c4_spectro_bin1: 0.0
+      c4_spectro_bin2: 0.0
+      c4_spectro_bin3: 0.0
+      c4_spectro_bin4: 0.0
+      ck4_spectro_bin1: 0.0
+      ck4_spectro_bin2: 0.0
+      ck4_spectro_bin3: 0.0
+      ck4_spectro_bin4: 0.0
+      delta_bcemu_0: 7.0
+      delta_bcemu_bin1: 6.407442578598766
+      delta_bcemu_bin10: 7.994110032082859
+      delta_bcemu_bin11: 7.994110032082859
+      delta_bcemu_bin12: 7.994110032082859
+      delta_bcemu_bin13: 7.994110032082859
+      delta_bcemu_bin2: 7.0846518716943025
+      delta_bcemu_bin3: 7.226700228338714
+      delta_bcemu_bin4: 7.343194626402527
+      delta_bcemu_bin5: 7.470370166898234
+      delta_bcemu_bin6: 7.638743359373677
+      delta_bcemu_bin7: 7.891612514615537
+      delta_bcemu_bin8: 8.252389998618296
+      delta_bcemu_bin9: 8.702184867164187
+      deta_bcemu_0: 0.2
+      deta_bcemu_bin1: 0.08189803795251066
+      deta_bcemu_bin10: 0.14550946518064195
+      deta_bcemu_bin11: 0.14550946518064195
+      deta_bcemu_bin12: 0.14550946518064195
+      deta_bcemu_bin13: 0.14550946518064195
+      deta_bcemu_bin2: 0.05028436917683151
+      deta_bcemu_bin3: 0.04842000359519622
+      deta_bcemu_bin4: 0.04869423933122641
+      deta_bcemu_bin5: 0.04959595282843388
+      deta_bcemu_bin6: 0.05011878848954406
+      deta_bcemu_bin7: 0.04907477885822071
+      deta_bcemu_bin8: 0.04681178740273659
+      deta_bcemu_bin9: 0.048062862071344824
+      dz_10_GCphot: 0.0
+      dz_10_WL: 0.0
+      dz_11_GCphot: 0.0
+      dz_11_WL: 0.0
+      dz_12_GCphot: 0.0
+      dz_12_WL: 0.0
+      dz_13_GCphot: 0.0
+      dz_13_WL: 0.0
+      dz_1_GCphot: 0.0
+      dz_1_WL: 0.0
+      dz_2_GCphot: 0.0
+      dz_2_WL: 0.0
+      dz_3_GCphot: 0.0
+      dz_3_WL: 0.0
+      dz_4_GCphot: 0.0
+      dz_4_WL: 0.0
+      dz_5_GCphot: 0.0
+      dz_5_WL: 0.0
+      dz_6_GCphot: 0.0
+      dz_6_WL: 0.0
+      dz_7_GCphot: 0.0
+      dz_7_WL: 0.0
+      dz_8_GCphot: 0.0
+      dz_8_WL: 0.0
+      dz_9_GCphot: 0.0
+      dz_9_WL: 0.0
+      e0k2_spectro_bin1: 0.0
+      e0k2_spectro_bin2: 0.0
+      e0k2_spectro_bin3: 0.0
+      e0k2_spectro_bin4: 0.0
+      e2k2_spectro_bin1: 0.0
+      e2k2_spectro_bin2: 0.0
+      e2k2_spectro_bin3: 0.0
+      e2k2_spectro_bin4: 0.0
+      eta1_ia: -0.41
+      eta2_ia: 1
+      eta_bacco_0: -0.3
+      eta_bacco_bin1: -0.34397323435383403
+      eta_bacco_bin10: -0.3012527587604943
+      eta_bacco_bin11: -0.3012527587604943
+      eta_bacco_bin12: -0.3012527587604943
+      eta_bacco_bin13: -0.3012527587604943
+      eta_bacco_bin2: -0.3823001659654948
+      eta_bacco_bin3: -0.3666759403458338
+      eta_bacco_bin4: -0.34766555599217897
+      eta_bacco_bin5: -0.32723937222645033
+      eta_bacco_bin6: -0.3066851485202732
+      eta_bacco_bin7: -0.28793191687619096
+      eta_bacco_bin8: -0.2761849439738153
+      eta_bacco_bin9: -0.29044476508897765
+      eta_bcemu_0: 0.2
+      eta_bcemu_bin1: 0.20680675958346154
+      eta_bcemu_bin10: 0.044931761090432315
+      eta_bcemu_bin11: 0.044931761090432315
+      eta_bcemu_bin12: 0.044931761090432315
+      eta_bcemu_bin13: 0.044931761090432315
+      eta_bcemu_bin2: 0.22813237994091348
+      eta_bcemu_bin3: 0.21989900653826788
+      eta_bcemu_bin4: 0.2090499814223423
+      eta_bcemu_bin5: 0.19645554090162448
+      eta_bcemu_bin6: 0.18238365514915927
+      eta_bcemu_bin7: 0.16686344766458094
+      eta_bcemu_bin8: 0.14883503959461816
+      eta_bcemu_bin9: 0.1240089652119986
+      f_out: 0.0
+      f_out_1: 0.0
+      f_out_2: 0.0
+      f_out_3: 0.0
+      f_out_4: 0.0
+      gamma_MG: 0.55
+      gamma_bcemu_0: 2.5
+      gamma_bcemu_bin1: 2.732738146480909
+      gamma_bcemu_bin10: 3.1454520255604006
+      gamma_bcemu_bin11: 3.1454520255604006
+      gamma_bcemu_bin12: 3.1454520255604006
+      gamma_bcemu_bin13: 3.1454520255604006
+      gamma_bcemu_bin2: 2.794658925091356
+      gamma_bcemu_bin3: 3.008141783989797
+      gamma_bcemu_bin4: 3.2186226058208787
+      gamma_bcemu_bin5: 3.425034377127418
+      gamma_bcemu_bin6: 3.6237277892257937
+      gamma_bcemu_bin7: 3.805233587893605
+      gamma_bcemu_bin8: 3.952453083293017
+      gamma_bcemu_bin9: 4.012632091622541
+      log10Mc_bcemu_0: 13.32
+      log10Mc_bcemu_bin1: 13.402342835406102
+      log10Mc_bcemu_bin10: 11.123969034839764
+      log10Mc_bcemu_bin11: 11.123969034839764
+      log10Mc_bcemu_bin12: 11.123969034839764
+      log10Mc_bcemu_bin13: 11.123969034839764
+      log10Mc_bcemu_bin2: 13.255603572838046
+      log10Mc_bcemu_bin3: 13.39534479993441
+      log10Mc_bcemu_bin4: 13.491189798802624
+      log10Mc_bcemu_bin5: 13.517099731729203
+      log10Mc_bcemu_bin6: 13.431948448938623
+      log10Mc_bcemu_bin7: 13.159142065726643
+      log10Mc_bcemu_bin8: 12.630530198678242
+      log10Mc_bcemu_bin9: 11.768928839012311
+      magnification_bias_1: -0.8499
+      magnification_bias_10: -0.0824
+      magnification_bias_11: 0.4917
+      magnification_bias_12: 0.98555
+      magnification_bias_13: 1.6056
+      magnification_bias_2: -1.023
+      magnification_bias_3: -0.9474
+      magnification_bias_4: -0.9837
+      magnification_bias_5: -0.7699
+      magnification_bias_6: -0.7137
+      magnification_bias_7: -0.52345
+      magnification_bias_8: -0.40845
+      magnification_bias_9: -0.41045
+      mu_bcemu_0: 1.0
+      mu_bcemu_bin1: 1.081169575215787
+      mu_bcemu_bin10: -0.006953332782079408
+      mu_bcemu_bin11: -0.006953332782079408
+      mu_bcemu_bin12: -0.006953332782079408
+      mu_bcemu_bin13: -0.006953332782079408
+      mu_bcemu_bin2: 1.0748796706532235
+      mu_bcemu_bin3: 1.257505674386812
+      mu_bcemu_bin4: 1.3953104854720346
+      mu_bcemu_bin5: 1.4707848100185459
+      mu_bcemu_bin6: 1.451326233210004
+      mu_bcemu_bin7: 1.2738670043792995
+      mu_bcemu_bin8: 0.8851923901330802
+      mu_bcemu_bin9: 0.23572246186875243
+      multiplicative_bias_1: 0.0
+      multiplicative_bias_10: 0.0
+      multiplicative_bias_11: 0.0
+      multiplicative_bias_12: 0.0
+      multiplicative_bias_13: 0.0
+      multiplicative_bias_2: 0.0
+      multiplicative_bias_3: 0.0
+      multiplicative_bias_4: 0.0
+      multiplicative_bias_5: 0.0
+      multiplicative_bias_6: 0.0
+      multiplicative_bias_7: 0.0
+      multiplicative_bias_8: 0.0
+      multiplicative_bias_9: 0.0
+      nu_M1_z0_cen_bacco: 0.0
+      nu_M_c_bacco: -0.15
+      nu_M_inn_bacco: 0.0
+      nu_beta_bacco: 0.0
+      nu_delta_bcemu: 0.0
+      nu_deta_bcemu: 0.6
+      nu_eta_bacco: 0.0
+      nu_eta_bcemu: 0.0
+      nu_gamma_bcemu: 0.0
+      nu_log10Mc_bcemu: -0.15
+      nu_mu_bcemu: 0.0
+      nu_thej_bcemu: 0.0
+      nu_theta_inn_bacco: 0.0
+      nu_theta_out_bacco: 0.0
+      pivot_redshift: 0.0
+      sigma_z: 0.002
+      thej_bcemu_0: 3.5
+      thej_bcemu_bin1: 3.6711008267835776
+      thej_bcemu_bin10: 4.567495847826163
+      thej_bcemu_bin11: 4.567495847826163
+      thej_bcemu_bin12: 4.567495847826163
+      thej_bcemu_bin13: 4.567495847826163
+      thej_bcemu_bin2: 4.0853297524846175
+      thej_bcemu_bin3: 4.1001870114090835
+      thej_bcemu_bin4: 4.085897535238355
+      thej_bcemu_bin5: 4.062128106370927
+      thej_bcemu_bin6: 4.0416849190138695
+      thej_bcemu_bin7: 4.0405617133891685
+      thej_bcemu_bin8: 4.073797196972992
+      thej_bcemu_bin9: 4.168188042786498
+      theta_inn_bacco_0: -0.86
+      theta_inn_bacco_bin1: -0.9790217925155928
+      theta_inn_bacco_bin10: -0.5312787510657424
+      theta_inn_bacco_bin11: -0.5312787510657424
+      theta_inn_bacco_bin12: -0.5312787510657424
+      theta_inn_bacco_bin13: -0.5312787510657424
+      theta_inn_bacco_bin2: -1.3854647301685985
+      theta_inn_bacco_bin3: -1.3604452515853098
+      theta_inn_bacco_bin4: -1.2949667258085438
+      theta_inn_bacco_bin5: -1.2056425079533284
+      theta_inn_bacco_bin6: -1.0991845011332575
+      theta_inn_bacco_bin7: -0.9805620838281162
+      theta_inn_bacco_bin8: -0.8624918408856748
+      theta_inn_bacco_bin9: -0.7968588249755786
+      theta_out_bacco_0: 0.25
+      theta_out_bacco_bin1: 0.2672123790126238
+      theta_out_bacco_bin10: 0.3569278707998519
+      theta_out_bacco_bin11: 0.3569278707998519
+      theta_out_bacco_bin12: 0.3569278707998519
+      theta_out_bacco_bin13: 0.3569278707998519
+      theta_out_bacco_bin2: 0.21845633941784046
+      theta_out_bacco_bin3: 0.22229391886311567
+      theta_out_bacco_bin4: 0.23124624733764712
+      theta_out_bacco_bin5: 0.24338032280596764
+      theta_out_bacco_bin6: 0.25802109222979985
+      theta_out_bacco_bin7: 0.27483978056155306
+      theta_out_bacco_bin8: 0.29287229590732955
+      theta_out_bacco_bin9: 0.3076030069491944
+    use_magnification_bias_spectro: false
+    NL_flag_phot_matter: 3
+    NL_flag_phot_bias: 0
+    NL_flag_spectro: 0
+    IA_flag: 0
+    IR_resum: DST
+    NL_flag_phot_baryon: 2
+    Baryon_redshift_model: true
+    bias_model: 3
+    magbias_model: 2
+    k_max_extrap: 500.0
+    k_min_extrap: 1.0e-05
+    k_samp: 209
+    z_min: 0.0
+    z_max: 4.0
+    z_samp: 100
+    add_phot_RSD: false
+    matrix_transform_phot: false
+    use_gamma_MG: false
+    use_Weyl: false
+    f_out_z_dep: false
+    GCsp_z_err: false
+    print_theory: false
+    data:
+      photo:
+        redshifts:
+        - 0.2095
+        - 0.489
+        - 0.619
+        - 0.7335
+        - 0.8445
+        - 0.9595
+        - 1.087
+        - 1.2395
+        - 1.45
+        - 2.038
+        luminosity_ratio: luminosity_ratio.dat
+        IA_model: zNLA
+        photo_data: standard
+        cov_3x2pt: CovMat-3x2pt-{:s}-20Bins.npz
+        cov_GC: CovMat-PosPos-{:s}-20Bins.npz
+        cov_WL: CovMat-ShearShear-{:s}-20Bins.npz
+        cov_model: Gauss
+        cov_is_num: false
+        cov_nsim: 10000
+        ndens_GC: niTab-EP10-RB00.dat
+        ndens_WL: niTab-EP10-RB00.dat
+        root_GC: Cls_{:s}_PosPos.dat
+        root_WL: Cls_{:s}_ShearShear.dat
+        root_XC: Cls_{:s}_PosShear.dat
+        root_fits: fs2_cls_{:d}zbins_32ellbins.fits
+        root_mixing_matrix: fs2_mms_10zbins_32ellbins.fits
+        Fourier: true
+      sample: ExternalBenchmark
+      spectro:
+        redshifts:
+        - '1.'
+        - '1.2'
+        - '1.4'
+        - '1.65'
+        edges:
+        - 0.9
+        - 1.1
+        - 1.3
+        - 1.5
+        - 1.8
+        root: cov_power_galaxies_dk0p004_z{:s}.fits
+        cov_is_num: false
+        cov_nsim: 3500
+        scale_cuts_fourier: GCspectro-FourierSpace.yaml
+        root_mixing_matrix: mm_FS230degCircle_m3_nosm_obsz_z0.9-1.1.fits
+        Fourier: true
+      cmbx:
+        root_CMBlens: Cls_kCMB.dat
+        root_CMBlensxWL: Cls_kCMBxWL.dat
+        root_CMBlensxGC: Cls_kCMBxGC.dat
+        root_CMBisw: Cls_{:s}_ISWxGC.dat
+        ISW_model: zNLA
+        cov_7x2pt: Cov_7x2pt_WL_GC_CMBX.npz
+      CG:
+        file_names_CC: data_CG_CC.dat
+        file_cov_names_CC: data_cov_CG_CC.dat
+        file_names_MoR: data_CG_MoR.dat
+        file_cov_names_MoR: data_cov_CG_MoR.dat
+        file_names_xi2: data_CG_xi2.npy
+        file_cov_names_xi2: data_cov_CG_xi2.npy
+    observables_selection:
+      WL:
+        WL: true
+        GCphot: true
+        GCspectro: false
+      GCphot:
+        GCphot: true
+        GCspectro: false
+      GCspectro:
+        GCspectro: false
+      CMBlens:
+        CMBlens: false
+        WL: false
+        GCphot: false
+        GCspectro: false
+      CMBisw:
+        CMBlens: false
+        WL: false
+        GCphot: false
+        GCspectro: false
+      CG:
+        CG: false
+      add_phot_RSD: false
+      matrix_transform_phot: false
+    observables_specifications:
+      GCphot:
+        angular_power_spectrum:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n2:
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n3:
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n4:
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n5:
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n6:
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n7:
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n8:
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n9:
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n10:
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+        pseudo_cl:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n2:
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n3:
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n4:
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n5:
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n6:
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n7:
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n8:
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n9:
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n10:
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n11:
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n12:
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n13:
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+        angular_correlation_function:
+          bins:
+            n1:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n2:
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n3:
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n4:
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n5:
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n6:
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n7:
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n8:
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n9:
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n10:
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n11:
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n12:
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n13:
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+        statistics: angular_power_spectrum
+      GCspectro:
+        multipole_power_spectrum:
+          bins:
+            n1:
+              n1:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  2:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  4:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+            n2:
+              n2:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  2:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  4:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+            n3:
+              n3:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  2:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  4:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+            n4:
+              n4:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  2:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+                  4:
+                    k_range:
+                    - - 0.004
+                      - 0.5
+        convolved_multipole_power_spectrum:
+          bins:
+            n1:
+              n1:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  2:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  4:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+            n2:
+              n2:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  2:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  4:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+            n3:
+              n3:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  2:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  4:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+            n4:
+              n4:
+                multipoles:
+                  0:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  2:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+                  4:
+                    k_range:
+                    - - 0.015
+                      - 0.75
+        multipole_correlation_function:
+          bins:
+            n1:
+              n1:
+                multipoles:
+                  0:
+                    r_range:
+                    - - 1
+                      - 200
+                  2:
+                    r_range:
+                    - - 1
+                      - 200
+                  4:
+                    r_range:
+                    - - 1
+                      - 200
+            n2:
+              n2:
+                multipoles:
+                  0:
+                    r_range:
+                    - - 1
+                      - 200
+                  2:
+                    r_range:
+                    - - 1
+                      - 200
+                  4:
+                    r_range:
+                    - - 1
+                      - 200
+            n3:
+              n3:
+                multipoles:
+                  0:
+                    r_range:
+                    - - 1
+                      - 200
+                  2:
+                    r_range:
+                    - - 1
+                      - 200
+                  4:
+                    r_range:
+                    - - 1
+                      - 200
+            n4:
+              n4:
+                multipoles:
+                  0:
+                    r_range:
+                    - - 1
+                      - 200
+                  2:
+                    r_range:
+                    - - 1
+                      - 200
+                  4:
+                    r_range:
+                    - - 1
+                      - 200
+        statistics: multipole_power_spectrum
+      WL:
+        angular_power_spectrum:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n2:
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n3:
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n4:
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n5:
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n6:
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n7:
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n8:
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n9:
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n10:
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+        pseudo_cl:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n2:
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n3:
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n4:
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n5:
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n6:
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n7:
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n8:
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n9:
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n10:
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n11:
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n12:
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n13:
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+        angular_correlation_function:
+          bins:
+            n1:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n2:
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n3:
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n4:
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n5:
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n6:
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n7:
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n8:
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n9:
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n10:
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n11:
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n12:
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n13:
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+        statistics: angular_power_spectrum
+      WL-GCphot:
+        angular_power_spectrum:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n2:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n3:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n4:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n5:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n6:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n7:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n8:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n9:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+            n10:
+              n1:
+                ell_range:
+                - - 10
+                  - 5000
+              n2:
+                ell_range:
+                - - 10
+                  - 5000
+              n3:
+                ell_range:
+                - - 10
+                  - 5000
+              n4:
+                ell_range:
+                - - 10
+                  - 5000
+              n5:
+                ell_range:
+                - - 10
+                  - 5000
+              n6:
+                ell_range:
+                - - 10
+                  - 5000
+              n7:
+                ell_range:
+                - - 10
+                  - 5000
+              n8:
+                ell_range:
+                - - 10
+                  - 5000
+              n9:
+                ell_range:
+                - - 10
+                  - 5000
+              n10:
+                ell_range:
+                - - 10
+                  - 5000
+        pseudo_cl:
+          bins:
+            n1:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n2:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n3:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n4:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n5:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n6:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n7:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n8:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n9:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n10:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n11:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n12:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+            n13:
+              n1:
+                ell_range:
+                - - 20
+                  - 4000
+              n2:
+                ell_range:
+                - - 20
+                  - 4000
+              n3:
+                ell_range:
+                - - 20
+                  - 4000
+              n4:
+                ell_range:
+                - - 20
+                  - 4000
+              n5:
+                ell_range:
+                - - 20
+                  - 4000
+              n6:
+                ell_range:
+                - - 20
+                  - 4000
+              n7:
+                ell_range:
+                - - 20
+                  - 4000
+              n8:
+                ell_range:
+                - - 20
+                  - 4000
+              n9:
+                ell_range:
+                - - 20
+                  - 4000
+              n10:
+                ell_range:
+                - - 20
+                  - 4000
+              n11:
+                ell_range:
+                - - 20
+                  - 4000
+              n12:
+                ell_range:
+                - - 20
+                  - 4000
+              n13:
+                ell_range:
+                - - 20
+                  - 4000
+        angular_correlation_function:
+          bins:
+            n1:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n2:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n3:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n4:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n5:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n6:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n7:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n8:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n9:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n10:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n11:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n12:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+            n13:
+              n1:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n2:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n3:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n4:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n5:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n6:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n7:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n8:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n9:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n10:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n11:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n12:
+                theta_range:
+                - - 0.001
+                  - 0.15
+              n13:
+                theta_range:
+                - - 0.001
+                  - 0.15
+        statistics: angular_power_spectrum
+      CG:
+        statistics_clusters: cluster_counts
+        CG_probe: CC
+        CG_xi2_cov_selection: CG_nonanalytic_cov
+        neutrino_cdm: cb
+        external_richness_selection_function: non_CG_ESF
+        file_richness_selection_function: ./../data/ExternalBenchmark/Clusters/int_Plob_ltr_z_Dlob.npy
+        effective_area: 15000
+        z_obs_edges_CC:
+        - 0.2
+        - 0.4
+        - 0.6
+        - 0.8
+        - 1.0
+        - 1.2
+        - 1.4
+        - 1.6
+        - 1.8
+        Lambda_obs_edges_CC:
+        - 20.0
+        - 30.0
+        - 45.0
+        - 60.0
+        - 500.0
+        halo_profile: NFW
+        overdensity_type: vir
+        overdensity: 200.0
+        A_l: 33.0
+        B_l: 1.0
+        C_l: 0.01
+        sig_A_l: 0.2
+        sig_B_l: 0.0
+        sig_C_l: 0.0
+        M_pivot: 3.e14
+        z_pivot: 0.45
+        sig_lambda_norm: 0.9
+        sig_lambda_z: 0.1
+        sig_lambda_exponent: 0.4
+        sig_z_norm: 0.0
+        sig_z_z: 0.025
+        sig_z_lambda: 5.0e-06
+      GCphot-GCspectro:
+        angular_power_spectrum: null
+        pseudo_cl: null
+        angular_correlation_function: null
+        statistics: angular_power_spectrum
+      WL-GCspectro:
+        angular_power_spectrum: null
+        pseudo_cl: null
+        angular_correlation_function: null
+        statistics: angular_power_spectrum
+      CMBlens:
+        statistics: angular_power_spectrum
+        ell_range:
+        - - 20
+          - 4000
+      CMBlens-GCphot:
+        statistics: angular_power_spectrum
+        bins:
+          n1:
+            ell_range:
+            - - 20
+              - 4000
+          n2:
+            ell_range:
+            - - 20
+              - 4000
+          n3:
+            ell_range:
+            - - 20
+              - 4000
+          n4:
+            ell_range:
+            - - 20
+              - 4000
+          n5:
+            ell_range:
+            - - 20
+              - 4000
+          n6:
+            ell_range:
+            - - 20
+              - 4000
+          n7:
+            ell_range:
+            - - 20
+              - 4000
+          n8:
+            ell_range:
+            - - 20
+              - 4000
+          n9:
+            ell_range:
+            - - 20
+              - 4000
+          n10:
+            ell_range:
+            - - 20
+              - 4000
+          n11:
+            ell_range:
+            - - 20
+              - 4000
+          n12:
+            ell_range:
+            - - 20
+              - 4000
+          n13:
+            ell_range:
+            - - 20
+              - 4000
+      CMBlens-WL:
+        statistics: angular_power_spectrum
+        bins:
+          n1:
+            ell_range:
+            - - 20
+              - 4000
+          n2:
+            ell_range:
+            - - 20
+              - 4000
+          n3:
+            ell_range:
+            - - 20
+              - 4000
+          n4:
+            ell_range:
+            - - 20
+              - 4000
+          n5:
+            ell_range:
+            - - 20
+              - 4000
+          n6:
+            ell_range:
+            - - 20
+              - 4000
+          n7:
+            ell_range:
+            - - 20
+              - 4000
+          n8:
+            ell_range:
+            - - 20
+              - 4000
+          n9:
+            ell_range:
+            - - 20
+              - 4000
+          n10:
+            ell_range:
+            - - 20
+              - 4000
+          n11:
+            ell_range:
+            - - 20
+              - 4000
+          n12:
+            ell_range:
+            - - 20
+              - 4000
+          n13:
+            ell_range:
+            - - 20
+              - 4000
+      ISW-GCphot:
+        statistics: angular_power_spectrum
+        bins:
+          n1:
+            ell_range:
+            - - 2
+              - 550
+          n2:
+            ell_range:
+            - - 2
+              - 550
+          n3:
+            ell_range:
+            - - 2
+              - 550
+          n4:
+            ell_range:
+            - - 2
+              - 550
+          n5:
+            ell_range:
+            - - 2
+              - 550
+          n6:
+            ell_range:
+            - - 2
+              - 550
+          n7:
+            ell_range:
+            - - 2
+              - 550
+          n8:
+            ell_range:
+            - - 2
+              - 550
+          n9:
+            ell_range:
+            - - 2
+              - 550
+          n10:
+            ell_range:
+            - - 2
+              - 550
+          n11:
+            ell_range:
+            - - 2
+              - 550
+          n12:
+            ell_range:
+            - - 2
+              - 550
+          n13:
+            ell_range:
+            - - 2
+              - 550
+    plot_observables_selection: false
+    z_max_cmb: 1200
+    z_samp_log: 20
+    type: []
+    stop_at_error: false
+    version: null
+    external: !!python/name:cloe.cobaya_interface.EuclidLikelihood ''
+params:
+  As:
+    latex: A_\mathrm{s}
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    derived: true
+  H0:
+    value: 67.0
+  logA:
+    value: 3.04452244
+  mnu:
+    value: 1.0e-07
+  nnu:
+    value: 3.044
+  ns:
+    value: 0.96
+  ombh2:
+    value: 0.0219961
+    renames:
+    - omegabh2
+  omch2:
+    value: 0.121203
+    renames:
+    - omegach2
+  omegam:
+    latex: \Omega_\mathrm{m}
+    derived: true
+  omegab:
+    latex: \Omega_\mathrm{b}
+    derived: 'lambda ombh2, H0: ombh2 * (100.0/H0)**2'
+  omk:
+    value: 0.0
+    renames:
+    - omegak
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  tau:
+    value: 0.0925
+  w:
+    value: -1.0
+  wa:
+    value: 0.0
+  gamma_MG:
+    value: 0.55
+  b1_photo_bin1:
+    value: 1.03047
+  b1_photo_bin2:
+    value: 1.06699
+  b1_photo_bin3:
+    value: 1.17363
+  b1_photo_bin4:
+    value: 1.2334
+  b1_photo_bin5:
+    value: 1.2751
+  b1_photo_bin6:
+    value: 1.28574
+  b1_photo_bin7:
+    value: 1.39434
+  b1_photo_bin8:
+    value: 1.4917
+  b1_photo_bin9:
+    value: 1.52334
+  b1_photo_bin10:
+    value: 1.54639
+  b1_photo_bin11:
+    value: 1.68682
+  b1_photo_bin12:
+    value: 2.03066
+  b1_photo_bin13:
+    value: 2.57812
+  b1_0_poly_photo:
+    value: 1.33291
+  b1_1_poly_photo:
+    value: -0.72414
+  b1_2_poly_photo:
+    value: 1.0183
+  b1_3_poly_photo:
+    value: -0.14913
+  b1_spectro_bin1:
+    value: 1.46
+  b1_spectro_bin2:
+    value: 1.61
+  b1_spectro_bin3:
+    value: 1.75
+  b1_spectro_bin4:
+    value: 1.9
+  a1_ia:
+    value: 0.16
+  a2_ia:
+    value: 0
+  b1_ia:
+    value: 0
+  eta1_ia:
+    value: 1.66
+  eta2_ia:
+    value: 0
+  beta1_ia:
+    value: 0.0
+  pivot_redshift:
+    value: 0.0
+  dz_1_GCphot:
+    value: 0.0
+  dz_1_WL:
+    value: 0.0
+  dz_2_GCphot:
+    value: 0.0
+  dz_2_WL:
+    value: 0.0
+  dz_3_GCphot:
+    value: 0.0
+  dz_3_WL:
+    value: 0.0
+  dz_4_GCphot:
+    value: 0.0
+  dz_4_WL:
+    value: 0.0
+  dz_5_GCphot:
+    value: 0.0
+  dz_5_WL:
+    value: 0.0
+  dz_6_GCphot:
+    value: 0.0
+  dz_6_WL:
+    value: 0.0
+  dz_7_GCphot:
+    value: 0.0
+  dz_7_WL:
+    value: 0.0
+  dz_8_GCphot:
+    value: 0.0
+  dz_8_WL:
+    value: 0.0
+  dz_9_GCphot:
+    value: 0.0
+  dz_9_WL:
+    value: 0.0
+  dz_10_GCphot:
+    value: 0.0
+  dz_10_WL:
+    value: 0.0
+  dz_11_GCphot:
+    value: 0.0
+  dz_11_WL:
+    value: 0.0
+  dz_12_GCphot:
+    value: 0.0
+  dz_12_WL:
+    value: 0.0
+  dz_13_GCphot:
+    value: 0.0
+  dz_13_WL:
+    value: 0.0
+  sigma_z:
+    value: 0.002
+  magnification_bias_1:
+    value: 0.0
+  magnification_bias_2:
+    value: 0.0
+  magnification_bias_3:
+    value: 0.0
+  magnification_bias_4:
+    value: 0.0
+  magnification_bias_5:
+    value: 0.0
+  magnification_bias_6:
+    value: 0.0
+  magnification_bias_7:
+    value: 0.0
+  magnification_bias_8:
+    value: 0.0
+  magnification_bias_9:
+    value: 0.0
+  magnification_bias_10:
+    value: 0.0
+  b0_mag_poly:
+    value: -1.50685
+  b1_mag_poly:
+    value: 1.35034
+  b2_mag_poly:
+    value: 0.08321
+  b3_mag_poly:
+    value: 0.04279
+  multiplicative_bias_1:
+    value: 0.0
+  multiplicative_bias_2:
+    value: 0.0
+  multiplicative_bias_3:
+    value: 0.0
+  multiplicative_bias_4:
+    value: 0.0
+  multiplicative_bias_5:
+    value: 0.0
+  multiplicative_bias_6:
+    value: 0.0
+  multiplicative_bias_7:
+    value: 0.0
+  multiplicative_bias_8:
+    value: 0.0
+  multiplicative_bias_9:
+    value: 0.0
+  multiplicative_bias_10:
+    value: 0.0
+  multiplicative_bias_11:
+    value: 0.0
+  multiplicative_bias_12:
+    value: 0.0
+  multiplicative_bias_13:
+    value: 0.0
+  f_out:
+    value: 0.0
+  f_out_1:
+    value: 0.0
+  f_out_2:
+    value: 0.0
+  f_out_3:
+    value: 0.0
+  f_out_4:
+    value: 0.0
+  b2_photo_bin1:
+    value: 0.0
+  b2_photo_bin2:
+    value: 0.0
+  b2_photo_bin3:
+    value: 0.0
+  b2_photo_bin4:
+    value: 0.0
+  b2_photo_bin5:
+    value: 0.0
+  b2_photo_bin6:
+    value: 0.0
+  b2_photo_bin7:
+    value: 0.0
+  b2_photo_bin8:
+    value: 0.0
+  b2_photo_bin9:
+    value: 0.0
+  b2_photo_bin10:
+    value: 0.0
+  b2_photo_bin11:
+    value: 0.0
+  b2_photo_bin12:
+    value: 0.0
+  b2_photo_bin13:
+    value: 0.0
+  bG2_photo_bin1:
+    value: 0.0
+  bG2_photo_bin2:
+    value: 0.0
+  bG2_photo_bin3:
+    value: 0.0
+  bG2_photo_bin4:
+    value: 0.0
+  bG2_photo_bin5:
+    value: 0.0
+  bG2_photo_bin6:
+    value: 0.0
+  bG2_photo_bin7:
+    value: 0.0
+  bG2_photo_bin8:
+    value: 0.0
+  bG2_photo_bin9:
+    value: 0.0
+  bG2_photo_bin10:
+    value: 0.0
+  bG2_photo_bin11:
+    value: 0.0
+  bG2_photo_bin12:
+    value: 0.0
+  bG2_photo_bin13:
+    value: 0.0
+  bG3_photo_bin1:
+    value: 0.0
+  bG3_photo_bin2:
+    value: 0.0
+  bG3_photo_bin3:
+    value: 0.0
+  bG3_photo_bin4:
+    value: 0.0
+  bG3_photo_bin5:
+    value: 0.0
+  bG3_photo_bin6:
+    value: 0.0
+  bG3_photo_bin7:
+    value: 0.0
+  bG3_photo_bin8:
+    value: 0.0
+  bG3_photo_bin9:
+    value: 0.0
+  bG3_photo_bin10:
+    value: 0.0
+  bG3_photo_bin11:
+    value: 0.0
+  bG3_photo_bin12:
+    value: 0.0
+  bG3_photo_bin13:
+    value: 0.0
+  b2_0_poly_photo:
+    value: 0.0
+  b2_1_poly_photo:
+    value: 0.0
+  b2_2_poly_photo:
+    value: 0.0
+  b2_3_poly_photo:
+    value: 0.0
+  bG2_0_poly_photo:
+    value: 0.0
+  bG2_1_poly_photo:
+    value: 0.0
+  bG2_2_poly_photo:
+    value: 0.0
+  bG2_3_poly_photo:
+    value: 0.0
+  bG3_0_poly_photo:
+    value: 0.0
+  bG3_1_poly_photo:
+    value: 0.0
+  bG3_2_poly_photo:
+    value: 0.0
+  bG3_3_poly_photo:
+    value: 0.0
+  b2_spectro_bin1:
+    value: 0.695
+  b2_spectro_bin2:
+    value: 0.87
+  b2_spectro_bin3:
+    value: 1.162
+  b2_spectro_bin4:
+    value: 2.01
+  bG2_spectro_bin1:
+    value: -0.156
+  bG2_spectro_bin2:
+    value: -0.299
+  bG2_spectro_bin3:
+    value: -0.4
+  bG2_spectro_bin4:
+    value: -0.555
+  bG3_spectro_bin1:
+    value: 0.323
+  bG3_spectro_bin2:
+    value: 0.621
+  bG3_spectro_bin3:
+    value: 0.827
+  bG3_spectro_bin4:
+    value: 1.137
+  c0_spectro_bin1:
+    value: 30.948
+  c0_spectro_bin2:
+    value: 37.116
+  c0_spectro_bin3:
+    value: 36.738
+  c0_spectro_bin4:
+    value: 53.627
+  c2_spectro_bin1:
+    value: 46.233
+  c2_spectro_bin2:
+    value: 53.071
+  c2_spectro_bin3:
+    value: 48.626
+  c2_spectro_bin4:
+    value: 60.962
+  c4_spectro_bin1:
+    value: 10.057
+  c4_spectro_bin2:
+    value: 10.385
+  c4_spectro_bin3:
+    value: 8.643
+  c4_spectro_bin4:
+    value: 8.711
+  ck4_spectro_bin1:
+    value: 0.0
+  ck4_spectro_bin2:
+    value: 0.0
+  ck4_spectro_bin3:
+    value: 0.0
+  ck4_spectro_bin4:
+    value: 0.0
+  aP_spectro_bin1:
+    value: 0.0
+  aP_spectro_bin2:
+    value: 0.0
+  aP_spectro_bin3:
+    value: 0.0
+  aP_spectro_bin4:
+    value: 0.0
+  Psn_spectro_bin1:
+    value: 1.056
+  Psn_spectro_bin2:
+    value: 1.152
+  Psn_spectro_bin3:
+    value: 1.144
+  Psn_spectro_bin4:
+    value: 1.309
+  e0k2_spectro_bin1:
+    value: 0.0
+  e0k2_spectro_bin2:
+    value: 0.0
+  e0k2_spectro_bin3:
+    value: 0.0
+  e0k2_spectro_bin4:
+    value: 0.0
+  e2k2_spectro_bin1:
+    value: 0.0
+  e2k2_spectro_bin2:
+    value: 0.0
+  e2k2_spectro_bin3:
+    value: 0.0
+  e2k2_spectro_bin4:
+    value: 0.0
+  HMCode_logT_AGN:
+    value: 7.75
+  M1_z0_cen_bacco_0:
+    value: 10.5
+  M1_z0_cen_bacco_bin1:
+    value: 11.340025775544985
+  M1_z0_cen_bacco_bin10:
+    value: 11.360811343412026
+  M1_z0_cen_bacco_bin11:
+    value: 11.360811343412026
+  M1_z0_cen_bacco_bin12:
+    value: 11.360811343412026
+  M1_z0_cen_bacco_bin13:
+    value: 11.360811343412026
+  M1_z0_cen_bacco_bin2:
+    value: 11.30961906881156
+  M1_z0_cen_bacco_bin3:
+    value: 11.366002025818862
+  M1_z0_cen_bacco_bin4:
+    value: 11.423530231429538
+  M1_z0_cen_bacco_bin5:
+    value: 11.479266623369345
+  M1_z0_cen_bacco_bin6:
+    value: 11.529947744472405
+  M1_z0_cen_bacco_bin7:
+    value: 11.569052829475833
+  M1_z0_cen_bacco_bin8:
+    value: 11.578833725581436
+  M1_z0_cen_bacco_bin9:
+    value: 11.496367669453079
+  M_c_bacco_0:
+    value: 13.25
+  M_c_bacco_bin1:
+    value: 14.158079090897681
+  M_c_bacco_bin10:
+    value: 15.179943239223197
+  M_c_bacco_bin11:
+    value: 15.179943239223197
+  M_c_bacco_bin12:
+    value: 15.179943239223197
+  M_c_bacco_bin13:
+    value: 15.179943239223197
+  M_c_bacco_bin2:
+    value: 14.413536974582364
+  M_c_bacco_bin3:
+    value: 14.513655381066439
+  M_c_bacco_bin4:
+    value: 14.59501140993621
+  M_c_bacco_bin5:
+    value: 14.667602932620955
+  M_c_bacco_bin6:
+    value: 14.736117785720888
+  M_c_bacco_bin7:
+    value: 14.803902874910724
+  M_c_bacco_bin8:
+    value: 14.873354165369339
+  M_c_bacco_bin9:
+    value: 14.947678648592403
+  M_inn_bacco_0:
+    value: 13.4
+  M_inn_bacco_bin1:
+    value: 12.472
+  M_inn_bacco_bin10:
+    value: 8.119132619254136
+  M_inn_bacco_bin11:
+    value: 8.119132619254136
+  M_inn_bacco_bin12:
+    value: 8.119132619254136
+  M_inn_bacco_bin13:
+    value: 8.119132619254136
+  M_inn_bacco_bin2:
+    value: 11.098133175636903
+  M_inn_bacco_bin3:
+    value: 10.685545014634902
+  M_inn_bacco_bin4:
+    value: 10.379401082211185
+  M_inn_bacco_bin5:
+    value: 10.124549632511826
+  M_inn_bacco_bin6:
+    value: 9.89485323082124
+  M_inn_bacco_bin7:
+    value: 9.669674533440968
+  M_inn_bacco_bin8:
+    value: 9.423522683043274
+  M_inn_bacco_bin9:
+    value: 9.086255671995564
+  beta_bacco_0:
+    value: -0.22
+  beta_bacco_bin1:
+    value: -0.1401597529600361
+  beta_bacco_bin10:
+    value: -0.1180328507054961
+  beta_bacco_bin11:
+    value: -0.1180328507054961
+  beta_bacco_bin12:
+    value: -0.1180328507054961
+  beta_bacco_bin13:
+    value: -0.1180328507054961
+  beta_bacco_bin2:
+    value: -0.14602731261184787
+  beta_bacco_bin3:
+    value: -0.15945179021822595
+  beta_bacco_bin4:
+    value: -0.1717165402260191
+  beta_bacco_bin5:
+    value: -0.18260340867450087
+  beta_bacco_bin6:
+    value: -0.1914516575772147
+  beta_bacco_bin7:
+    value: -0.19665359534532956
+  beta_bacco_bin8:
+    value: -0.1938633002915493
+  beta_bacco_bin9:
+    value: -0.16799956045034847
+  delta_bcemu_0:
+    value: 7.0
+  delta_bcemu_bin1:
+    value: 6.407442578598766
+  delta_bcemu_bin10:
+    value: 7.994110032082859
+  delta_bcemu_bin11:
+    value: 7.994110032082859
+  delta_bcemu_bin12:
+    value: 7.994110032082859
+  delta_bcemu_bin13:
+    value: 7.994110032082859
+  delta_bcemu_bin2:
+    value: 7.0846518716943025
+  delta_bcemu_bin3:
+    value: 7.226700228338714
+  delta_bcemu_bin4:
+    value: 7.343194626402527
+  delta_bcemu_bin5:
+    value: 7.470370166898234
+  delta_bcemu_bin6:
+    value: 7.638743359373677
+  delta_bcemu_bin7:
+    value: 7.891612514615537
+  delta_bcemu_bin8:
+    value: 8.252389998618296
+  delta_bcemu_bin9:
+    value: 8.702184867164187
+  deta_bcemu_0:
+    value: 0.2
+  deta_bcemu_bin1:
+    value: 0.08189803795251066
+  deta_bcemu_bin10:
+    value: 0.14550946518064195
+  deta_bcemu_bin11:
+    value: 0.14550946518064195
+  deta_bcemu_bin12:
+    value: 0.14550946518064195
+  deta_bcemu_bin13:
+    value: 0.14550946518064195
+  deta_bcemu_bin2:
+    value: 0.05028436917683151
+  deta_bcemu_bin3:
+    value: 0.04842000359519622
+  deta_bcemu_bin4:
+    value: 0.04869423933122641
+  deta_bcemu_bin5:
+    value: 0.04959595282843388
+  deta_bcemu_bin6:
+    value: 0.05011878848954406
+  deta_bcemu_bin7:
+    value: 0.04907477885822071
+  deta_bcemu_bin8:
+    value: 0.04681178740273659
+  deta_bcemu_bin9:
+    value: 0.048062862071344824
+  eta_bacco_0:
+    value: -0.3
+  eta_bacco_bin1:
+    value: -0.34397323435383403
+  eta_bacco_bin10:
+    value: -0.3012527587604943
+  eta_bacco_bin11:
+    value: -0.3012527587604943
+  eta_bacco_bin12:
+    value: -0.3012527587604943
+  eta_bacco_bin13:
+    value: -0.3012527587604943
+  eta_bacco_bin2:
+    value: -0.3823001659654948
+  eta_bacco_bin3:
+    value: -0.3666759403458338
+  eta_bacco_bin4:
+    value: -0.34766555599217897
+  eta_bacco_bin5:
+    value: -0.32723937222645033
+  eta_bacco_bin6:
+    value: -0.3066851485202732
+  eta_bacco_bin7:
+    value: -0.28793191687619096
+  eta_bacco_bin8:
+    value: -0.2761849439738153
+  eta_bacco_bin9:
+    value: -0.29044476508897765
+  eta_bcemu_0:
+    value: 0.2
+  eta_bcemu_bin1:
+    value: 0.20680675958346154
+  eta_bcemu_bin10:
+    value: 0.044931761090432315
+  eta_bcemu_bin11:
+    value: 0.044931761090432315
+  eta_bcemu_bin12:
+    value: 0.044931761090432315
+  eta_bcemu_bin13:
+    value: 0.044931761090432315
+  eta_bcemu_bin2:
+    value: 0.22813237994091348
+  eta_bcemu_bin3:
+    value: 0.21989900653826788
+  eta_bcemu_bin4:
+    value: 0.2090499814223423
+  eta_bcemu_bin5:
+    value: 0.19645554090162448
+  eta_bcemu_bin6:
+    value: 0.18238365514915927
+  eta_bcemu_bin7:
+    value: 0.16686344766458094
+  eta_bcemu_bin8:
+    value: 0.14883503959461816
+  eta_bcemu_bin9:
+    value: 0.1240089652119986
+  gamma_bcemu_0:
+    value: 2.5
+  gamma_bcemu_bin1:
+    value: 2.732738146480909
+  gamma_bcemu_bin10:
+    value: 3.1454520255604006
+  gamma_bcemu_bin11:
+    value: 3.1454520255604006
+  gamma_bcemu_bin12:
+    value: 3.1454520255604006
+  gamma_bcemu_bin13:
+    value: 3.1454520255604006
+  gamma_bcemu_bin2:
+    value: 2.794658925091356
+  gamma_bcemu_bin3:
+    value: 3.008141783989797
+  gamma_bcemu_bin4:
+    value: 3.2186226058208787
+  gamma_bcemu_bin5:
+    value: 3.425034377127418
+  gamma_bcemu_bin6:
+    value: 3.6237277892257937
+  gamma_bcemu_bin7:
+    value: 3.805233587893605
+  gamma_bcemu_bin8:
+    value: 3.952453083293017
+  gamma_bcemu_bin9:
+    value: 4.012632091622541
+  log10Mc_bcemu_0:
+    value: 13.32
+  log10Mc_bcemu_bin1:
+    value: 13.402342835406102
+  log10Mc_bcemu_bin10:
+    value: 11.123969034839764
+  log10Mc_bcemu_bin11:
+    value: 11.123969034839764
+  log10Mc_bcemu_bin12:
+    value: 11.123969034839764
+  log10Mc_bcemu_bin13:
+    value: 11.123969034839764
+  log10Mc_bcemu_bin2:
+    value: 13.255603572838046
+  log10Mc_bcemu_bin3:
+    value: 13.39534479993441
+  log10Mc_bcemu_bin4:
+    value: 13.491189798802624
+  log10Mc_bcemu_bin5:
+    value: 13.517099731729203
+  log10Mc_bcemu_bin6:
+    value: 13.431948448938623
+  log10Mc_bcemu_bin7:
+    value: 13.159142065726643
+  log10Mc_bcemu_bin8:
+    value: 12.630530198678242
+  log10Mc_bcemu_bin9:
+    value: 11.768928839012311
+  magnification_bias_11:
+    value: 0.4917
+  magnification_bias_12:
+    value: 0.98555
+  magnification_bias_13:
+    value: 1.6056
+  mu_bcemu_0:
+    value: 1.0
+  mu_bcemu_bin1:
+    value: 1.081169575215787
+  mu_bcemu_bin10:
+    value: -0.006953332782079408
+  mu_bcemu_bin11:
+    value: -0.006953332782079408
+  mu_bcemu_bin12:
+    value: -0.006953332782079408
+  mu_bcemu_bin13:
+    value: -0.006953332782079408
+  mu_bcemu_bin2:
+    value: 1.0748796706532235
+  mu_bcemu_bin3:
+    value: 1.257505674386812
+  mu_bcemu_bin4:
+    value: 1.3953104854720346
+  mu_bcemu_bin5:
+    value: 1.4707848100185459
+  mu_bcemu_bin6:
+    value: 1.451326233210004
+  mu_bcemu_bin7:
+    value: 1.2738670043792995
+  mu_bcemu_bin8:
+    value: 0.8851923901330802
+  mu_bcemu_bin9:
+    value: 0.23572246186875243
+  nu_M1_z0_cen_bacco:
+    value: 0.0
+  nu_M_c_bacco:
+    value: -0.15
+  nu_M_inn_bacco:
+    value: 0.0
+  nu_beta_bacco:
+    value: 0.0
+  nu_delta_bcemu:
+    value: 0.0
+  nu_deta_bcemu:
+    value: 0.6
+  nu_eta_bacco:
+    value: 0.0
+  nu_eta_bcemu:
+    value: 0.0
+  nu_gamma_bcemu:
+    value: 0.0
+  nu_log10Mc_bcemu:
+    value: -0.15
+  nu_mu_bcemu:
+    value: 0.0
+  nu_thej_bcemu:
+    value: 0.0
+  nu_theta_inn_bacco:
+    value: 0.0
+  nu_theta_out_bacco:
+    value: 0.0
+  thej_bcemu_0:
+    value: 3.5
+  thej_bcemu_bin1:
+    value: 3.6711008267835776
+  thej_bcemu_bin10:
+    value: 4.567495847826163
+  thej_bcemu_bin11:
+    value: 4.567495847826163
+  thej_bcemu_bin12:
+    value: 4.567495847826163
+  thej_bcemu_bin13:
+    value: 4.567495847826163
+  thej_bcemu_bin2:
+    value: 4.0853297524846175
+  thej_bcemu_bin3:
+    value: 4.1001870114090835
+  thej_bcemu_bin4:
+    value: 4.085897535238355
+  thej_bcemu_bin5:
+    value: 4.062128106370927
+  thej_bcemu_bin6:
+    value: 4.0416849190138695
+  thej_bcemu_bin7:
+    value: 4.0405617133891685
+  thej_bcemu_bin8:
+    value: 4.073797196972992
+  thej_bcemu_bin9:
+    value: 4.168188042786498
+  theta_inn_bacco_0:
+    value: -0.86
+  theta_inn_bacco_bin1:
+    value: -0.9790217925155928
+  theta_inn_bacco_bin10:
+    value: -0.5312787510657424
+  theta_inn_bacco_bin11:
+    value: -0.5312787510657424
+  theta_inn_bacco_bin12:
+    value: -0.5312787510657424
+  theta_inn_bacco_bin13:
+    value: -0.5312787510657424
+  theta_inn_bacco_bin2:
+    value: -1.3854647301685985
+  theta_inn_bacco_bin3:
+    value: -1.3604452515853098
+  theta_inn_bacco_bin4:
+    value: -1.2949667258085438
+  theta_inn_bacco_bin5:
+    value: -1.2056425079533284
+  theta_inn_bacco_bin6:
+    value: -1.0991845011332575
+  theta_inn_bacco_bin7:
+    value: -0.9805620838281162
+  theta_inn_bacco_bin8:
+    value: -0.8624918408856748
+  theta_inn_bacco_bin9:
+    value: -0.7968588249755786
+  theta_out_bacco_0:
+    value: 0.25
+  theta_out_bacco_bin1:
+    value: 0.2672123790126238
+  theta_out_bacco_bin10:
+    value: 0.3569278707998519
+  theta_out_bacco_bin11:
+    value: 0.3569278707998519
+  theta_out_bacco_bin12:
+    value: 0.3569278707998519
+  theta_out_bacco_bin13:
+    value: 0.3569278707998519
+  theta_out_bacco_bin2:
+    value: 0.21845633941784046
+  theta_out_bacco_bin3:
+    value: 0.22229391886311567
+  theta_out_bacco_bin4:
+    value: 0.23124624733764712
+  theta_out_bacco_bin5:
+    value: 0.24338032280596764
+  theta_out_bacco_bin6:
+    value: 0.25802109222979985
+  theta_out_bacco_bin7:
+    value: 0.27483978056155306
+  theta_out_bacco_bin8:
+    value: 0.29287229590732955
+  theta_out_bacco_bin9:
+    value: 0.3076030069491944
+debug: true
+timing: true
+
+ 2026-10-09 19:21:30,670 [camb] Attempting import of Cobaya-installed version, but defaulting to global import if not found.
+ 2026-10-09 19:21:30,671 [camb] No (compiled) installation of 'camb' at <HOME>/NUTS_meets_pocoMC/cobaya_modules/code/CAMB: Could not find compiled CAMB library camblib.so in <HOME>/NUTS_meets_pocoMC/cobaya_modules/code/CAMB.
+ 2026-10-09 19:21:30,671 [camb] Defaulting to global import.
+ 2026-10-09 19:21:30,700 [camb] `camb` module loaded successfully from <WORKDIR>/env/cloe-former/lib/python3.9/site-packages/camb
+ 2026-10-09 19:21:33,126 [camb] `camb` module loaded successfully from <WORKDIR>/env/cloe-former/lib/python3.9/site-packages/camb
+ 2026-10-09 19:21:33,129 [model] *WARNING* Theories {camb.transfers, camb} do not appear to be actually used for anything
+CLOE IA_flag=0 NL_flag_phot_bias=0 | cobaya Euclid timer, one evaluation: 0.0498 s | logp median of 20: 0.0416 s | steps: passing_requirements 0.0006s, update_cosmo_dic 0.0065s, loglike (C_ell + chi2) 0.0340s | chi2 6.335690e+07 | camb (excluded) {'camb.transfers': 0.2943687727674842, 'camb': 0.6434969771653414}

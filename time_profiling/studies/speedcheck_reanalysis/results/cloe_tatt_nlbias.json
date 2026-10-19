@@ -1,0 +1,35 @@
+{
+ "config": "configs/config_default_speedtest_3x2pt_linear_standardized_fixedparams.yaml",
+ "IA_flag": 1,
+ "NL_flag_phot_bias": 1,
+ "k_samp": 210,
+ "n_cpu": 8,
+ "init_s": 8.376148223876953,
+ "first_logposterior_incl_camb_s": 1.2474000453948975,
+ "cobaya_euclid_one_evaluation_s": 0.43430826626718044,
+ "cobaya_theory_s": {
+  "camb.transfers": 0.21421867795288563,
+  "camb": 0.5985936084762216
+ },
+ "logp_median_s": 0.42619027849286795,
+ "logp_all_s": [
+  0.43847662676125765,
+  0.4362317053601146,
+  0.4375000474974513,
+  0.42634383495897055,
+  0.4259391110390425,
+  0.4254835359752178,
+  0.42540824599564075,
+  0.42603672202676535,
+  0.42800647113472223,
+  0.42507163155823946
+ ],
+ "steps_median_s": {
+  "passing_requirements": 0.011387525591999292,
+  "update_cosmo_dic": 0.3795652464032173,
+  "loglike (C_ell + chi2)": 0.03408221481367946
+ },
+ "chi2": 226490255.62780866,
+ "z_grid_for_cl": 100,
+ "z_wsamp": 100
+}

@@ -1,0 +1,29 @@
+# =====================================================================
+# cloelib-zconv - self-contained environment for investigating the redshift
+# (Limber / window-function) convergence of cloelib
+# ---------------------------------------------------------------------
+# Code: COSMOLOGY_PROFILING/cloelib-zconvergence (clone of cloe-org/cloelib,
+# branch limber-z-convergence, from origin/main), installed editable with
+# the [camb,fastpt] extras. Independent of env/cloe-cosmosis and of the
+# cloelib-384-nonlinear-bias checkout.
+#
+#   mamba env create -p env/cloelib-zconv -f env/cloelib-zconv-env-linux.yaml
+#   env/cloelib-zconv/bin/python -m pip install --no-cache-dir -e "cloelib-zconvergence[camb,fastpt]"
+#   env/cloelib-zconv/bin/python -m ipykernel install --user --name cloelib-zconv
+# =====================================================================
+name: cloelib-zconv
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools
+  - wheel
+  - gfortran        # in case camb has to build from source
+  - ipykernel
+  - jupyter
+  - matplotlib
+  - astropy
+  - pip:
+      - euclidlib

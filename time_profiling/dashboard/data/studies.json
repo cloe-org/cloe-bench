@@ -1,0 +1,42 @@
+[
+ {
+  "study": "Euclid DR3, 13 bins",
+  "folder": "studies/euclid_dr3",
+  "setup": "351 spectra, TATT + one-loop bias, N_Z 100",
+  "hardware": "128-core node; and 1 core (taskset)",
+  "cloelib": "PR #596 c0f36e4",
+  "date": "2026-10-01"
+ },
+ {
+  "study": "Euclid DR1, 6 bins",
+  "folder": "studies/euclid_dr1",
+  "setup": "78 spectra, TATT + one-loop bias, N_Z 100",
+  "hardware": "AMD EPYC 9454, 8 and 96 CPUs of one NUMA node",
+  "cloelib": "PR #596 3f443c4",
+  "date": "2026-10-09"
+ },
+ {
+  "study": "Analysis set-up, 13 bins",
+  "folder": "studies/euclid_dr3",
+  "setup": "351 spectra, 32 ell, N_Z 100-1000, two models",
+  "hardware": "AMD EPYC 9454, 8 CPUs",
+  "cloelib": "main 0966dfa",
+  "date": "2026-10-09"
+ },
+ {
+  "study": "July 2026 speedcheck, re-run",
+  "folder": "studies/speedcheck_reanalysis",
+  "setup": "10 bins, 20 ell, N_Z 100, linear bias + NLA",
+  "hardware": "AMD EPYC 9454, 8 CPUs",
+  "cloelib": "691c4f3 (June) and 0966dfa",
+  "date": "2026-10-09"
+ },
+ {
+  "study": "cloelib profiling",
+  "folder": "studies/cloelib_profiling",
+  "setup": "6 and 13 bins, 32-3000 ell, N_Z 100-1000, two models",
+  "hardware": "AMD EPYC 9454, 1-96 CPUs",
+  "cloelib": "main 0966dfa",
+  "date": "2026-10"
+ }
+]

@@ -1,0 +1,30 @@
+{
+ "from_scratch": {
+  "32": 1.7726829024031758
+ },
+ "first_call": {
+  "32": 1.8050113301724195
+ },
+ "parts": {
+  "32": {
+   "passing_requirements": 0.001642005518078804,
+   "update_cosmo_dic": 1.7265684427693486,
+   "create_photo_theory": 0.042317138984799385
+  }
+ },
+ "n_spectra": {
+  "32": 78
+ },
+ "init_s": 3.593857765197754,
+ "first_logposterior_incl_camb_s": 2.9597160816192627,
+ "n_k": 1000,
+ "n_z": 200,
+ "z_win_range": [
+  0.0,
+  3.0
+ ],
+ "n_z_limber": 200,
+ "n_z_windows": 200,
+ "n_z_nz_file": 200,
+ "n_bins": 6
+}

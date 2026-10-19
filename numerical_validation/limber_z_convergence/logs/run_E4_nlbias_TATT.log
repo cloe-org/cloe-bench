@@ -1,0 +1,31 @@
+Note: redshifts have been re-sorted (earliest first)
+Note: redshifts have been re-sorted (earliest first)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    35s] E4 nlbias_TATT n_t=100 (35.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    41s] E4 nlbias_TATT n_t=101 (5.2s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    47s] E4 nlbias_TATT n_t=150 (5.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    53s] E4 nlbias_TATT n_t=151 (5.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    59s] E4 nlbias_TATT n_t=200 (6.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    66s] E4 nlbias_TATT n_t=201 (6.6s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    74s] E4 nlbias_TATT n_t=250 (7.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    82s] E4 nlbias_TATT n_t=251 (8.0s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[    92s] E4 nlbias_TATT n_t=400 (10.1s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   102s] E4 nlbias_TATT n_t=401 (9.9s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   118s] E4 nlbias_TATT n_t=800 (16.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   135s] E4 nlbias_TATT n_t=801 (16.8s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   166s] E4 nlbias_TATT n_t=1601 (31.4s)
+Warning: to_do list is no longer needed for FAST-PT initialization. Terms will now be calculated as needed. It may still be used to pre-compute matrices for faster initial runs.
+[   249s] E4 nlbias_TATT n_t=3201 (82.3s)
+done

@@ -1,0 +1,4924 @@
+diff --git a/.all-contributorsrc b/.all-contributorsrc
+index f0d120b..2ff0251 100644
+--- a/.all-contributorsrc
++++ b/.all-contributorsrc
+@@ -170,7 +170,8 @@
+         "tool",
+         "mentoring",
+         "code",
+-        "review"
++        "review",
++        "bug"
+       ]
+     },
+     {
+@@ -528,7 +529,8 @@
+       "avatar_url": "https://avatars.githubusercontent.com/u/42518815?v=4",
+       "profile": "http://www.matthieuschaller.com",
+       "contributions": [
+-        "ideas"
++        "ideas",
++        "mentoring"
+       ]
+     },
+     {
+@@ -647,7 +649,8 @@
+       "profile": "https://github.com/chiaradeleo1",
+       "contributions": [
+         "review",
+-        "mentoring"
++        "mentoring",
++        "bug"
+       ]
+     },
+     {
+diff --git a/.github/pull_request_template.md b/.github/pull_request_template.md
+index 7d3b13c..17b8035 100644
+--- a/.github/pull_request_template.md
++++ b/.github/pull_request_template.md
+@@ -41,7 +41,7 @@ Resolves #IssueNumber
+ 
+ ### ✅ PR Checklist for Developers
+ 
+-- [ ] I have titled this PR before merging as "gh-#:", where "#" represents the task it closes
++- [ ] I have titled this PR as "gh-#: <short description>", where "#" represents the task it closes (enforced by the `PR Title` CI check)
+ - [ ] I have run locally pre-commit using `pre-commit run --all-files`
+ - [ ] I have tested my changes locally
+ - [ ] No new warnings or errors introduced
+diff --git a/.github/workflows/ci.yaml b/.github/workflows/ci.yaml
+index 5e1ecdd..88aa527 100644
+--- a/.github/workflows/ci.yaml
++++ b/.github/workflows/ci.yaml
+@@ -73,7 +73,7 @@ jobs:
+             "${ENV_PREFIX}/bin/python" -m pip install --upgrade pip
+           env PATH="$PATH" PKG_CONFIG_PATH="$PKG_CONFIG_PATH" \
+             "${ENV_PREFIX}/bin/python" -m pip install \
+-            ".[camb,classy,euclidemu2,baccoemu,emantis,react,hiclassy,mgclassy,mochi_classy]"
++            ".[camb,classy,euclidemu2,baccoemu,hmcode2020emu,emantis,react,hiclassy,mgclassy,mochi_classy]"
+       - name: Run tests
+         run: mamba run -n $ENV_NAME python -m pytest
+   build:
+diff --git a/.github/workflows/pr-title.yml b/.github/workflows/pr-title.yml
+new file mode 100644
+index 0000000..fe0fef2
+--- /dev/null
++++ b/.github/workflows/pr-title.yml
+@@ -0,0 +1,30 @@
++name: PR Title
++on:
++  pull_request:
++    types:
++      - opened
++      - edited
++      - reopened
++      - synchronize
++permissions:
++  contents: read
++jobs:
++  check-title:
++    name: Check PR title format
++    runs-on: ubuntu-latest
++    # All Contributors bot PRs use their own "docs: add ..." title format.
++    if: github.event.pull_request.user.login != 'allcontributors[bot]'
++    steps:
++      - name: Check title starts with gh-<issue number>
++        env:
++          PR_TITLE: ${{ github.event.pull_request.title }}
++        run: |
++          if [[ "$PR_TITLE" =~ ^gh-[0-9]+:\ [^[:space:]] ]]; then
++            echo "PR title is correctly formatted: $PR_TITLE"
++          elif [[ "$PR_TITLE" =~ ^gh-#[0-9]+ ]]; then
++            echo "::error title=Invalid PR title::Do not use '#' after 'gh-'. PR title must start with 'gh-<issue number>: ' (e.g. 'gh-335: Automate PR title format check in CI'). Got: '$PR_TITLE'"
++            exit 1
++          else
++            echo "::error title=Invalid PR title::PR title must start with 'gh-<issue number>: ' (e.g. 'gh-335: Automate PR title format check in CI'). Got: '$PR_TITLE'"
++            exit 1
++          fi
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+index 3074a29..cb3703a 100644
+--- a/.pre-commit-config.yaml
++++ b/.pre-commit-config.yaml
+@@ -31,4 +31,4 @@ repos:
+         language: python
+         additional_dependencies: ["ty==0.0.80"]
+         pass_filenames: false # scope is set by [tool.ty.src] in pyproject.toml
+-        files: ^cloelib/cosmology/
++        files: ^cloelib/(cosmology|observables)/
+diff --git a/README.md b/README.md
+index a6ddca0..f5a8382 100644
+--- a/README.md
++++ b/README.md
+@@ -187,7 +187,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AndreaPezzotta"><img src="https://avatars.githubusercontent.com/u/29603598?v=4?s=100" width="100px;" alt="AndreaPezzotta"/><br /><sub><b>AndreaPezzotta</b></sub></a><br /><a href="#code-AndreaPezzotta" title="Code">💻</a> <a href="#maintenance-AndreaPezzotta" title="Maintenance">🚧</a> <a href="#ideas-AndreaPezzotta" title="Ideas, Planning, & Feedback">🤔</a> <a href="#bug-AndreaPezzotta" title="Bug reports">🐛</a> <a href="#content-AndreaPezzotta" title="Content">🖋</a> <a href="#data-AndreaPezzotta" title="Data">🔣</a> <a href="#doc-AndreaPezzotta" title="Documentation">📖</a> <a href="#talk-AndreaPezzotta" title="Talks">📢</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="http://www.cosmostat.org/people/santiago-casas"><img src="https://avatars.githubusercontent.com/u/6987716?v=4?s=100" width="100px;" alt="Santiago Casas"/><br /><sub><b>Santiago Casas</b></sub></a><br /><a href="#code-santiagocasas" title="Code">💻</a> <a href="#maintenance-santiagocasas" title="Maintenance">🚧</a> <a href="#ideas-santiagocasas" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-santiagocasas" title="Reviewed Pull Requests">👀</a> <a href="#bug-santiagocasas" title="Bug reports">🐛</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/PedroCarrilho"><img src="https://avatars.githubusercontent.com/u/60090062?v=4?s=100" width="100px;" alt="Pedro Carrilho"/><br /><sub><b>Pedro Carrilho</b></sub></a><br /><a href="#code-PedroCarrilho" title="Code">💻</a> <a href="#maintenance-PedroCarrilho" title="Maintenance">🚧</a> <a href="#ideas-PedroCarrilho" title="Ideas, Planning, & Feedback">🤔</a> <a href="#bug-PedroCarrilho" title="Bug reports">🐛</a> <a href="#content-PedroCarrilho" title="Content">🖋</a> <a href="#data-PedroCarrilho" title="Data">🔣</a> <a href="#doc-PedroCarrilho" title="Documentation">📖</a> <a href="#talk-PedroCarrilho" title="Talks">📢</a></td>
+-      <td align="center" valign="top" width="14.28%"><a href="http://ntessore.page"><img src="https://avatars.githubusercontent.com/u/3993688?v=4?s=100" width="100px;" alt="Nicolas Tessore"/><br /><sub><b>Nicolas Tessore</b></sub></a><br /><a href="#tool-ntessore" title="Tools">🔧</a> <a href="#mentoring-ntessore" title="Mentoring">🧑‍🏫</a> <a href="#code-ntessore" title="Code">💻</a> <a href="#review-ntessore" title="Reviewed Pull Requests">👀</a></td>
++      <td align="center" valign="top" width="14.28%"><a href="http://ntessore.page"><img src="https://avatars.githubusercontent.com/u/3993688?v=4?s=100" width="100px;" alt="Nicolas Tessore"/><br /><sub><b>Nicolas Tessore</b></sub></a><br /><a href="#tool-ntessore" title="Tools">🔧</a> <a href="#mentoring-ntessore" title="Mentoring">🧑‍🏫</a> <a href="#code-ntessore" title="Code">💻</a> <a href="#review-ntessore" title="Reviewed Pull Requests">👀</a> <a href="#bug-ntessore" title="Bug reports">🐛</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="http://sfarrens.github.io"><img src="https://avatars.githubusercontent.com/u/6851839?v=4?s=100" width="100px;" alt="Samuel Farrens"/><br /><sub><b>Samuel Farrens</b></sub></a><br /><a href="#tool-sfarrens" title="Tools">🔧</a> <a href="#mentoring-sfarrens" title="Mentoring">🧑‍🏫</a> <a href="#code-sfarrens" title="Code">💻</a> <a href="#review-sfarrens" title="Reviewed Pull Requests">👀</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/josecolomanadal"><img src="https://avatars.githubusercontent.com/u/83759085?v=4?s=100" width="100px;" alt="Jose Coloma Nadal"/><br /><sub><b>Jose Coloma Nadal</b></sub></a><br /><a href="#bug-josecolomanadal" title="Bug reports">🐛</a> <a href="#code-josecolomanadal" title="Code">💻</a> <a href="#ideas-josecolomanadal" title="Ideas, Planning, & Feedback">🤔</a></td>
+     </tr>
+@@ -231,7 +231,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/CarmelitaCarbone"><img src="https://avatars.githubusercontent.com/u/17458225?v=4?s=100" width="100px;" alt="CarmelitaCarbone"/><br /><sub><b>CarmelitaCarbone</b></sub></a><br /><a href="#projectManagement-CarmelitaCarbone" title="Project Management">📆</a> <a href="#mentoring-CarmelitaCarbone" title="Mentoring">🧑‍🏫</a> <a href="#promotion-CarmelitaCarbone" title="Promotion">📣</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://garico92.github.io/website/"><img src="https://avatars.githubusercontent.com/u/78367368?v=4?s=100" width="100px;" alt="Giovanni"/><br /><sub><b>Giovanni</b></sub></a><br /><a href="#code-garico92" title="Code">💻</a> <a href="#ideas-garico92" title="Ideas, Planning, & Feedback">🤔</a> <a href="#doc-garico92" title="Documentation">📖</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JegerBroxterman"><img src="https://avatars.githubusercontent.com/u/115992884?v=4?s=100" width="100px;" alt="Jeger Broxterman"/><br /><sub><b>Jeger Broxterman</b></sub></a><br /><a href="#code-JegerBroxterman" title="Code">💻</a> <a href="#ideas-JegerBroxterman" title="Ideas, Planning, & Feedback">🤔</a></td>
+-      <td align="center" valign="top" width="14.28%"><a href="http://www.matthieuschaller.com"><img src="https://avatars.githubusercontent.com/u/42518815?v=4?s=100" width="100px;" alt="Matthieu Schaller"/><br /><sub><b>Matthieu Schaller</b></sub></a><br /><a href="#ideas-MatthieuSchaller" title="Ideas, Planning, & Feedback">🤔</a></td>
++      <td align="center" valign="top" width="14.28%"><a href="http://www.matthieuschaller.com"><img src="https://avatars.githubusercontent.com/u/42518815?v=4?s=100" width="100px;" alt="Matthieu Schaller"/><br /><sub><b>Matthieu Schaller</b></sub></a><br /><a href="#ideas-MatthieuSchaller" title="Ideas, Planning, & Feedback">🤔</a> <a href="#mentoring-MatthieuSchaller" title="Mentoring">🧑‍🏫</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/joezuntz"><img src="https://avatars.githubusercontent.com/u/220537?v=4?s=100" width="100px;" alt="joezuntz"/><br /><sub><b>joezuntz</b></sub></a><br /><a href="#mentoring-joezuntz" title="Mentoring">🧑‍🏫</a> <a href="#ideas-joezuntz" title="Ideas, Planning, & Feedback">🤔</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KlaraBertmann"><img src="https://avatars.githubusercontent.com/u/153739278?v=4?s=100" width="100px;" alt="KlaraBertmann"/><br /><sub><b>KlaraBertmann</b></sub></a><br /><a href="#code-KlaraBertmann" title="Code">💻</a> <a href="#ideas-KlaraBertmann" title="Ideas, Planning, & Feedback">🤔</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/annmapo"><img src="https://avatars.githubusercontent.com/u/18014895?v=4?s=100" width="100px;" alt="Anna Porredon"/><br /><sub><b>Anna Porredon</b></sub></a><br /><a href="#ideas-annmapo" title="Ideas, Planning, & Feedback">🤔</a> <a href="#mentoring-annmapo" title="Mentoring">🧑‍🏫</a></td>
+@@ -247,7 +247,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
+     </tr>
+     <tr>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/MartinKaercher"><img src="https://avatars.githubusercontent.com/u/64490739?v=4?s=100" width="100px;" alt="Martin Kärcher"/><br /><sub><b>Martin Kärcher</b></sub></a><br /><a href="#code-MartinKaercher" title="Code">💻</a> <a href="#ideas-MartinKaercher" title="Ideas, Planning, & Feedback">🤔</a></td>
+-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/chiaradeleo1"><img src="https://avatars.githubusercontent.com/u/151924166?v=4?s=100" width="100px;" alt="Chiara De Leo"/><br /><sub><b>Chiara De Leo</b></sub></a><br /><a href="#review-chiaradeleo1" title="Reviewed Pull Requests">👀</a> <a href="#mentoring-chiaradeleo1" title="Mentoring">🧑‍🏫</a></td>
++      <td align="center" valign="top" width="14.28%"><a href="https://github.com/chiaradeleo1"><img src="https://avatars.githubusercontent.com/u/151924166?v=4?s=100" width="100px;" alt="Chiara De Leo"/><br /><sub><b>Chiara De Leo</b></sub></a><br /><a href="#review-chiaradeleo1" title="Reviewed Pull Requests">👀</a> <a href="#mentoring-chiaradeleo1" title="Mentoring">🧑‍🏫</a> <a href="#bug-chiaradeleo1" title="Bug reports">🐛</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ytchang05"><img src="https://avatars.githubusercontent.com/u/67809413?v=4?s=100" width="100px;" alt="Yu-Ting"/><br /><sub><b>Yu-Ting</b></sub></a><br /><a href="#code-ytchang05" title="Code">💻</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ptallada"><img src="https://avatars.githubusercontent.com/u/2226268?v=4?s=100" width="100px;" alt="Pau Tallada Crespí"/><br /><sub><b>Pau Tallada Crespí</b></sub></a><br /><a href="#ideas-ptallada" title="Ideas, Planning, & Feedback">🤔</a> <a href="#code-ptallada" title="Code">💻</a> <a href="#bug-ptallada" title="Bug reports">🐛</a></td>
+       <td align="center" valign="top" width="14.28%"><a href="https://lshuns.github.io/"><img src="https://avatars.githubusercontent.com/u/41175095?v=4?s=100" width="100px;" alt="Shun-Sheng Li"/><br /><sub><b>Shun-Sheng Li</b></sub></a><br /><a href="#code-lshuns" title="Code">💻</a> <a href="#bug-lshuns" title="Bug reports">🐛</a></td>
+diff --git a/cloelib/auxiliary/cosebi_helpers.py b/cloelib/auxiliary/cosebi_helpers.py
+index 282e2f3..31d1632 100644
+--- a/cloelib/auxiliary/cosebi_helpers.py
++++ b/cloelib/auxiliary/cosebi_helpers.py
+@@ -1,3 +1,4 @@
++import functools
+ import numpy as np
+ import pylevin as levin
+ import mpmath as mp
+@@ -31,8 +32,10 @@ def get_roots_and_norms(tmax, tmin, Nmax):
+     Based on the the implementation from OneCovariance by Robert Reischke,
+     https://github.com/rreischke/OneCovariance.
+     """
+-    zmax = mp.log(tmax / tmin)
+-    mp.mp.dps = 150  # decimal precision for mpmath
++    mp.mp.dps = 150  # decimal precision for mpmath, set before any mpmath value
++    zmax = mp.log(mp.mpf(tmax) / mp.mpf(tmin))
++    # J(k, j, zmax) is called repeatedly with the same arguments below
++    Jc = functools.lru_cache(maxsize=None)(J)
+ 
+     # -------------------------
+     # coeff_j as mpmath matrix: rows indexed by n (0..Nmax). We'll store full (Nmax+1)x(Nmax+2)
+@@ -43,8 +46,10 @@ def get_roots_and_norms(tmax, tmin, Nmax):
+ 
+     # --- compute coeffs for n=1 explicitly by solving 2x2 system
+     # Build correct mp.matrix for 'aa' and 'bb'
+-    aa_2x2 = mp.matrix([[J(2, 0, zmax), J(2, 1, zmax)], [J(4, 0, zmax), J(4, 1, zmax)]])
+-    bb_2x2 = mp.matrix([[-J(2, 2, zmax)], [-J(4, 2, zmax)]])  # since nn=1 so nn+1 = 2
++    aa_2x2 = mp.matrix(
++        [[Jc(2, 0, zmax), Jc(2, 1, zmax)], [Jc(4, 0, zmax), Jc(4, 1, zmax)]]
++    )
++    bb_2x2 = mp.matrix([[-Jc(2, 2, zmax)], [-Jc(4, 2, zmax)]])  # since nn=1 so nn+1 = 2
+ 
+     sol12 = mp.lu_solve(aa_2x2, bb_2x2)  # returns a column matrix (2x1)
+     coeff_j[1, 0] = sol12[0, 0]
+@@ -65,19 +70,19 @@ def get_roots_and_norms(tmax, tmin, Nmax):
+             for j in range(0, nn + 1):
+                 s = mp.mpf(0)
+                 for i in range(0, m + 2):
+-                    s += J(1, i + j, zmax) * coeff_j[m, i]
++                    s += Jc(1, i + j, zmax) * coeff_j[m, i]
+                 aa[idx_m, j] = s
+             # RHS
+             rhs = mp.mpf(0)
+             for i in range(0, m + 2):
+-                rhs -= J(1, i + nn + 1, zmax) * coeff_j[m, i]
++                rhs -= Jc(1, i + nn + 1, zmax) * coeff_j[m, i]
+             bb[idx_m, 0] = rhs
+ 
+         for j in range(nn + 1):
+-            aa[nn - 1, j] = J(2, j, zmax)
+-            aa[nn, j] = J(4, j, zmax)
+-        bb[nn - 1, 0] = -J(2, nn + 1, zmax)
+-        bb[nn, 0] = -J(4, nn + 1, zmax)
++            aa[nn - 1, j] = Jc(2, j, zmax)
++            aa[nn, j] = Jc(4, j, zmax)
++        bb[nn - 1, 0] = -Jc(2, nn + 1, zmax)
++        bb[nn, 0] = -Jc(4, nn + 1, zmax)
+ 
+         # solve
+         sol = mp.lu_solve(aa, bb)  # size x 1
+@@ -94,7 +99,7 @@ def get_roots_and_norms(tmax, tmin, Nmax):
+         temp_sum = mp.mpf(0)
+         for i in range(nn + 2):
+             for j in range(nn + 2):
+-                temp_sum += coeff_j[nn - 1, i] * coeff_j[nn - 1, j] * J(1, i + j, zmax)
++                temp_sum += coeff_j[nn - 1, i] * coeff_j[nn - 1, j] * Jc(1, i + j, zmax)
+         temp_Nn = (mp.expm1(zmax)) / temp_sum
+         temp_Nn = mp.sqrt(mp.fabs(temp_Nn))
+         Nn.append(temp_Nn)
+@@ -221,45 +226,132 @@ def tm(n, t, tmin, nn, coeff_j):
+     )
+ 
+ 
++def _chebyshev_fit(func, zmax, tol=mp.mpf("1e-17"), deg=64, max_deg=1024):
++    """
++    Chebyshev interpolant of an mpmath function on ``z`` in ``[0, zmax]``.
++
++    The function is sampled at Chebyshev nodes in mpmath precision and the
++    coefficients are computed in mpmath, doubling the degree until the tail
++    coefficients drop below ``tol`` relative to the largest one. Only the
++    final coefficients are cast to float64, so evaluating the interpolant in
++    float64 (Clenshaw recurrence) does not suffer from the cancellation of the
++    power-basis polynomial.
++
++    Returns
++    -------
++    np.ndarray
++        Chebyshev coefficients (float64) in the variable ``x = 2 z / zmax - 1``.
++    """
++    zmax = mp.mpf(zmax)
++    while True:
++        N = deg + 1
++        angles = [mp.pi * (k + mp.mpf(1) / 2) / N for k in range(N)]
++        vals = [func((mp.cos(a) + 1) * zmax / 2) for a in angles]
++        coeffs = [
++            2 * mp.fsum(v * mp.cos(j * a) for v, a in zip(vals, angles)) / N
++            for j in range(N)
++        ]
++        coeffs[0] /= 2
++        scale = max(mp.fabs(c) for c in coeffs)
++        if max(mp.fabs(c) for c in coeffs[-8:]) <= tol * scale or deg >= max_deg:
++            return np.array([float(c) for c in coeffs])
++        deg *= 2
++
++
++def _eval_chebyshev(coeffs, thetagrid, tmin, zmax):
++    """Evaluate a Chebyshev series from `_chebyshev_fit` at z = log(theta / tmin)."""
++    x = 2 * np.log(thetagrid / tmin) / float(zmax) - 1
++    return np.polynomial.chebyshev.chebval(x, coeffs)
++
++
+ def _tm_fast(n, thetagrid, tmin, nn, coeff_j):
+     """
+     Fast evaluation of T_n^-(theta) over the full thetagrid.
+ 
+-    The scalar coefficients (an2, an4, dnm) are computed once with mpmath at
+-    150-digit precision. The power-law terms (an2, an4) are small and cast
+-    safely to float64. The log-polynomial sum is evaluated in mpmath using
+-    vectorised operations to avoid the catastrophic cancellation that occurs
+-    when large z^m terms (z ~ 6.4 for th_max/th_min = 600) are summed in
+-    float64, then the final array is converted to float64 in one pass.
++    T_n^- (power-law terms and log-polynomial together) is expanded in a
++    Chebyshev series in z = log(theta / tmin) computed at mpmath precision
++    (see ``_chebyshev_fit``), then evaluated in float64. This avoids the
++    catastrophic cancellation of the power-basis log-polynomial (z ~ 6.4 for
++    th_max/th_min = 600) at the cost of a few hundred mpmath evaluations per
++    mode instead of one per theta point.
+     """
+-    z_np = np.log(thetagrid / tmin)  # float64, shape (N_theta,)
++    zmax = mp.log(mp.mpf(thetagrid[-1]) / mp.mpf(tmin))
++    a2 = an2(n, nn, coeff_j)
++    a4 = an4(n, nn, coeff_j)
++    dnm_coeffs_highfirst = [dnm(n, m, nn, coeff_j) for m in range(n, -1, -1)]
+ 
+-    # Scalar boundary coefficients — small values, safe to cast
+-    an2_f = float(an2(n, nn, coeff_j))
+-    an4_f = float(an4(n, nn, coeff_j))
++    def tm_z(z):
++        return (
++            a2 * mp.exp(-2 * z)
++            - a4 * mp.exp(-4 * z)
++            + mp.polyval(dnm_coeffs_highfirst, z)
++        )
+ 
+-    # Power-law terms evaluated in float64 (no cancellation risk)
+-    result = an2_f * np.exp(-2.0 * z_np) - an4_f * np.exp(-4.0 * z_np)
++    return _eval_chebyshev(_chebyshev_fit(tm_z, zmax), thetagrid, tmin, zmax)
+ 
+-    # Log-polynomial: evaluate in mpmath via Horner's method (mp.polyval) to
+-    # preserve precision against cancellation, then cast to float64 in one pass.
+-    # mp.polyval expects coefficients highest-degree first.
+-    dnm_coeffs_highfirst = [dnm(n, m, nn, coeff_j) for m in range(n, -1, -1)]
+-    result += np.array([float(mp.polyval(dnm_coeffs_highfirst, zi)) for zi in z_np])
+ 
+-    return result
++def _tp_fast(n, thetagrid, tmin, nn, coeff_j):
++    """
++    Fast evaluation of T_n^+(theta) = N_n sum_j c_nj z^j over the full thetagrid,
++    with z = log(theta / tmin), using the same Chebyshev approach as ``_tm_fast``.
++    """
++    zmax = mp.log(mp.mpf(thetagrid[-1]) / mp.mpf(tmin))
++    coeffs_highfirst = [nn[n - 1] * coeff_j[n - 1, j] for j in range(n + 1, -1, -1)]
++
++    def tp_z(z):
++        return mp.polyval(coeffs_highfirst, z)
++
++    return _eval_chebyshev(_chebyshev_fit(tp_z, zmax), thetagrid, tmin, zmax)
++
++
++def get_T_plus_minus(thetagrid, Nmax):
++    """
++    Real-space COSEBI kernels T_n^+(theta) and T_n^-(theta) for n = 1..Nmax.
++
++    The output layout is the one expected by
++    ``cloelib.summary_statistics.angular_two_point.get_cosebis_from_2pcf``.
++
++    Parameters
++    ----------
++    thetagrid : np.ndarray
++        Angular separation grid in radians; its first and last values set the
++        COSEBI range ``[theta_min, theta_max]``.
++    Nmax : int
++        Maximum COSEBI mode index.
++
++    Returns
++    -------
++    T_plus, T_minus : np.ndarray
++        Arrays of shape ``(Nmax + 1, len(thetagrid))``; row ``n`` holds mode
++        ``n`` and row 0 is zero, so ``T_plus[ns]`` selects modes ``ns``.
++    """
++    tmin, tmax = thetagrid[0], thetagrid[-1]
++    rn, nn, coeff_j = get_roots_and_norms(tmax, tmin, Nmax)
++    T_plus = np.zeros((Nmax + 1, len(thetagrid)))
++    T_minus = np.zeros_like(T_plus)
++    for n in range(1, Nmax + 1):
++        T_plus[n] = _tp_fast(n, thetagrid, tmin, nn, coeff_j)
++        T_minus[n] = _tm_fast(n, thetagrid, tmin, nn, coeff_j)
++    return T_plus, T_minus
+ 
+ 
+ def get_W_ell(thetagrid, Nmax, ells, N_thread):
+     """
+     Compute harmonic-space COSEBI kernels W_n(ell) for n = 1..Nmax.
+ 
+-    The T_n^- real-space kernels are evaluated at full mpmath precision
+-    (150 decimal digits) via ``_tm_fast``.  All Nmax kernels are then
+-    stacked into a single ``(N_theta, Nmax)`` integrand matrix and passed
+-    to pylevin in **one batched Levin call**, replacing the previous serial
+-    loop of N separate pylevin instances.  The mathematical result and
+-    numerical precision are identical to the serial version.
++    The T_n^- real-space kernels are expanded in Chebyshev series computed at
++    mpmath precision (150 decimal digits) and evaluated in float64 via
++    ``_tm_fast``, so their cost does not grow with the size of `thetagrid`.
++    All Nmax kernels are then stacked into a single ``(N_theta, Nmax)``
++    integrand matrix and passed to pylevin in **one batched Levin call**.
++
++    The Levin integration dominates the run time and scales linearly with
++    ``len(ells)``. Since the COSEBI integrals account for the grid spacing
++    (see ``cloelib.auxiliary.math_utils.quadrature_weights``), `ells` does not
++    need to be unit-spaced: a uniform grid only has to resolve the oscillations
++    of W_n(ell), whose period is roughly ``2 pi / theta_max``. For example,
++    for theta in [0.5, 300] arcmin, ``np.arange(2, 60000, 5)`` reproduces the
++    unit-spaced result to ~1e-5 at one fifth of the cost.
+ 
+     Parameters
+     ----------
+@@ -268,7 +360,8 @@ def get_W_ell(thetagrid, Nmax, ells, N_thread):
+     Nmax : int
+         Maximum COSEBI mode index.
+     ells : np.ndarray
+-        Multipoles at which W_n(ell) is evaluated.
++        Multipoles at which W_n(ell) is evaluated. Pass the same grid to
++        ``get_cosebis_from_cl``/``AngularTwoPoint.get_cosebis``.
+     N_thread : int
+         Number of threads passed to pylevin.
+ 
+@@ -276,7 +369,9 @@ def get_W_ell(thetagrid, Nmax, ells, N_thread):
+     -------
+     dict
+         Keys ``1..Nmax`` map to 1-D arrays of length ``len(ells)``;
+-        key ``"metadata"`` holds ``{"THMIN": tmin, "THMAX": tmax}``.
++        key ``"metadata"`` holds ``{"THMIN": tmin, "THMAX": tmax}`` in radians
++        (the unit of `thetagrid`). The COSEBI outputs built from these kernels
++        store ``thmin``/``thmax`` in arcmin.
+     """
+     print("start calculating roots and norms:")
+ 
+diff --git a/cloelib/auxiliary/halo_helpers.py b/cloelib/auxiliary/halo_helpers.py
+new file mode 100644
+index 0000000..33a3d0a
+--- /dev/null
++++ b/cloelib/auxiliary/halo_helpers.py
+@@ -0,0 +1,290 @@
++"""Module implementing auxiliary functions"""
++
++import numpy as np
++from scipy.special import erf
++
++from cloelib.auxiliary import units
++
++
++def convert_to_Delta_crit(overdensity_type, overdensity=200, background=None, z=0.0):
++    r"""Critical overdensity factor.
++
++    Converts the input overdensity factor into a critical one.
++    The contribution from massive neutrinos is not included in the matter density parameter.
++
++    Parameters
++    ----------
++    overdensity_type : str
++        Overdensity definition for halo mass calculation. Must be one of:
++        - "crit": Relative to critical density of the universe.
++        - "mean": Relative to mean matter density.
++        - "vir": Virial overdensity from spherical collapse.
++    overdensity : int, optional
++        Value of the overdensity. Effective for non-virial overdensities.
++        Example: If it equals 200, halos are defined as regions with density
++        200 times the chosen reference (`crit` or `mean`).
++    background : Background
++        Background object.
++    z: float or np.ndarray
++        Redshift.
++
++    Returns
++    -------
++    overdensity: float or np.ndarray
++        The overdensity factor which needs
++        to be multiplied to the critical
++        density in order to define an overdensity.
++
++    Notes
++    -----
++    The function is returned for :math:`\rm \rho_c` in a density definition
++    at a given redshift. The function returns :math:`\rm \Delta` for the
++    critical density of the universe, :math:`\rm \Delta \Omega_{m}` for
++    the mean matter density of the universe, :math:`\rm \Delta` determined
++    by `Bryan & Norman 1998
++    <http://adsabs.harvard.edu/abs/1998ApJ...495...80B>`_ Equation 6 for
++    the virial density.
++    """
++    if overdensity_type not in ["crit", "mean", "vir"]:
++        raise ValueError("Invalid overdensity definition, %s." % overdensity_type)
++
++    if overdensity_type == "crit":
++        return overdensity
++
++    elif overdensity_type == "mean":
++        return overdensity * background.Omega_cb(z)
++
++    elif overdensity_type == "vir":
++        x = background.Omega_cb(z) - 1.0
++        return 18.0 * np.pi**2 + 82.0 * x - 39.0 * x**2
++
++
++def convert_distance(distance, units_in, units_out, angular_diameter_distance=None):
++    r"""Convert distances
++
++    Parameters
++    ----------
++    distance: np.ndarray
++        Input projected distances
++    units_in: str
++        Unit for the input projected distance. Accepted values are:
++        "Mpc/h", "radians", "degrees", "arcmin", "arcsec".
++    units_out: str
++        Unit for the output projected distance. Accepted values are:
++        "Mpc/h", "radians", "degrees", "arcmin", "arcsec".
++    angular_diameter_distance: float, np.ndarray
++        Angular diameter distance (units: Mpc/h) to be used for converting
++        between angular and physical units. If array, it
++        should be in the shape (z.size, 1).
++
++    Returns
++    -------
++    np.ndarray
++        Distance in output units. If z is array and physical to
++        angular conversion used, output shape is (z.size, distance.size).
++    """
++    ang_to_rad = {
++        "radians": 1,
++        "degrees": np.pi / 180.0,
++        "arcmin": np.pi / 180.0 / 60.0,
++        "arcsec": np.pi / 180.0 / 3600.0,
++    }
++    _valid_units = ["mpc/h", *ang_to_rad.keys()]
++    if units_in.lower() not in _valid_units:
++        raise ValueError(f"units_in (={units_in}) must be in {_valid_units}")
++    if units_out.lower() not in _valid_units:
++        raise ValueError(f"units_out (={units_out}) must be in {_valid_units}")
++
++    if units_in.lower() == units_out.lower():
++        return distance
++
++    if units_out.lower() not in ang_to_rad:
++        # converting to mpc/h
++        theta = distance * ang_to_rad[units_in]  # distance in radians
++        out = theta * angular_diameter_distance
++    elif units_in.lower() not in ang_to_rad:
++        # converting to angular units
++        theta = distance / angular_diameter_distance  # distance in radians
++        out = theta / ang_to_rad[units_out]
++    else:
++        out = distance * ang_to_rad[units_in] / ang_to_rad[units_out]
++
++    return out
++
++
++def photoz_rsd_correction(
++    background,
++    z: np.ndarray,
++    k: np.ndarray,
++    z_obs_scatter: np.ndarray,
++) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
++    """
++    Compute the correction that accounts for photo-z uncertainty and RSD (Kaiser effect),
++    from `(Kaiser (1987)) <(https://doi.org/10.1093/mnras/227.1.1>`_.
++
++    Parameters
++    ----------
++    background: Background
++        Background class containing cosmology
++    k:  np.ndarray
++        wavenumber
++    z:  np.ndarray
++        redshift
++    z_obs_scatter: float, numpy.ndarray
++        Observed redshift scatter. If array, first dimension must be z.
++
++    Returns
++    -------
++    corr0, corr1, corr2: np.ndarray
++        Correction terms to the power spectrum monopole
++        Shape (z.size, k.size, other dimensions of z_obs_scatter)
++    """
++    ks = np.atleast_1d(k)
++    zs = np.atleast_1d(z)
++    z_obs_scatter_arr = np.array(z_obs_scatter)
++
++    # growth rate and scaled k, shape (z.size, k.size)
++    f_gr = (background.Omega_cb(zs) ** 0.55)[:, np.newaxis]
++    ks_z = (
++        ks[np.newaxis, :]
++        * (units.SPEED_OF_LIGHT * 1e-3)
++        / background.hubble_parameter(zs)[:, np.newaxis]
++        * (background.H0 / 100)
++    )
++
++    # check if z_obs_scatter has more dimensions
++    ndim_z_obs_scatter = len(z_obs_scatter_arr.shape)
++    if ndim_z_obs_scatter > 1:
++        # if it does, add them to f_gr, ks_z
++        extra_axes = tuple(range(2, ndim_z_obs_scatter + 1))
++        f_gr = np.expand_dims(f_gr, axis=extra_axes)
++        ks_z = np.expand_dims(ks_z, axis=extra_axes)
++    if ndim_z_obs_scatter > 0:
++        # if z_obs_scatter is array, add k dimention in 2nd place
++        z_obs_scatter_arr = z_obs_scatter_arr[:, np.newaxis, ...]
++
++    # multiply by scatter
++    ks_z = ks_z * z_obs_scatter_arr
++
++    erf_ks = erf(ks_z)
++
++    corr0 = np.sqrt(np.pi) / (2 * ks_z) * erf_ks
++    corr1 = f_gr / ks_z**3 * (np.sqrt(np.pi) / 2 * erf_ks - ks_z * np.exp(-(ks_z**2)))
++    corr2 = (
++        f_gr**2
++        / ks_z**5
++        * (
++            3 * np.sqrt(np.pi) / 8 * erf_ks
++            - ks_z / 4 * (2 * ks_z**2 + 3) * np.exp(-(ks_z**2))
++        )
++    )
++
++    # correct for numerical inaccuracy
++    # note: for jax, use corr1 = corr1.at[idx].set(2 / 3.0)
++    idx = erf_ks < 0.02
++    corr1[idx] = 2 / 3.0
++    corr2[idx] = 1 / 5.0
++
++    return corr0, corr1, corr2
++
++
++def tophat_window(kr):
++    r"""compute top-hat window and its derivative.
++
++    Parameters
++    ----------
++    kr: numpy.ndarray
++           Wavenumber times radius.
++
++    Returns
++    -------
++    numpy.ndarray
++        Top-hat window function
++    """
++    return 3.0 * (np.sin(kr) - kr * np.cos(kr)) / kr**3.0
++
++
++def tophat_window_derivative(kr):
++    r"""Compute derivative of the top-hat window.
++
++    Parameters
++    ----------
++    kr: numpy.ndarray
++           Wavenumber times radius.
++
++    Returns
++    -------
++    numpy.ndarray
++        Derivative of top-hat window function
++    """
++    return 3.0 * (np.sin(kr) * (kr**2.0 - 3.0) + 3.0 * kr * np.cos(kr)) / kr**4.0
++
++
++def isotropic_volume_distance(z, da, hz):
++    """Compute isotropic volume distance
++
++    Parameters
++    ----------
++    z : np.ndarray
++        redshift
++    da : np.ndarray
++        Angular diameter distance
++    hz : np.ndarray
++        Hubble parameter as a function of redshift.
++
++    Returns
++    -------
++    np.ndarray
++        Isotropic volume distance
++    """
++    return ((1 + z) ** 2 * da**2 * units.SPEED_OF_LIGHT * z / hz) ** (1 / 3.0)
++
++
++def tabulated_return(reference_table, func, func_kwargs):
++    """Check if arguments given are the same from the reference table.
++    If true, returns the tabulated value. Otherwise, recomputes the output
++    value and stores it (and inputs) back in reference table.
++
++    Parameters
++    ----------
++    reference_table: dict
++        Dictionary with the tabulated function. It must contain a `inputs`
++        key with the dictionary of arguments or `function` and a `values`
++        key with the computed value of said function with those arguments.
++    func: function
++        Function to be tabulated
++    func_kwargs: dict
++        Dictionary with named arguments for the function.
++
++    Returns
++    -------
++    Output of `func(**func_kwargs)`
++    """
++
++    # Check if names of parameters given are the same as in reference_table
++    _set_tab = set(reference_table["inputs"].keys())
++    _set_inp = set(func_kwargs.keys())
++    if _set_tab != _set_inp:
++        raise ValueError(
++            f"Bad parameters were passed. Expected {_set_tab}, got {_set_inp}."
++        )
++
++    # Check if func_kwargs are the tabluated values
++    _tabuleted_input = True
++    if any(value is None for value in reference_table["inputs"].values()):
++        _tabuleted_input = False
++    else:
++        for name, ref_val in reference_table["inputs"].items():
++            test_val = func_kwargs[name]
++            if ref_val.shape != test_val.shape:
++                _tabuleted_input = False
++                break
++            if (ref_val != test_val).any():
++                _tabuleted_input = False
++                break
++
++    if not _tabuleted_input:
++        reference_table["inputs"].update(func_kwargs)
++        reference_table["values"] = func(**func_kwargs)
++
++    return reference_table["values"]
+diff --git a/cloelib/auxiliary/math_utils.py b/cloelib/auxiliary/math_utils.py
+index 1471c47..5650273 100644
+--- a/cloelib/auxiliary/math_utils.py
++++ b/cloelib/auxiliary/math_utils.py
+@@ -138,6 +138,39 @@ def simpsons_weights_avg(num_el: int) -> jnp.ndarray:
+     return _simpsons_weights_avg_cached(int(num_el))
+ 
+ 
++def quadrature_weights(x) -> jnp.ndarray:
++    """
++    Quadrature weights ``w`` on the grid ``x`` such that ``sum(w * f(x))``
++    approximates the integral of ``f`` over ``x``.
++
++    Simpson's rule is used for linearly spaced grids (``w = s * dx``) and for
++    logarithmically spaced grids (integrating in ``ln x``, ``w = s * dlnx * x``);
++    any other grid falls back to the trapezoidal rule.
++
++    Parameters
++    ----------
++    x : array-like
++        Strictly increasing integration grid (not traced by JAX).
++
++    Returns
++    -------
++    jnp.ndarray
++        Weights with the same length as ``x``.
++    """
++    x = np.asarray(x, dtype=float)
++    dx = np.diff(x)
++    if np.allclose(dx, dx[0], rtol=1e-8):
++        return simpsons_weights_jit(len(x)) * dx[0]
++    if x[0] > 0:
++        dlnx = np.diff(np.log(x))
++        if np.allclose(dlnx, dlnx[0], rtol=1e-8):
++            return simpsons_weights_jit(len(x)) * dlnx[0] * jnp.asarray(x)
++    w = np.zeros_like(x)
++    w[:-1] += dx / 2
++    w[1:] += dx / 2
++    return jnp.asarray(w)
++
++
+ def stack_zeros_and_simpson(num_weights: int, num_zeros: int) -> jnp.ndarray:
+     """Row of `stacked_simpson`: `num_zeros` zeros followed by the
+     `simpsons_weights_avg` weights for `num_weights` nodes."""
+diff --git a/cloelib/cosmology/HMcode2020Emu_cosmology.py b/cloelib/cosmology/HMcode2020Emu_cosmology.py
+index f642de9..b049f87 100644
+--- a/cloelib/cosmology/HMcode2020Emu_cosmology.py
++++ b/cloelib/cosmology/HMcode2020Emu_cosmology.py
+@@ -42,6 +42,8 @@ class HMemuLinearPerturbations:
+             "wa": self.background.wa,
+         }
+ 
++        self._cosmo_params_hm_emu = dict(self.params_hm_emu)
++
+         hm_bounds = HM2020_emu.emulator["linear"]["bounds"]
+ 
+         for key in self.params_hm_emu.keys():
+@@ -118,9 +120,9 @@ class HMemuLinearPerturbations:
+         else:
+             k_in = ks
+         if hubble_units:
+-            return self.Pk_interp(zs, k_in).squeeze() * self.background.h**3
++            return self.Pk_interp(zs, k_in) * self.background.h**3
+         else:
+-            return self.Pk_interp(zs, k_in).squeeze()
++            return self.Pk_interp(zs, k_in)
+ 
+     def matter_power_spectrum_cb(
+         self, zs, ks, hubble_units=False, k_hunit=False
+@@ -142,9 +144,9 @@ class HMemuLinearPerturbations:
+         else:
+             k_in = ks
+         if hubble_units:
+-            return self.Pk_cb_interp(zs, k_in).squeeze() * self.background.h**3
++            return self.Pk_cb_interp(zs, k_in) * self.background.h**3
+         else:
+-            return self.Pk_cb_interp(zs, k_in).squeeze()
++            return self.Pk_cb_interp(zs, k_in)
+ 
+     def growth_factor(self, zs, ks) -> np.ndarray:
+         r"""
+@@ -196,16 +198,26 @@ class HMemuLinearPerturbations:
+ 
+         return D_cb_z_k
+ 
+-    def growth_rate(self) -> np.ndarray:
++    def growth_rate(self, zs=None, ks=None) -> np.ndarray:
+         """
+         Calculate the growth rate for given redshifts and wavenumbers.
+ 
++        Args:
++            zs (Optional[array_like]): Redshifts at which to calculate the growth rate.
++                Defaults to the redshift grid of this instance.
++            ks (Optional[array_like]): Wavenumbers at which to calculate the growth rate.
++                The HMcode2020Emu growth rate is scale independent, so these only
++                set the shape of the output.
++
+         Returns:
+-            (np.ndarray): The growth rate as a function of redshift and wavenumber.
++            (np.ndarray): The growth rate, with shape (nz,) if ks is None
++                and (nz, nk) otherwise.
+         """
+-        self.sigma8, self.fsigma8 = HM2020_emu.get_sigma8(**self.params_hm_emu)
+-
+-        return self.fsigma8 / self.sigma8
++        return _growth_rate(
++            self._cosmo_params_hm_emu,
++            self.z if zs is None else zs,
++            ks,
++        )
+ 
+     def sigma8_0(self) -> float:
+         """
+@@ -261,6 +273,8 @@ class HMemuNonLinearPerturbations:
+         if baryonic_boost:
+             self.params_hm_emu["log10TAGN"] = log10TAGN
+ 
++        self._cosmo_params_hm_emu = dict(self.params_hm_emu)
++
+         hm_bounds = HM2020_emu.emulator["nonlinear"]["bounds"]
+ 
+         for key in self.params_hm_emu.keys():
+@@ -419,16 +433,26 @@ class HMemuNonLinearPerturbations:
+ 
+         return D_cb_z_k
+ 
+-    def growth_rate(self) -> np.ndarray:
++    def growth_rate(self, zs=None, ks=None) -> np.ndarray:
+         """
+         Calculate the growth rate for given redshifts and wavenumbers.
+ 
++        Args:
++            zs (Optional[array_like]): Redshifts at which to calculate the growth rate.
++                Defaults to the redshift grid of this instance.
++            ks (Optional[array_like]): Wavenumbers at which to calculate the growth rate.
++                The HMcode2020Emu growth rate is scale independent, so these only
++                set the shape of the output.
++
+         Returns:
+-            (np.ndarray): The growth rate as a function of redshift and wavenumber.
++            (np.ndarray): The growth rate, with shape (nz,) if ks is None
++                and (nz, nk) otherwise.
+         """
+-        self.sigma8, self.fsigma8 = HM2020_emu.get_sigma8(**self.params_hm_emu)
+-
+-        return self.fsigma8 / self.sigma8
++        return _growth_rate(
++            self._cosmo_params_hm_emu,
++            self.z if zs is None else zs,
++            ks,
++        )
+ 
+     def sigma8_0(self) -> float:
+         """
+@@ -444,6 +468,38 @@ class HMemuNonLinearPerturbations:
+         return self.sigma8[0]
+ 
+ 
++def _growth_rate(params: dict, zs, ks=None) -> np.ndarray:
++    r"""Evaluate the HMcode2020Emu growth rate $f = f\sigma_8 / \sigma_8$.
++
++    Redshifts above the range of the emulator are evaluated at its maximum
++    redshift, where the growth rate is already close to its matter-domination
++    value of unity.
++
++    Parameters
++    ----------
++    params: dict
++        Cosmological parameters of the emulator, one value per parameter.
++    zs: array_like
++        Redshifts at which to evaluate the growth rate.
++    ks: Optional[array_like]
++        Wavenumbers used to broadcast the scale-independent growth rate.
++
++    Returns
++    -------
++    np.ndarray
++        The growth rate, with shape (nz,) if ks is None and (nz, nk) otherwise.
++    """
++    z_max = HM2020_emu.emulator["sigma8"]["bounds"]["z"][1]
++    z = np.clip(np.atleast_1d(np.asarray(zs, dtype=float)), 0.0, z_max)
++    sigma8, fsigma8 = HM2020_emu.get_sigma8(
++        **{key: np.tile(value, len(z)) for key, value in params.items()}, z=z
++    )
++    f = fsigma8 / sigma8
++    if ks is None:
++        return f
++    return np.tile(f[:, None], (1, np.size(ks)))
++
++
+ def _set_neutrino_masses(background: Background) -> float:
+     r"""Set neutrino masses in the parameters dictionary.
+ 
+diff --git a/cloelib/observables/__init__.py b/cloelib/observables/__init__.py
+index 7b63ee6..da196cb 100644
+--- a/cloelib/observables/__init__.py
++++ b/cloelib/observables/__init__.py
+@@ -1,10 +1,12 @@
+ """Observable package of cloelib.
+ 
+-The package provides photometric and spectroscopic observables.
+-The Tracer protocol is used to define Photometric observables.
++The package provides photometric, gravitational-wave, and spectroscopic observables.
++The Tracer protocol is used to define photometric and gravitational-wave
++observables.
+ The SpectroPower protocol is used to define Spectroscopic observables.
+ 
+ Supported External Codes:
+ - **SpectroPower**: `comet-emu`, `PBJ`
+-- **Tracers**: `ShearTracer`, `PositionsTracer`
++- **Tracers**: `ShearTracer`, `PositionsTracer`, `GWNumberCountsTracer`,
++  `GWWeakLensingTracer`
+ """
+diff --git a/cloelib/observables/cmb.py b/cloelib/observables/cmb.py
+index 2ea31b3..b817a63 100644
+--- a/cloelib/observables/cmb.py
++++ b/cloelib/observables/cmb.py
+@@ -9,7 +9,8 @@ from cloelib.auxiliary.units import SPEED_OF_LIGHT
+ from cloelib.cosmology.cosmology import Perturbations
+ 
+ # General imports
+-import jax.numpy as np  # type: ignore
++from typing import Any
++import jax.numpy as np
+ 
+ 
+ # UNITS
+@@ -117,7 +118,9 @@ class CMBLensingTracer:
+             * self.background.comoving_distance(z)
+         )
+         rz = self.background.comoving_distance(z)
+-        z_star = self.background.z_star
++        # `Any`: backends accept a scalar redshift here, which the
++        # `Background` protocol's `comoving_distance(zs: T)` doesn't express.
++        z_star: Any = self.background.z_star
+         rz_star = self.background.comoving_distance(z_star)
+         efficiency = 1 - rz / rz_star
+         result = factor * efficiency
+diff --git a/cloelib/observables/gw/__init__.py b/cloelib/observables/gw/__init__.py
+new file mode 100644
+index 0000000..f960464
+--- /dev/null
++++ b/cloelib/observables/gw/__init__.py
+@@ -0,0 +1,18 @@
++"""Gravitational-wave number-count and weak-lensing tracers.
++
++`GWNumberCountsTracer` lives in `gw.number_counts`, and
++`GWWeakLensingTracer` lives in `gw.weak_lensing`. Both implement the tracer
++interface consumed by `AngularTwoPoint` and are re-exported here for concise
++imports.
++"""
++
++from cloelib.observables.gw import number_counts, weak_lensing
++from cloelib.observables.gw.number_counts import GWNumberCountsTracer
++from cloelib.observables.gw.weak_lensing import GWWeakLensingTracer
++
++__all__ = [
++    "GWNumberCountsTracer",
++    "GWWeakLensingTracer",
++    "number_counts",
++    "weak_lensing",
++]
+diff --git a/cloelib/observables/gw/number_counts.py b/cloelib/observables/gw/number_counts.py
+new file mode 100644
+index 0000000..35305b8
+--- /dev/null
++++ b/cloelib/observables/gw/number_counts.py
+@@ -0,0 +1,212 @@
++"""GW number-count tracer: `GWNumberCountsTracer` and its Contributions.
++
++Compatible with the Tracer protocol. Counterpart to `gw.weak_lensing`, which
++holds `GWWeakLensingTracer`.
++"""
++
++# cloelib imports
++from cloelib.auxiliary.units import SPEED_OF_LIGHT
++from cloelib.cosmology.cosmology import Perturbations
++from cloelib.auxiliary.systematics import shift_dndz_jax, stretch_dndz_jax
++
++# General imports
++import jax
++import jax.numpy as np
++import interpax
++import jax.lax as lx
++
++# UNITS
++c_0 = SPEED_OF_LIGHT / 1000  # Convert to km/s
++
++
++class GWSourceBiasContribution:
++    """Source-bias-weighted kernel term of `GWNumberCountsTracer.get_window()`.
++
++    Currently one of the three linear-bias models selected by
++    `gw_bias_model` (`GWNumberCountsTracer.get_window_number_counts`).
++    """
++
++    def __init__(self, tracer: "GWNumberCountsTracer") -> None:
++        self._tracer = tracer
++
++    def compute_kernel(self, z):
++        return self._tracer.get_window_number_counts(z)
++
++
++class GWNumberCountsTracer:
++    """Tracer for the angular number density of GW sources."""
++
++    def __init__(
++        self,
++        perturbations: Perturbations,
++        dndz: np.ndarray,
++        z: np.ndarray,
++        gw_bias_model: str,
++        nuisance_params: dict,
++    ):
++        r"""
++        Initialize the class instance.
++
++        Parameters:
++          perturbations (Perturbations): Perturbation backend providing a
++            compatible background cosmology.
++          dndz (np.ndarray): A n-dimensional array representing the number density distribution of GW sources as a function of redshift, with shape
++            `(n_bins, n_z)`. It is expected to be normalised.
++          z (np.ndarray): Evenly sampled, non-zero redshift grid with shape
++            `(n_z,)` corresponding to the last axis of `dndz`.
++          gw_bias_model (str): A string specifying the model used to describe
++            the GW source bias.
++          nuisance_params (dict): Redshift-shift and width parameters for every
++            bin, plus parameters for the selected GW bias model.
++        """
++        if 0.0 in z:
++            raise ValueError(
++                "One of the z array elements is equal to zero, breaking Limber integration."
++            )
++        self.perturbations = perturbations
++        self.background = self.perturbations.background
++        self.z = z
++        # AngularTwoPoint field responses: scalar number counts need neither
++        # the spin-2 shear response nor the GW weak-lensing response.
++        self.prefact_toggle = 0
++        self.gw_prefact_toggle = 0
++
++        self.nuisance_params = nuisance_params
++        self.dz_gw_i = [
++            self.nuisance_params[f"dz_gw_{i + 1}"] for i in range(dndz.shape[0])
++        ]
++        self.width_gw_i = [
++            self.nuisance_params[f"width_gw_{i + 1}"] for i in range(dndz.shape[0])
++        ]
++        self.dndz = dndz
++        # Correct dndz for width_gw.
++        self.dndz_stretched = stretch_dndz_jax(dndz, z, self.width_gw_i)
++        # Correct dndz_stretched for dz_gw.
++        self.dndz_shifted = shift_dndz_jax(self.dndz_stretched, z, self.dz_gw_i)
++        self.flags = {"gw_bias_model": gw_bias_model}
++        self.n_z_bins = dndz.shape[0]
++
++        # Use the same bias-model structure and defaults as PositionsTracer.
++        def per_bin_case():
++            bias_array = np.asarray(
++                [
++                    nuisance_params.get("b1_gw_bin%d" % bin, 1.0)
++                    for bin in range(self.n_z_bins)
++                ]
++            )
++            # lax required same size for all cases, so padding here and will only use first n_z_bins values later
++            return np.pad(bias_array, (0, self.z.shape[0] - self.n_z_bins))
++
++        def per_bin_int_case():
++            bias_array = np.asarray(
++                [
++                    nuisance_params.get("b1_gw_bin%d" % bin, 1.0)
++                    for bin in range(self.n_z_bins)
++                ]
++            )
++            index_max_nz = np.argmax(dndz, axis=1)
++            z_nz_max = jax.vmap(
++                lambda i: lx.dynamic_index_in_dim(self.z, i, keepdims=False)
++            )(index_max_nz)
++            return interpax.interp1d(self.z, z_nz_max, bias_array, extrap=True)
++
++        def poly_case():
++            poly_order = 3
++            bias_array = np.asarray(
++                [
++                    nuisance_params.get("b1_gw_poly%d" % bin, 1.0)
++                    for bin in range(poly_order + 1)
++                ]
++            )
++            return (
++                bias_array[0]
++                + bias_array[1] * z
++                + bias_array[2] * z**2
++                + bias_array[3] * z**3
++            )
++
++        conditions = np.array(
++            [
++                self.flags["gw_bias_model"] == "per_bin",
++                self.flags["gw_bias_model"] == "per_bin_int",
++                self.flags["gw_bias_model"] == "poly",
++            ]
++        )
++        index = np.argwhere(conditions, size=1).squeeze()
++
++        self.bias_array = [per_bin_case, per_bin_int_case, poly_case][index]()
++        self.bias = GWSourceBiasContribution(self)
++
++    def get_contributions(self):
++        """Return this tracer's window as its separable Contribution terms.
++
++        The contribution currently delegates to `get_window_number_counts`.
++
++        Returns:
++          contributions (tuple): `(self.bias,)`.
++        """
++        return (self.bias,)
++
++    def get_window_number_counts(self, z) -> np.ndarray:
++        r"""GW number-count window function.
++
++        Implements the GW number-count source-density window, analogous to
++        `PositionsTracer.get_window_positions`, with the galaxy bias replaced
++        by the GW source bias.
++
++        $$
++            W_i^{\rm GW-NC}(z) =
++            b_i^{\rm GW}(z)\,n_i^{\rm GW}(z)\frac{H(z)}{c}
++        $$
++
++        Parameters:
++          z (numpy.ndarray): Redshift grid at which to evaluate the window.
++
++        Returns:
++          window_number_counts (np.ndarray): Angular GW number-count windows
++            with shape `(n_bins, n_z)`.
++        """
++
++        def per_bin_case():
++            window = (
++                self.bias_array[: self.n_z_bins, None]
++                * self.dndz_shifted
++                * self.background.hubble_parameter(z)
++                / c_0
++            )
++            return window
++
++        def z_func_case():
++            window = (
++                self.bias_array[None, :]
++                * self.dndz_shifted
++                * self.background.hubble_parameter(z)
++                / c_0
++            )
++            return window
++
++        conditions = np.array(
++            [
++                self.flags["gw_bias_model"] == "per_bin",
++                self.flags["gw_bias_model"] in ["per_bin_int", "poly"],
++            ]
++        )
++        index = np.argwhere(conditions, size=1).squeeze()
++
++        window_number_counts = [per_bin_case, z_func_case][index]()
++
++        return window_number_counts
++
++    def get_window(self, z) -> np.ndarray:
++        """
++        Compute the angular GW number-count window function.
++
++        Parameters:
++          z (np.ndarray): Redshift grid at which the window is evaluated.
++
++        Returns:
++          window (np.ndarray): Number-count windows with shape
++            `(n_bins, n_z)`.
++        """
++        total_window = sum(c.compute_kernel(z) for c in self.get_contributions())
++        return total_window
+diff --git a/cloelib/observables/gw/weak_lensing.py b/cloelib/observables/gw/weak_lensing.py
+new file mode 100644
+index 0000000..8ffcf1f
+--- /dev/null
++++ b/cloelib/observables/gw/weak_lensing.py
+@@ -0,0 +1,182 @@
++"""GW weak-lensing tracer: `GWWeakLensingTracer` and its Contributions.
++
++Compatible with the Tracer protocol. Counterpart to `gw.number_counts`, which
++holds `GWNumberCountsTracer`.
++"""
++
++# cloelib imports
++from cloelib.auxiliary.units import SPEED_OF_LIGHT
++from cloelib.cosmology.cosmology import Perturbations
++from cloelib.auxiliary.math_utils import cached_stacked_simpson, simps
++from cloelib.auxiliary.systematics import shift_dndz_jax, stretch_dndz_jax
++
++# General imports
++import jax.numpy as np
++import jax
++import interpax
++
++# UNITS
++c_0 = SPEED_OF_LIGHT / 1000  # Convert to km/s
++
++
++class GWWeakLensingContribution:
++    """Weak-lensing convergence kernel term of `GWWeakLensingTracer.get_window()`."""
++
++    def __init__(self, tracer: "GWWeakLensingTracer") -> None:
++        self._tracer = tracer
++
++    def compute_kernel(self, z):
++        return self._tracer.get_window_lensing(z)
++
++
++class GWWeakLensingTracer:
++    """Tracer for weak-lensing convergence inferred from GW sources."""
++
++    def __init__(
++        self,
++        perturbations: Perturbations,
++        dndz: np.ndarray,
++        z: np.ndarray,
++        nuisance_params: dict,
++    ):
++        r"""
++        Initialize the class instance.
++
++        Parameters:
++          perturbations (Perturbations): Perturbation backend providing a
++            compatible background cosmology.
++          dndz (np.ndarray): A n-dimensional array representing the number density distribution of GW sources as a function of redshift, with shape
++            `(n_bins, n_z)`. It is expected to be normalised.
++          z (np.ndarray): A 1 dimensional array representing the evenly sampled, non-zero redshift grid with shape
++            `(n_z,)` corresponding to the `dndz` array.
++          nuisance_params (dict): Redshift-shift and width parameters for every bin.
++        """
++        if 0.0 in z:
++            raise ValueError(
++                "One of the z array elements is equal to zero, breaking Limber integration."
++            )
++        self.perturbations = perturbations
++        self.background = self.perturbations.background
++        self.z = z
++        self.nuisance_params = nuisance_params
++        # The radial kernel is scalar convergence, so only the GW
++        # weak-lensing field response applies in AngularTwoPoint.
++        self.prefact_toggle = 0
++        self.gw_prefact_toggle = 1
++        self.dz_gw_i = [
++            self.nuisance_params[f"dz_gw_{i + 1}"] for i in range(dndz.shape[0])
++        ]
++        self.width_gw_i = [
++            self.nuisance_params[f"width_gw_{i + 1}"] for i in range(dndz.shape[0])
++        ]
++        self.n_z_bins = dndz.shape[0]
++        self.dndz = dndz
++        # Correct dndz for width_gw
++        self.dndz_stretched = stretch_dndz_jax(dndz, z, self.width_gw_i)
++        # Correct dndz_stretched for dz_gw
++        self.dndz_shifted = shift_dndz_jax(self.dndz_stretched, z, self.dz_gw_i)
++
++        self.lensing = GWWeakLensingContribution(self)
++
++    def get_contributions(self):
++        """Return this tracer's window as its separable Contribution terms.
++
++        Returns:
++          contributions (tuple): `(self.lensing,)`.
++        """
++        return (self.lensing,)
++
++    def get_lensing_efficiency_bin(self, z, bin_idx):
++        """Compute the GW lensing efficiency in a redshift bin."""
++        interpolator = interpax.Akima1DInterpolator(
++            self.z, self.dndz_shifted[bin_idx, :]
++        )
++        x = np.linspace(0.0, 4, 200)
++        y = self.background.comoving_distance(x)
++        rx_interp = interpax.Akima1DInterpolator(x, y)
++        f1 = jax.jit(lambda x: interpolator(x))
++        f2 = jax.jit(lambda x: interpolator(x) / rx_interp(x))
++        integral_1 = simps(f1, z, 3.0)
++        integral_2 = simps(f2, z, 3.0)
++        efficiency = integral_1 - integral_2 * self.background.comoving_distance(z)
++        return efficiency
++
++    def get_lensing_efficiency(self, z) -> np.ndarray:
++        r"""
++        Compute the GW lensing efficiency kernel for each redshift bin.
++
++        This function calculates the geometric lensing kernel W(χ), which weights the contribution
++        of matter at different redshifts to the weak lensing signal, for a given redshift grid `z`.
++
++        Parameters:
++          z (np.ndarray): 1D array of redshift values (must be evenly spaced). Used to compute comoving distances
++            and define integration domain.
++
++        Returns:
++          (np.ndarray): 2D array of shape (N_bins, len(z)) representing the lensing efficiency kernel W(z)
++            for each redshift bin over the evaluation grid.
++
++        Notes
++        -----
++        - Assumes `z` is evenly spaced; spacing is inferred as `z[1] - z[0]`.
++        - Uses a precomputed Simpson rule weight matrix (`cached_stacked_simpson`) for integration.
++        - `self.dndz_shifted` is expected to have shape (N_bins, len(z)) and be normalized.
++        - Efficiency is evaluated using `np.einsum`.
++        """
++        dz = z[1] - z[0]  # assuming equispaced!
++        rz = self.background.comoving_distance(z)
++        rzrz = 1 - np.outer(rz, 1 / rz)
++        w_matrix = cached_stacked_simpson(len(z))
++        result = np.einsum("ik, jk, jk->ij", self.dndz_shifted, rzrz, w_matrix) * dz
++        return result
++
++    def get_window_lensing(self, z) -> np.ndarray:
++        r"""GW weak-lensing convergence kernel.
++
++        Calculates the GW weak-lensing kernel for a given tomographic bin
++        distribution. The underlying geometry is the scalar convergence
++        kernel. The observable-dependent harmonic response is applied in
++        `AngularTwoPoint`. There is no magnification bias,
++        intrinsic alignment, or multiplicative shear factor in this tracer.
++
++        $$
++            W_{i}^{\kappa}(z) =
++            \frac{3}{2}\left ( \frac{H_0}{c}\right )^2
++            \Omega_{{\rm m},0} (1 + z)
++            \chi(z)
++            \int_{z}^{z_{\rm max}}{{\rm d}z^{\prime} n_{i}^{\rm GW}(z^{\prime})
++            \frac{\chi(z^{\prime}) - \chi(z)}
++            {\chi(z^{\prime})}}\\
++        $$
++
++        Parameters:
++          z (numpy.ndarray): One-dimensional redshift grid matching the source distributions.
++
++        Returns:
++          (numpy.ndarray): Numpy array of convergence kernel values of shape (n_bins, n_z)
++        """
++        Omega_m0 = self.background.Omega_m(0.0)
++        factor = (
++            3
++            / 2
++            * (self.background.H0 / c_0) ** 2
++            * Omega_m0
++            * (1 + z)
++            * self.background.comoving_distance(z)
++        )
++        efficiency = self.get_lensing_efficiency(z)
++        return np.einsum("ij, j->ij", efficiency, factor)
++
++    def get_window(self, z) -> np.ndarray:
++        """
++        Compute the angular GW weak-lensing window function.
++
++        Parameters:
++          z (np.ndarray): Redshift grid at which the window kernel is being evaluated.
++
++        Returns:
++          window (np.ndarray): GW weak-lensing windows with shape
++            `(n_bins, n_z)`.
++        """
++        total_window = sum(c.compute_kernel(z) for c in self.get_contributions())
++        return total_window
+diff --git a/cloelib/observables/halos/__init__.py b/cloelib/observables/halos/__init__.py
+new file mode 100644
+index 0000000..8c27d54
+--- /dev/null
++++ b/cloelib/observables/halos/__init__.py
+@@ -0,0 +1,3 @@
++"""Modules relative to galaxy clusters"""
++
++__version__ = "1.10.2"
+diff --git a/cloelib/observables/halos/halo_abundance/__init__.py b/cloelib/observables/halos/halo_abundance/__init__.py
+new file mode 100644
+index 0000000..5d46342
+--- /dev/null
++++ b/cloelib/observables/halos/halo_abundance/__init__.py
+@@ -0,0 +1,11 @@
++from .castro_halo_abundance import CastroHaloAbundance
++from .halo_abundance import HaloAbundance
++from .halo_abundance_base import HaloAbundanceBase
++from .tinker_halo_abundance import TinkerHaloAbundance
++
++__all__ = [
++    "CastroHaloAbundance",
++    "HaloAbundance",
++    "HaloAbundanceBase",
++    "TinkerHaloAbundance",
++]
+diff --git a/cloelib/observables/halos/halo_abundance/castro_halo_abundance.py b/cloelib/observables/halos/halo_abundance/castro_halo_abundance.py
+new file mode 100644
+index 0000000..94c7d2c
+--- /dev/null
++++ b/cloelib/observables/halos/halo_abundance/castro_halo_abundance.py
+@@ -0,0 +1,151 @@
++import numpy as np
++from scipy import interpolate
++from scipy.special import gamma
++
++
++from .halo_abundance_base import HaloAbundanceBase
++
++
++class CastroHaloAbundance(HaloAbundanceBase):
++    """
++    Class implementing the Castro et al. mass abundance models.
++
++    Castro et al. followed the cold dark matter
++    prescription by Costanzi+13 (https://arxiv.org/abs/1311.1514) and
++    Castorina+13 (https://arxiv.org/pdf/1311.1212). That is, the halo mass function
++    and halo bias do not include the massive neutrino contribution in the
++    computation of mass variance, power spectrum, and overdensity.
++    """
++
++    # For sanity checks in summary_statistics
++    @property
++    def overdensity_type(self):
++        return "vir"
++
++    def f_sigma_nu(self, z, M):
++        r"""
++        Computation of the multiplicity function.
++
++        Computes the Castro et al. (2023) multiplicity function
++        at the requested redshift and mass points. Valid only for
++        virial overdensities.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        f_sigma_nu: numpy.ndarray
++            f_sigma_nu[i,j], where i is the redshift axis and j the mass axis
++        """
++        # compute inputs
++        Omega_m = self.halo_model_properties.background.Omega_cb(z)
++        dlnsigmadlnM = self.dlns_dlnM(z, M)
++        nu = self.nu_z_M(z, M)
++
++        ##################
++        # HMF computations
++        ##################
++
++        a1 = 0.7962
++        a2 = 0.1449
++        az = -0.0658
++        p1 = -0.5612
++        p2 = -0.4743
++        q1 = 0.3688
++        q2 = -0.2804
++        qz = 0.0251
++
++        # Compute main quantities
++        dlnsigmadlnR = 3 * dlnsigmadlnM
++
++        aR = a1 + a2 * (dlnsigmadlnR + 0.6125) ** 2.0
++        a = aR * Omega_m[:, np.newaxis] ** az
++        p = p1 + p2 * (dlnsigmadlnR + 0.5)
++        qR = q1 + q2 * (dlnsigmadlnR + 0.5)
++        q = qR * Omega_m[:, np.newaxis] ** qz
++        A = 1.0 / (
++            2.0 ** (-0.5 - p + q / 2.0)
++            / np.sqrt(np.pi)
++            * (2.0**p * gamma(q / 2.0) + gamma(-p + q / 2.0))
++        )
++
++        return (
++            A
++            * np.sqrt(2.0 * a / (np.pi))
++            * np.exp(-a * nu**2.0 / 2.0)
++            * (1.0 + 1.0 / (a * nu**2.0) ** p)
++            * (nu * np.sqrt(a)) ** (q - 1.0)
++        ) * nu
++
++    def bias(self, z, M):
++        r"""
++        Computation of the halo bias.
++
++        Computes the Castro et al. (2024) halo bias
++        at the requested redshift and mass points. Valid only
++        for virial overdensities.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun
++
++        Returns
++        -------
++        bias: numpy.ndarray
++            bias[i,j], where i is the redshift axis and j the mass axis
++
++        Notes
++        -------
++        If the mass array has less than 4 entries, this causes problem with the derivative
++        """
++        # Format mass shape
++        if not hasattr(M, "__len__"):
++            M = [M]
++        M = np.asarray(M)
++        lenM_orig = M.size
++        if lenM_orig < 4:
++            M = np.append(M, M[-1] * np.arange(2, 6))
++
++        # compute inputs
++        Omega_m = self.halo_model_properties.background.Omega_cb(z)
++        delta_c = self.delta_c(z)
++        dlnsigmadlnM = self.dlns_dlnM(z, M)
++        nu = self.nu_z_M(z, M)
++
++        ###################
++        # Bias computations
++        ###################
++
++        # Compute main quantities
++        dlnsigmadlnR = 3 * dlnsigmadlnM
++        fsigmanu = self.f_sigma_nu(z, M)
++        S8 = self.sigma8_0 * np.sqrt(self.halo_model_properties.Omega_cb_0 / 0.3)
++
++        dlnfsigmanu_dlnnu = np.zeros(fsigmanu.shape)
++        for i in range(len(Omega_m)):
++            fsigmanu_int = interpolate.splrep(np.log(nu[i]), np.log(fsigmanu[i]), s=0)
++            dlnfsigmanu_dlnnu[i] = interpolate.splev(np.log(nu[i]), fsigmanu_int, der=1)
++
++        # parameters
++        A0, a1, b1, b2, c1 = 1.150, 0.0929, 0.256, 0.173, -0.0372
++        b_pbs = 1 - 1 / delta_c[:, np.newaxis] * dlnfsigmanu_dlnnu
++        f0 = 1 + a1 * Omega_m[:, np.newaxis]
++        f1 = 1 + b1 * dlnsigmadlnR + b2 * dlnsigmadlnR**2
++        f2 = 1 + c1 * S8
++
++        # bias
++        bias = A0 * f0 * f1 * f2 * b_pbs
++
++        # original mass array size
++        if lenM_orig < len(M):
++            bias = bias[:, :lenM_orig]
++
++        return bias
+diff --git a/cloelib/observables/halos/halo_abundance/halo_abundance.py b/cloelib/observables/halos/halo_abundance/halo_abundance.py
+new file mode 100644
+index 0000000..7272315
+--- /dev/null
++++ b/cloelib/observables/halos/halo_abundance/halo_abundance.py
+@@ -0,0 +1,22 @@
++"""
++- Introducing a protocol for the halo statistics part that we might have many versions of it.
++"""
++
++# General imports
++from typing import Protocol, TypeVar, Union, runtime_checkable
++
++import jax.numpy as jnp
++import numpy as np
++
++T = TypeVar("T", bound=Union[jnp.ndarray, np.ndarray])
++
++
++@runtime_checkable
++class HaloAbundance(Protocol):
++    def f_sigma_nu(self, z: T, M: T) -> T:
++        r"""Computes the halo multiplicity function."""
++        ...
++
++    def bias(self, z: T, M: T) -> T:
++        r"""Computes the halo bias."""
++        ...
+diff --git a/cloelib/observables/halos/halo_abundance/halo_abundance_base.py b/cloelib/observables/halos/halo_abundance/halo_abundance_base.py
+new file mode 100644
+index 0000000..0b436d0
+--- /dev/null
++++ b/cloelib/observables/halos/halo_abundance/halo_abundance_base.py
+@@ -0,0 +1,338 @@
++import numpy as np
++from scipy.integrate import simpson
++
++from cloelib.cosmology import derived_cosmology
++from cloelib.auxiliary.halo_helpers import (
++    tabulated_return,
++    tophat_window,
++    tophat_window_derivative,
++)
++from cloelib.observables.halos.halo_model_properties import HaloModelProperties
++
++
++class HaloAbundanceBase:
++    def __init__(
++        self,
++        halo_model_properties: HaloModelProperties,
++    ):
++        r"""Auxiliary class computing quantities used in halo mass function and halo bias models.
++
++        Initialize the class with given perturbations and overdensity definition.
++
++        Parameters
++        ----------
++        halo_model_properties : HaloModelProperties
++            An object from the `HaloModelProperties` class.
++        """
++        self.halo_model_properties = halo_model_properties
++
++        # to avoid recomputing sigma & dsigmadlnM
++        self._tabulated_sigma = {
++            "inputs": {
++                "M": None,
++                "z": None,
++            },
++            "values": None,
++        }
++        self._tabulated_dlnsigmadlnM = {
++            "inputs": {
++                "M": None,
++                "z": None,
++            },
++            "values": None,
++        }
++
++        # internal value of sigma8
++        self.__sigma8_0 = None
++
++    @property
++    def sigma8_0(self):
++        r"""Returns the `sigma_8` value at redshift `z=0`. If `sigma_8`
++        is not set as a base parameter, it is computed from the power spectrum.
++        The contribution from massive neutrinos is not included in the power
++        spectrum.
++        """
++        if self.__sigma8_0 is None:
++            self.__sigma8_0 = self.sigma_z_R([0.0], np.array([8.0]))
++        return self.__sigma8_0
++
++    def dn_dm_fsigmanu(self, z, M, fsigmanu):
++        r"""Derivative of the number density with pre-computed
++        halo mass function.
++
++        Computes the derivative of the number density
++        at the requested redshift and mass points. This implementation follows
++        the cold dark matter prescription by Costanzi+13 (https://arxiv.org/abs/1311.1514).
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++        fsigmanu: numpy.ndarray
++            Multiplicity function.
++
++        Returns
++        -------
++        dn_dm: numpy.ndarray
++            dn_dm[i,j], where i is the redshift axis and j the mass axis.
++            Units: h^4 Mpc^{-3} Ms^{-1}.
++        """
++        rho_mean_0 = self.halo_model_properties.Omega_cb_0 * derived_cosmology.rho_crit(
++            self.halo_model_properties.background, 0.0
++        )
++        rho_mean_0 /= self.halo_model_properties.background.h**2.0
++
++        return -rho_mean_0 / M**2.0 * fsigmanu * self.dlns_dlnM(z, M)
++
++    def window(self, k, R):
++        r"""Top-hat window and its derivative.
++
++        Computes the top-hat window function and its derivative.
++
++        Parameters
++        ----------
++        k: numpy.ndarray
++               Wavenumber where W(kR) is evaluated.
++               Units: h Mpc^{-1}
++        R: numpy.ndarray
++               Radius where W(kR) is evaluated.
++               Units: h^{-1} Mpc
++
++        Returns
++        -------
++        W: numpy.ndarray
++            W[i,j], where i is the wavenumber axis and j the radius axis
++        dWdx: numpy.ndarray
++            dWdx[i,j], where i is the wavenumber axis and j the radius axis
++        """
++        kr = k * R[:, np.newaxis]
++        return tophat_window(kr), tophat_window_derivative(kr)
++
++    def radius_M(self, M):
++        r"""Radius from a mass.
++
++        Converts a mass into a radius. This implementation follows
++        the cold dark matter prescription by Costanzi+13 (https://arxiv.org/abs/1311.1514).
++
++        Parameters
++        ----------
++        M: numpy.ndarray
++            Mass in h^{-1} Msun
++
++        Returns
++        -------
++        radius_M: array
++            Radius in h^{-1} Mpc
++        """
++        rho_m_0 = (
++            derived_cosmology.rho_crit(self.halo_model_properties.background, 0.0)
++            * self.halo_model_properties.Omega_cb_0
++            / self.halo_model_properties.background.h**2.0
++        )
++        return (M / rho_m_0 * (3.0 / (4.0 * np.pi))) ** (1 / 3.0)
++
++    def sigma_z_R(self, z, R):
++        r"""Standard deviation of perturbations given a redshift and radius.
++
++        Computes the rms at the radii requested from
++        the table given by the Boltzman code.
++        The contribution from massive neutrinos is not included in the power
++        spectrum.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        R: numpy.ndarray
++            Radius points in h^{-1} Mpc.
++
++        Returns
++        -------
++        sigma_z_R: numpy.ndarray
++            sigma_z_R[i,j], where i is the redshift axis and j the radius axis.
++        """
++        k = self.halo_model_properties.k  # h/Mpc
++        W, _ = self.window(k, R)
++        return np.sqrt(
++            (
++                1
++                / (2.0 * np.pi**2)
++                * simpson(
++                    (k**2.0).reshape(1, 1, len(k))
++                    * self.halo_model_properties.matter_power_spectrum_cb(z, k).reshape(
++                        len(z), 1, len(k)
++                    )
++                    * (W**2.0).reshape(1, len(R), len(k)),
++                    x=k,
++                    axis=-1,
++                )
++            )
++        )
++
++    def sigma_z_M(self, z, M):
++        r"""Standard deviation of perturbations given a redshift and mass.
++
++        Computes the rms at the masses requested from
++        the table given by the Boltzman code.
++        The contribution from massive neutrinos is not included in the power
++        spectrum.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        sigma_z_M: numpy.ndarray
++            sigma_z_M[i,j], where i is the redshift axis and j the mass axis.
++        """
++        return tabulated_return(
++            self._tabulated_sigma,
++            lambda z, M: self.sigma_z_R(z, self.radius_M(M)),
++            {"z": z, "M": M},
++        )
++
++    def delta_c(self, z):
++        r"""Critical overdensity.
++
++        Computes the critical overdensity at a given redshift
++        following an approximation from Kitayama & Suto (1999).
++        The contribution from massive neutrinos is not included in the
++        matter density parameter.
++
++        Parameters
++        ----------
++        z: float or np.ndarray
++            Redshift at which to evaluate the delta_c
++
++        Returns
++        -------
++        delta_c:  float or numpy.ndarray
++            Value of the critical overdensity a given redshift.
++        """
++        return (
++            3.0
++            / 20.0
++            * (12.0 * np.pi) ** (2.0 / 3.0)
++            * (
++                1.0
++                + 0.012299 * np.log10(self.halo_model_properties.background.Omega_cb(z))
++            )
++        )
++
++    def nu_z_M(self, z, M):
++        r"""Peak height.
++
++        Computes the critical overdensity over the rms,
++        delta_c/sigma, at a given redshift and mass.
++        The contribution from massive neutrinos is not included in the power
++        spectrum and in the matter density parameter.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points.
++
++        Returns
++        -------
++        nu_z_M: numpy.ndarray
++            nu_z_M[i,j], where i is the redshift axis and j the mass axis.
++        """
++        return self.delta_c(z)[:, np.newaxis] / self.sigma_z_M(z, M)
++
++    def _dlns_dlnM(self, z, M):
++        """Core computation for derivative of the logarithmic rms.
++        see dlns_dlnM for complete docstrings.
++        """
++        k = self.halo_model_properties.k  # h/Mpc
++        R = self.radius_M(M)  # Mpc/h
++        W, dWdx = self.window(k, R)
++        dsigma2_dlnR = (
++            R
++            * np.pi**-2
++            * simpson(
++                k.reshape(1, 1, len(k)) ** 3
++                * self.halo_model_properties.matter_power_spectrum_cb(z, k).reshape(
++                    len(z), 1, len(k)
++                )
++                * W.reshape(1, len(R), len(k))
++                * dWdx.reshape(1, len(R), len(k)),
++                x=k,
++                axis=-1,
++            )
++        )
++        dsigma2_dlnM = dsigma2_dlnR / 3
++        sigma = self.sigma_z_M(z, M)
++
++        return dsigma2_dlnM / (2 * sigma**2)
++
++    def dlns_dlnM(self, z, M):
++        r"""Derivative of the logarithmic rms.
++
++        Computes the derivative of the ln rms
++        with respect to the ln of mass
++        at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        dlns_dlnM: numpy.ndarray
++            dlns_dlnM[i,j], where i is the redshift axis and j the mass axis.
++        """
++        return tabulated_return(
++            self._tabulated_dlnsigmadlnM,
++            self._dlns_dlnM,
++            {"z": z, "M": M},
++        )
++
++    def dn_dm(self, z, M):
++        r"""Derivative of the number density.
++
++        Computes the derivative of the number density
++        at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        dn_dm: numpy.ndarray
++            dn_dm[i,j], where i is the redshift axis and j the mass axis.
++            Units: h^4 Mpc^{-3} Ms^{-1}.
++        """
++        return self.dn_dm_fsigmanu(z, M, self.f_sigma_nu(z, M))
++
++    def f_sigma_nu(self, z, M):
++        r"""
++        Computation of the multiplicity function.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        f_sigma_nu: numpy.ndarray
++            f_sigma_nu[i,j], where i is the redshift axis and j the mass axis
++        """
++        raise NotImplementedError("Function not implemented in base function")
+diff --git a/cloelib/observables/halos/halo_abundance/tinker_halo_abundance.py b/cloelib/observables/halos/halo_abundance/tinker_halo_abundance.py
+new file mode 100644
+index 0000000..a885a0e
+--- /dev/null
++++ b/cloelib/observables/halos/halo_abundance/tinker_halo_abundance.py
+@@ -0,0 +1,101 @@
++import numpy as np
++
++from cloelib.auxiliary.halo_helpers import convert_to_Delta_crit
++from cloelib.observables.halos.halo_model_properties import HaloModelProperties
++
++from .halo_abundance_base import HaloAbundanceBase
++
++
++class TinkerHaloAbundance(HaloAbundanceBase):
++    """
++    Class implementing the Tinker et al. mass abundance models.
++
++    Following the cold dark matter
++    prescription by Costanzi+13 (https://arxiv.org/abs/1311.1514) and
++    Castorina+13 (https://arxiv.org/pdf/1311.1212), the halo mass function
++    and halo bias do not include the massive neutrino contribution in the
++    computation of mass variance, power spectrum, and overdensity.
++    """
++
++    def __init__(
++        self,
++        halo_model_properties: HaloModelProperties,
++        overdensity_type: str = "vir",
++        overdensity: int = 200,
++    ):
++        HaloAbundanceBase.__init__(self, halo_model_properties)
++        self.overdensity_type = overdensity_type
++        self.overdensity = overdensity
++
++    def f_sigma_nu(self, z, M):
++        r"""
++        Computation of the multiplicity function.
++
++        Computes the Tinker et al. (2008) multiplicity function
++        at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        f_sigma_nu: numpy.ndarray
++            f_sigma_nu[i,j], where i is the redshift axis and j the mass axis
++        """
++        raise NotImplementedError
++
++    def bias(self, z, M):
++        r"""
++        Computation of the halo bias.
++
++        Computes the Tinker et al. (2010) halo bias
++        at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun
++
++        Returns
++        -------
++        bias: numpy.ndarray
++            bias[i,j], where i is the redshift axis and j the mass axis
++        """
++        # compute inputs
++        delta_c = self.delta_c(z)
++        nu = self.nu_z_M(z, M)
++        Delta = convert_to_Delta_crit(
++            self.overdensity_type,
++            self.overdensity,
++            self.halo_model_properties.background,
++            z,
++        ) / self.halo_model_properties.background.Omega_cb(z)
++
++        ###################
++        # Bias computations
++        ###################
++
++        # parameters
++        p = [1.0, 0.24, 0.44, 0.88, 0.183, 1.5, 0.019, 0.107, 0.19, 2.4]
++        y = np.log10(Delta)
++        A_par = p[0] + p[1] * y * np.e ** (-((4.0 / y) ** 4))
++        a_par = p[2] * y - p[3]
++        B_par = p[4]
++        b_par = p[5]
++        C_par = p[6] + p[7] * y + p[8] * np.e ** (-((4.0 / y) ** 4))
++        c_par = p[9]
++
++        # bias
++        _nu = nu.T
++        return (
++            1.0
++            - A_par * _nu**a_par / (_nu**a_par + delta_c**a_par)
++            + B_par * _nu**b_par
++            + C_par * _nu**c_par
++        ).T
+diff --git a/cloelib/observables/halos/halo_model_properties.py b/cloelib/observables/halos/halo_model_properties.py
+new file mode 100644
+index 0000000..c895322
+--- /dev/null
++++ b/cloelib/observables/halos/halo_model_properties.py
+@@ -0,0 +1,343 @@
++import numpy as np
++from scipy import interpolate
++from scipy.integrate import quad_vec
++from scipy.special import j0, j1
++import importlib
++
++from cloelib.auxiliary.halo_helpers import convert_distance
++
++from cloelib.cosmology import derived_cosmology
++from cloelib.cosmology.cosmology import Perturbations
++
++# Get classes for verification of units argument
++
++modules_and_functions = {
++    "cloelib.cosmology.class_cosmology": (
++        "CLASSLinearPerturbations",
++        "CLASSNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.camb_cosmology": (
++        "CAMBLinearPerturbations",
++        "CAMBNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.jax_cosmology": (
++        "JAXLinearPerturbations",
++        "JAXNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.HMcode2020Emu_cosmology": (
++        "HMemuLinearPerturbations",
++        "HMemuNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.mochi_class_cosmology": (
++        "mochiCLASSLinearPerturbations",
++        "mochiCLASSNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.hi_class_cosmology": (
++        "hi_classLinearPerturbations",
++        "hi_classNonLinearPerturbations",
++    ),
++    "cloelib.cosmology.mgclass_cosmology": (
++        "MGCLASSLinearPerturbations",
++        "MGCLASSNonLinearPerturbations",
++    ),
++}
++
++_COSMOLOGY_TYPES_WITH_UNITS = ()
++for module_name, cosmo_classes in modules_and_functions.items():
++    try:
++        module = importlib.import_module(module_name)
++
++        for cosmo_class in cosmo_classes:
++            _COSMOLOGY_TYPES_WITH_UNITS = (
++                *_COSMOLOGY_TYPES_WITH_UNITS,
++                getattr(module, cosmo_class),
++            )
++    except ImportError:
++        pass
++
++
++def _bessel_j2(x):
++    """Bessel function j2"""
++    return 2.0 / x * j1(x) - j0(x)
++
++
++class HaloModelProperties:
++    def __init__(
++        self,
++        perturbations: Perturbations,
++        interpolate_pk: bool = True,
++        interpolate_da: bool = True,
++        z=np.linspace(1.0e-5, 2.0 - 1.0e-5, 100),
++        k=np.geomspace(1e-4, 10, 500),
++    ):
++        r"""Auxiliary class computing quantities used in galaxy cluster models.
++
++        Initialize the class with given perturbations and overdensity definition.
++        If requested, cosmological functions (e.g., the matter power spectrum)
++        are interpolated.
++
++        Parameters
++        ----------
++        perturbations : Perturbations
++            An object from the `LinearPerturbations` class containing cosmological
++            perturbation data (e.g., power spectrum, growth function).
++        interpolate_pk : bool, optional
++            If true, the class interpolates the matter power spectrum.
++            A default interpolation is set when class is instanciated with
++            interpolate_pk=True. For a more customized interpolation, check
++            the set_matter_power_spectrum_interpolation function.
++        interpolate_da : bool, optional
++            If true, the class interpolates the angular diameter distance.
++            A default interpolation is set when class is instanciated with
++            interpolate_da=True. For a more customized interpolation, check
++            the set_angular_diameter_distance_interpolation function.
++
++        Notes
++        ----------
++        In the current implementation, the matter power spectrum never includes
++        the contribution of massive neutrinos. Halo mass function, halo bias, and
++        2-halo profile models implemented in this subpackage require
++        cold dark matter + baryons (no neutrinos) power spectra.
++        """
++        self.perturbations = perturbations
++        self.k = k
++
++        # Interpolators
++        self.Pk_interp_cb = None
++        self.da_interp = None
++
++        # set P(k) interpolation usage
++        if interpolate_pk:
++            self.set_matter_power_spectrum_interpolation(z, self.k)
++        self.interpolate_pk = interpolate_pk
++
++        # set angular diameter distance interpolation usage
++        if interpolate_da:
++            self.set_angular_diameter_distance_interpolation(z)
++        self.interpolate_da = interpolate_da
++
++        # Density parameters at z=0
++        self.Omega_m_0 = self.background.Omega_m(0.0)
++        self.Omega_cb_0 = self.background.Omega_cb(0.0)
++        self.Omega_b_0 = self.background.Omega_b(0.0)
++
++    @property
++    def background(self):
++        r"""Returns the Background class instance"""
++        return self.perturbations.background
++
++    def angular_diameter_distance(self, z):
++        """
++        Return the angular diameter distance as a function of redshift.
++
++        Parameters
++        ----------
++        z : np.ndarray
++            Array of redshifts.
++
++        Returns
++        -------
++        np.ndarray
++            Angular diameter distance values.
++        """
++        if self.interpolate_da:
++            _angular_diameter_distance_func = self.da_interp
++        else:
++            _angular_diameter_distance_func = self.background.angular_diameter_distance
++        if _angular_diameter_distance_func is None:
++            raise ValueError(
++                "Cosmology not instanciated, matter power spectrum function is None!"
++            )
++        return _angular_diameter_distance_func(z)
++
++    def matter_power_spectrum_cb(self, z, k):
++        r"""Computes the non interpolated matter power spectrum.
++
++        This function computes the cold dark matter + baryons power spectrum,
++        not including the massive neutrino contribution.
++
++        Parameters
++        ----------
++        z: float or np.ndarray
++            Redshift.
++        k: float or np.ndarray
++            Wavenumber where W(kR) is evaluated.
++            Units: h Mpc^{-1}
++
++        Returns
++        -------
++        float or np.ndarray
++            Matter power spectrum.
++        """
++        if self.interpolate_pk:
++            _matter_power_spectrum_cb_func = self.Pk_interp_cb
++        else:
++            _matter_power_spectrum_cb_func = self._matter_power_spectrum_cb_exact
++        if _matter_power_spectrum_cb_func is None:
++            raise ValueError(
++                "Cosmology not instanciated, matter power spectrum function is None!"
++            )
++        return _matter_power_spectrum_cb_func(z, k)
++
++    def _matter_power_spectrum_cb_exact(self, z, k):
++        r"""Computes the non interpolated matter power spectrum.
++
++        Just as wrapper of self.perturbations.matter_power_spectrum_cb
++        """
++        _kwargs = {}
++        if isinstance(
++            self.perturbations,
++            _COSMOLOGY_TYPES_WITH_UNITS,
++        ):
++            _kwargs = {
++                "hubble_units": True,
++                "k_hunit": True,
++            }
++        return self.perturbations.matter_power_spectrum_cb(z, k, **_kwargs)
++
++    def set_matter_power_spectrum_interpolation(self, z, k):
++        r"""Create internal interpolation of matter power spectrum.
++
++        This function interpolates the cold dark matter + baryons power spectrum,
++        not including the massive neutrino contribution.
++
++        Parameters
++        ----------
++        z: float or np.ndarray
++            Redshift.
++        k: float or np.ndarray
++            Wavenumber where W(kR) is evaluated.
++            Units: h Mpc^{-1}
++        """
++        # Power spectrum interpolation
++        self.Pk_interp_cb = interpolate.RectBivariateSpline(
++            z,
++            k,
++            self._matter_power_spectrum_cb_exact(z, k),
++        )
++
++    def set_angular_diameter_distance_interpolation(self, z):
++        r"""Create internal interpolation of angular diameter distance.
++
++        Parameters
++        ----------
++        z: float or np.ndarray
++            Redshift.
++        """
++        self.da_interp = interpolate.InterpolatedUnivariateSpline(
++            x=z,
++            y=self.background.angular_diameter_distance(z),
++            ext=2,
++        )
++
++    def _generic_mass_density_2h(self, R, z, bessel_function, radius_units="Mpc/h"):
++        r"""
++        Surface or excess surface 2-halo density profile.
++
++        Computes either the cosmological unbiased surface or excess surface
++        (depending on the input Bessel function) 2-halo density profile.
++
++        Parameters
++        ----------
++        R: np.ndarray
++            Radial points (units : Mpc / h)
++        z: np.ndarray
++            Redshift.
++        bessel_function: function
++            Bessel function that goes in the integrand with the power spectrum.
++            Used to return the surface density or the excess surface density.
++            It should take (ll*theta) as input.
++
++        Returns
++        -------
++        profile: np.ndarray
++            2-halo surface mass density profile (units : h * Msun / pc**2).
++            Shape: (z.size, R.size).
++        """
++        # Calculate all redshift base quantities and shape them (nz, 1)
++        z_plus_1 = np.asarray(z)[:, np.newaxis] + 1.0
++        D_A = self.angular_diameter_distance(z)[:, np.newaxis] * self.background.h
++        rho_m = (
++            self.background.Omega_m(z)
++            * derived_cosmology.rho_crit(self.background, z)
++            / self.background.h**2
++        )[:, np.newaxis]
++
++        ## 1. Get radial distance in radians
++        theta = convert_distance(R, radius_units, "radians", D_A)
++        if radius_units.lower() != "mpc/h":
++            # in this case, theta was missing z dimension
++            theta = theta[np.newaxis, :]
++
++        ## 2. Integrand function
++        def integrand(kl):
++            ll = kl * z_plus_1 * D_A
++            Pk_vals = self.matter_power_spectrum_cb(z, kl)
++            return bessel_function(ll * theta) * ll * Pk_vals
++
++        ## 3. Integration
++        two_point_corr = (
++            quad_vec(integrand, self.k.min(), self.k.max(), epsrel=1e-1)[0]
++            * z_plus_1
++            * D_A
++        )
++
++        # Final strictly 2D calculation
++        profile = (1.0e-12 * rho_m * two_point_corr) / (
++            2.0 * np.pi * z_plus_1**3.0 * D_A**2.0
++        )
++
++        return profile
++
++    def surface_mass_density_2h(self, R, z, radius_units="Mpc/h"):
++        r"""
++        Surface 2-halo matter density profile.
++
++        Computes the cosmological unbiased surface 2-halo density profile at radius R.
++
++        Parameters
++        ----------
++        R: np.ndarray
++            Radial points (units : Mpc / h)
++        z: np.ndarray
++            Redshift.
++        radius_units: str
++            Unit for the input radius. Accepted values are:
++            "Mpc/h", "radians", "degrees", "arcmin", "arcsec".
++
++        Returns
++        -------
++        Sigma: np.ndarray
++            2-halo surface mass density profile (units : h * Msun / pc**2).
++            Shape: (z.size, R.size).
++        """
++        return self._generic_mass_density_2h(
++            R, z, bessel_function=j0, radius_units=radius_units
++        )
++
++    def excess_surface_mass_density_2h(self, R, z, radius_units="Mpc/h"):
++        r"""
++        Excess surface 2-halo matter density profile.
++
++        Computes the cosmological unbiased excess surface 2-halo
++        density profile at radius R.
++
++        Parameters
++        ----------
++        R: np.ndarray
++            Radial points (units : Mpc / h)
++        z: np.ndarray
++            Redshift.
++        radius_units: str
++            Unit for the input radius. Accepted values are:
++            "Mpc/h", "radians", "degrees", "arcmin", "arcsec".
++
++        Returns
++        -------
++        DeltaSigma: np.ndarray
++            2-halo surface mass density profile (units : h * Msun / pc**2).
++            Shape: (z.size, R.size).
++        """
++        return self._generic_mass_density_2h(
++            R, z, bessel_function=_bessel_j2, radius_units=radius_units
++        )
+diff --git a/cloelib/observables/photo/contributions.py b/cloelib/observables/photo/contributions.py
+index f914d3e..3ed671d 100644
+--- a/cloelib/observables/photo/contributions.py
++++ b/cloelib/observables/photo/contributions.py
+@@ -1,7 +1,7 @@
+ from typing import Protocol, TypeVar, Union
+ 
+-import numpy as np  # type: ignore
+-import jax.numpy as jnp  # type: ignore
++import numpy as np
++import jax.numpy as jnp
+ 
+ T = TypeVar("T", bound=Union[jnp.ndarray, np.ndarray])
+ 
+diff --git a/cloelib/observables/photo/positions.py b/cloelib/observables/photo/positions.py
+index 9385fb8..fde93ff 100644
+--- a/cloelib/observables/photo/positions.py
++++ b/cloelib/observables/photo/positions.py
+@@ -55,10 +55,11 @@ from cloelib.observables.photo.spectrum_engine import (
+ )
+ 
+ # General imports
+-import jax.numpy as np  # type: ignore
+-import jax.numpy as jnp  # type: ignore
+-import jax  # type: ignore
+-import interpax  # type: ignore
++from typing import Callable, Protocol
++import jax.numpy as np
++import jax.numpy as jnp
++import jax
++import interpax
+ import jax.lax as lx
+ import numpy as _numpy
+ from scipy import interpolate as _scipy_interpolate
+@@ -198,6 +199,15 @@ class MagnificationContribution:
+         return self._tracer.get_window_magnification(z)
+ 
+ 
++class NonlinearBiasLoopComputer(Protocol):
++    """Interface of the one-loop galaxy-bias kernel providers used by
++    `NonLinearGalaxyBiasContribution`: `compute(name)` returns a callable
++    `(matter_pk, ks, zs) -> kernel` for each name in `_NLBIAS_KERNELS`.
++    `PBJNonlinearBiasLoopComputer` is the production implementation."""
++
++    def compute(self, name: str) -> Callable: ...
++
++
+ class PBJNonlinearBiasLoopComputer:
+     r"""FAST-PT-backed computer for the seven McDonald & Roy (2009) one-loop
+     galaxy-bias kernels used by `NonLinearGalaxyBiasContribution`.
+@@ -441,7 +451,7 @@ class NonLinearGalaxyBiasContribution:
+         self,
+         tracer: "PositionsTracer",
+         b1: np.ndarray,
+-        loop_computer: object,
++        loop_computer: "NonlinearBiasLoopComputer",
+         b2: np.ndarray,
+         bs2: np.ndarray,
+         b3nl: np.ndarray,
+@@ -492,8 +502,8 @@ class NonLinearGalaxyBiasContribution:
+         if cached is not None and cached[0] is zs:
+             return cached[1]
+         ks = getattr(self._tracer.perturbations, "k", None)
+-        d_raw = self._tracer.perturbations.growth_factor(zs, ks)
+-        d = d_raw[:, 1] if getattr(d_raw, "ndim", 1) == 2 else d_raw
++        d_raw = np.asarray(self._tracer.perturbations.growth_factor(zs, ks))
++        d = d_raw[:, 1] if d_raw.ndim == 2 else d_raw
+         result = d**4
+         self._growth4_cache = (zs, result)
+         return result
+@@ -625,7 +635,7 @@ class PositionsTracer:
+         galaxy_bias_model: str,
+         nuisance_params: dict,
+         include_rsd: bool = False,
+-        nl_bias_loop_computer: object | None = None,
++        nl_bias_loop_computer: "NonlinearBiasLoopComputer | None" = None,
+     ):
+         r"""
+         Initialize the class instance.
+@@ -804,9 +814,14 @@ class PositionsTracer:
+           window_positions (numpy.ndarray): Window function for angular photometric galaxy clustering
+         """
+ 
++        bias_array = self.bias_array
++        assert bias_array is not None, (
++            "get_window_positions is not used with galaxy_bias_model='nonlinear'"
++        )
++
+         def per_bin_case():
+             window = (
+-                self.bias_array[: self.n_z_bins, None]
++                bias_array[: self.n_z_bins, None]
+                 * self.dndz_shifted
+                 * self.perturbations.background.hubble_parameter(z)
+                 / c_0
+@@ -815,7 +830,7 @@ class PositionsTracer:
+ 
+         def z_func_case():
+             window = (
+-                self.bias_array[None, :]
++                bias_array[None, :]
+                 * self.dndz_shifted
+                 * self.perturbations.background.hubble_parameter(z)
+                 / c_0
+diff --git a/cloelib/observables/photo/shear.py b/cloelib/observables/photo/shear.py
+index 251da7e..de0e89d 100644
+--- a/cloelib/observables/photo/shear.py
++++ b/cloelib/observables/photo/shear.py
+@@ -44,7 +44,7 @@ See `CONTRIBUTION_ARCHITECTURE.md` for the design this all
+ follows.
+ """
+ 
+-from typing import Dict, Optional
++from typing import Any, Callable, Dict, Optional, Protocol
+ 
+ # cloelib imports
+ from cloelib.auxiliary.units import SPEED_OF_LIGHT
+@@ -62,10 +62,10 @@ from cloelib.observables.photo.spectrum_engine import (
+ )
+ 
+ # General imports
+-import jax.numpy as np  # type: ignore
+-import jax  # type: ignore
++import jax.numpy as np
++import jax
+ import jax.numpy as jnp
+-import interpax  # type: ignore
++import interpax
+ import numpy as _numpy
+ from scipy import interpolate as _scipy_interpolate
+ 
+@@ -146,6 +146,23 @@ def _is_known_linear_perturbations(perturbations) -> bool:
+     return name.endswith("LinearPerturbations") and "NonLinear" not in name
+ 
+ 
++class TATTLoopComputer(Protocol):
++    """Interface `TATTContribution` needs from its one-loop kernel backend.
++
++    `PBJTATTLoopComputer` is the production implementation; any other
++    object with these two members can be passed as `tatt_loop_computer`.
++    """
++
++    @property
++    def linear_perturbations(self) -> Perturbations:
++        """Linear perturbations used for the D(z) factors in C1/C2/D**4."""
++        ...
++
++    def compute(self, name: str) -> Callable[..., jnp.ndarray]:
++        """Return a `SpectrumRequest.compute` callable for kernel `name`."""
++        ...
++
++
+ class PBJTATTLoopComputer:
+     r"""FAST-PT-backed computer for the ten TATT one-loop kernels.
+ 
+@@ -272,9 +289,9 @@ class PBJTATTLoopComputer:
+ 
+         # Backend-dependent return shape for a length-1 `zs` (same class of
+         # inconsistency `_growth_factor_1d` already works around for
+-        # `growth_factor`): CAMB's `matter_power_spectrum` keeps an
+-        # explicit (1, n_k) z-axis, HMemu's `.squeeze()`s it away to (n_k,).
+-        # `reshape(-1)` normalizes either to the flat (n_k,) FAST-PT needs.
++        # `growth_factor`): most backends keep an explicit (1, n_k) z-axis,
++        # but not all are guaranteed to. `reshape(-1)` normalizes either to
++        # the flat (n_k,) FAST-PT needs.
+         p_lin_z0 = _numpy.reshape(
+             _numpy.asarray(
+                 self.linear_perturbations.matter_power_spectrum(
+@@ -412,7 +429,7 @@ class TATTContribution(IntrinsicAlignmentContribution):
+         A1: float,
+         A2: float,
+         b_TA: float,
+-        loop_computer: object,
++        loop_computer: TATTLoopComputer,
+         eta1: float = 0.0,
+         eta2: float = 0.0,
+         z0: float = 0.62,
+@@ -573,7 +590,7 @@ class ShearTracer:
+         z: np.ndarray,
+         nuisance_params: dict,
+         ia_model: "str | Contribution | None" = None,
+-        tatt_loop_computer: Optional[object] = None,
++        tatt_loop_computer: Optional[TATTLoopComputer] = None,
+     ):
+         r"""
+         Initialize the class instance.
+@@ -684,8 +701,18 @@ class ShearTracer:
+                 "inside get_window_IA rather than as a separate "
+                 "effective-Pk grid."
+             )
+-        ks = self.perturbations.k if ks is None else ks
+-        zs = self.perturbations.z if zs is None else zs
++        # `.k`/`.z` aren't part of the `Perturbations` protocol (see its
++        # docstring), so read them defensively and fail with a clear error.
++        if ks is None:
++            ks = getattr(self.perturbations, "k", None)
++        if zs is None:
++            zs = getattr(self.perturbations, "z", None)
++        if ks is None or zs is None:
++            raise ValueError(
++                "get_ia_effective_spectra() needs explicit ks/zs when "
++                f"{type(self.perturbations).__name__} does not expose its "
++                "own `.k`/`.z` grid."
++            )
+         matter_pk = self.perturbations.matter_power_spectrum(zs, ks)
+         return {
+             "II": compute_effective_pk(self.ia, self.ia, matter_pk, ks, zs),
+@@ -750,15 +777,7 @@ class ShearTracer:
+         """
+         Omega_m0 = self.background.Omega_m(0.0)
+         Hz = self.perturbations.background.hubble_parameter(z)
+-        # `growth_factor` is backend-dependent: some backends (e.g. CAMB)
+-        # return D(z, k) with an explicit k-axis; others (e.g. the JAX
+-        # backends) ignore `ks` entirely and return a scale-independent
+-        # D(z), and don't set a `.k` attribute at all. NLA treats growth as
+-        # ~scale-independent, so when a k-axis is present we pick a single
+-        # representative column (unchanged from the historical behavior);
+-        # when it isn't, the backend's own 1D D(z) is used directly.
+-        # TODO discuss whether we want growth factor to output a 1D or a 2D array
+-        ks = getattr(self.perturbations, "k", None)
++        ks: Any = getattr(self.perturbations, "k", None)
+         Dz_raw = self.perturbations.growth_factor(z, ks)
+         Dz = Dz_raw[:, 1] if getattr(Dz_raw, "ndim", 1) == 2 else Dz_raw
+         A_IA = self.nuisance_params["AIA"]
+diff --git a/cloelib/observables/photo/tracer.py b/cloelib/observables/photo/tracer.py
+index 3024ed0..2d0ab6c 100644
+--- a/cloelib/observables/photo/tracer.py
++++ b/cloelib/observables/photo/tracer.py
+@@ -5,8 +5,8 @@ from cloelib.cosmology.cosmology import Perturbations
+ 
+ # General imports
+ from typing import Protocol, Union, TypeVar
+-import numpy as np  # type: ignore
+-import jax.numpy as jnp  # type: ignore
++import numpy as np
++import jax.numpy as jnp
+ 
+ T = TypeVar("T", bound=Union[jnp.ndarray, np.ndarray])
+ 
+@@ -42,41 +42,8 @@ class Tracer(Protocol):
+     def prefact_toggle(self) -> int:
+         """Whether the spin-2-to-convergence Limber prefactor applies (1) or not (0).
+ 
+-        Required by `AngularTwoPoint.get_Cl`. `ShearTracer`/`CMBLensingTracer`
+-        set this to 1, `PositionsTracer` to 0.
+-        """
+-        ...
+-
+-    def _window_integrand(self, z: T, zprime: T) -> T:
+-        """
+-        Window integrand method.
+-
+-        Parameters
+-        ----------
+-        zprime: float or numpy.ndarray
+-            Redshift parameter that will be integrated over
+-        z: float
+-            Redshift at which kernel is being evaluated
+-
+-        Returns
+-        -------
+-        window_integrand: np.ndarray
+-        """
+-        ...
+-
+-    def _get_prefactor(self, ell: T) -> T:
+-        r"""
+-        Compute the needed prefactor in Limber approximation.
+-
+-        Parameters
+-        ----------
+-        ell: float or numpy.ndarray of float
+-           :math:`\ell`-mode(s) at which the prefactor is evaluated
+-
+-        Returns
+-        -------
+-        Pre-factor: float or numpy.ndarray of float
+-           Value(s) of the prefactor at the given :math:`\ell`
++        Required by `AngularTwoPoint.get_Cl`. `ShearTracer` sets this to 1,
++        `PositionsTracer`/`CMBLensingTracer` to 0.
+         """
+         ...
+ 
+diff --git a/cloelib/observables/spectro/CometEFT_spectro.py b/cloelib/observables/spectro/CometEFT_spectro.py
+index 69621af..1e966d2 100644
+--- a/cloelib/observables/spectro/CometEFT_spectro.py
++++ b/cloelib/observables/spectro/CometEFT_spectro.py
+@@ -5,11 +5,11 @@ from cloelib.cosmology.cosmology import Background
+ 
+ # General imports
+ from typing import Sequence
+-import numpy as np  # type: ignore
++import numpy as np
+ 
+ # Cosmology imports
+ try:
+-    from comet import comet  # type: ignore
++    from comet import comet
+ 
+     comet_inst = comet(model="EFT", use_Mpc=True, bias_basis="AssBauGre")
+ except ImportError:
+diff --git a/cloelib/observables/spectro/CometVDG_spectro.py b/cloelib/observables/spectro/CometVDG_spectro.py
+index cfef613..64c1028 100644
+--- a/cloelib/observables/spectro/CometVDG_spectro.py
++++ b/cloelib/observables/spectro/CometVDG_spectro.py
+@@ -5,11 +5,11 @@ from cloelib.cosmology.cosmology import Background
+ 
+ # General imports
+ from typing import Sequence
+-import numpy as np  # type: ignore
++import numpy as np
+ 
+ # Cosmology imports
+ try:
+-    from comet import comet  # type: ignore
++    from comet import comet
+ 
+     comet_inst = comet(model="VDG_infty", use_Mpc=True, bias_basis="AssBauGre")
+ except ImportError:
+diff --git a/cloelib/observables/spectro/PBJ_spectro.py b/cloelib/observables/spectro/PBJ_spectro.py
+index 233565e..a94b026 100644
+--- a/cloelib/observables/spectro/PBJ_spectro.py
++++ b/cloelib/observables/spectro/PBJ_spectro.py
+@@ -4,7 +4,8 @@
+ from cloelib.cosmology.cosmology import Perturbations
+ 
+ # General imports
+-import numpy as np  # type: ignore
++from typing import Protocol
++import numpy as np
+ 
+ try:
+     from pbjcosmo.theory import Theory
+@@ -14,6 +15,41 @@ except (ImportError, AttributeError, TypeError) as e:
+     raise ImportError(f"PBJ could not be imported or initialised: {e}")
+ 
+ 
++class PBJLinearPerturbations(Perturbations, Protocol):
++    """The `Perturbations` interface plus the extras `PBJSpectroPower` uses.
++
++    `.z`, `growth_factor_cb` and the `hubble_units`/`k_hunit` keywords of
++    `matter_power_spectrum(_cb)` are not part of `Perturbations` (not every
++    backend provides them), but the Boltzmann-code backends PBJ is used
++    with (CAMB, CLASS and variants) do.
++    """
++
++    @property
++    def z(self) -> np.ndarray:
++        """Redshift grid the linear quantities were computed on."""
++        ...
++
++    def matter_power_spectrum(
++        self, zs, ks, hubble_units: bool = False, k_hunit: bool = False
++    ) -> np.ndarray:
++        """Linear total-matter power spectrum."""
++        ...
++
++    def matter_power_spectrum_cb(
++        self, zs, ks, hubble_units: bool = False, k_hunit: bool = False
++    ) -> np.ndarray:
++        """Linear cdm+baryon power spectrum."""
++        ...
++
++    def growth_factor(self, zs, ks) -> np.ndarray:
++        """Growth factor, also for a scalar redshift/wavenumber."""
++        ...
++
++    def growth_factor_cb(self, zs, ks) -> np.ndarray:
++        """Growth factor of cdm+baryons."""
++        ...
++
++
+ class PBJSpectroPower:
+     r"""Class to retrieve $P(k,\mu)$ with the EFT model from PBJ."""
+ 
+@@ -21,14 +57,14 @@ class PBJSpectroPower:
+ 
+     def __init__(
+         self,
+-        linear_perturbations: Perturbations,
++        linear_perturbations: PBJLinearPerturbations,
+         nuisance_parameters: dict,
+         redshift: float,
+     ):
+         r"""Class constructor.
+ 
+         Args:
+-          linear_perturbations (Perturbations): Perturbations object containing cosmology, linear power spectrum,
++          linear_perturbations (PBJLinearPerturbations): Perturbations object containing cosmology, linear power spectrum,
+             and growth functions
+           nuisance_parameters (dict): Dictionary containing bias and counterterm parameters
+           redshift (float): single redshift in which to evaluate PBJ
+diff --git a/cloelib/summary_statistics/angular_two_point.py b/cloelib/summary_statistics/angular_two_point.py
+index f5c3c73..b808eb5 100644
+--- a/cloelib/summary_statistics/angular_two_point.py
++++ b/cloelib/summary_statistics/angular_two_point.py
+@@ -11,8 +11,9 @@ from cloelib.observables.photo.spectrum_engine import (
+     get_pk_terms,
+     needs_generalized_engine,
+ )
++from cloelib.observables.gw import GWNumberCountsTracer, GWWeakLensingTracer
+ from cloelib.auxiliary.units import SPEED_OF_LIGHT
+-from cloelib.auxiliary.math_utils import simpsons_weights_avg, simpsons_weights_jit
++from cloelib.auxiliary.math_utils import quadrature_weights, simpsons_weights_avg
+ from cloelib.profiling import profile_function
+ 
+ # General imports
+@@ -255,6 +256,11 @@ def _growth_rate_on_grid(perturbations, zs_target):
+     return np.interp(zs_target, z_raw, f_raw, left=f_raw[0], right=f_raw[-1])
+ 
+ 
++def _rad_to_arcmin(x):
++    """Convert an angle from radians to arcmin, the unit of Euclid COSEBI products."""
++    return float(x) * 180 * 60 / float(np.pi)
++
++
+ def _resolve_w_ell(w_ell, bin_key, ns):
+     """
+     Return ``(kernel_array, thmin, thmax)`` for a given bin pair.
+@@ -283,7 +289,9 @@ def _resolve_w_ell(w_ell, bin_key, ns):
+     -------
+     kernel_array : np.ndarray, shape ``(len(ns), n_ell)``
+     thmin : float
++        Minimum angular scale of the kernels in radians (``metadata["THMIN"]``).
+     thmax : float
++        Maximum angular scale of the kernels in radians (``metadata["THMAX"]``).
+     """
+     i, j = bin_key[2], bin_key[3]
+     # Detect per-bin layout: values are dicts (not arrays)
+@@ -319,7 +327,9 @@ def get_cosebis_from_cl(cells, ells, w_ell, ns, software=None):
+         Angular power spectra in cosmolib format.  All SHE-SHE bin pairs
+         present in the dict are processed automatically.
+     ells : jax.numpy.ndarray
+-        Multipoles at which the integration is performed.
++        Multipoles at which the integration is performed. Any strictly
++        increasing grid is accepted (see ``quadrature_weights``); it must be
++        fine enough to resolve the oscillations of the kernels.
+     w_ell : dict
+         Harmonic-space COSEBIs kernels.  Two layouts are accepted:
+ 
+@@ -340,7 +350,8 @@ def get_cosebis_from_cl(cells, ells, w_ell, ns, software=None):
+     -------
+     dict
+         Dictionary keyed like the SHE-SHE entries of `cells` with `COSEBI`
+-        values of shape ``(2, 2, n_modes)``.
++        values of shape ``(2, 2, n_modes)``. ``thmin``/``thmax`` are in
++        arcmin, as in the Euclid LE3 products read by euclidlib.
+     """
+     if software is None:
+         software = "get_cosebis_from_cl (cloelib)"
+@@ -350,7 +361,8 @@ def get_cosebis_from_cl(cells, ells, w_ell, ns, software=None):
+     nmodes = int(np.max(ns))
+     n_modes = ns.shape[0]
+     # Pre-compute the ell weighting factor once: shape (n_ell,)
+-    ell_weight = ells * simpsons_weights_jit(len(ells)) / (2 * np.pi)
++    # E_n = int dl l / (2 pi) C(l) W_n(l)
++    ell_weight = ells * quadrature_weights(ells) / (2 * np.pi)
+ 
+     she_she = [
+         (key, cl_map)
+@@ -403,8 +415,8 @@ def get_cosebis_from_cl(cells, ells, w_ell, ns, software=None):
+                 array=arr_all[idx],
+                 mode=ns,
+                 nmodes=nmodes,
+-                thmin=thmin,
+-                thmax=thmax,
++                thmin=_rad_to_arcmin(thmin),
++                thmax=_rad_to_arcmin(thmax),
+                 software=software,
+             )
+     else:
+@@ -425,8 +437,8 @@ def get_cosebis_from_cl(cells, ells, w_ell, ns, software=None):
+                 array=arr,
+                 mode=ns,
+                 nmodes=nmodes,
+-                thmin=thmin,
+-                thmax=thmax,
++                thmin=_rad_to_arcmin(thmin),
++                thmax=_rad_to_arcmin(thmax),
+                 software=software,
+             )
+ 
+@@ -440,19 +452,32 @@ def get_cosebis_from_2pcf(twopcf, theta, T_plus, T_minus, ns, software=None):
+     Can be used as a standalone function without instantiating `AngularTwoPoint`
+     if two-point correlation functions are already available.
+ 
++    Following Schneider, Eifler & Krause (2010),
++
++    .. math::
++
++        E_n = \\frac{1}{2} \\int d\\theta\\, \\theta
++              [T_{+n}(\\theta) \\xi_+(\\theta) + T_{-n}(\\theta) \\xi_-(\\theta)],
++
++        B_n = \\frac{1}{2} \\int d\\theta\\, \\theta
++              [T_{+n}(\\theta) \\xi_+(\\theta) - T_{-n}(\\theta) \\xi_-(\\theta)].
++
+     Parameters
+     ----------
+     twopcf : dict
+         Two-point correlation functions in cosmolib format.
+         Keys should be tuples like ``('SHE', 'SHE', i, j)``.
+     theta : jax.numpy.ndarray
+-        Angular scales in radians.
++        Angular scales in radians, spanning the COSEBI range
++        ``[theta_min, theta_max]``.
+     T_plus : array-like
+-        Real-space T_+ kernel functions.
++        Real-space T_+ kernel functions evaluated on `theta` (without the
++        extra factor of theta), shape ``(n_rows, len(theta))``.
+     T_minus : array-like
+-        Real-space T_- kernel functions.
++        Real-space T_- kernel functions evaluated on `theta`, same layout as
++        `T_plus`.
+     ns : jax.numpy.ndarray
+-        Mode indices selecting kernels from `T_plus`/`T_minus`.
++        Row indices selecting kernels from `T_plus`/`T_minus`.
+     software : str, optional
+         Software provenance tag stored in the output `COSEBI` objects.
+         Defaults to ``'get_cosebis_from_2pcf (cloelib)'``.
+@@ -460,7 +485,8 @@ def get_cosebis_from_2pcf(twopcf, theta, T_plus, T_minus, ns, software=None):
+     Returns
+     -------
+     dict
+-        COSEBIs with EE and BB modes, keyed like `twopcf`.
++        COSEBIs with EE and BB modes, keyed like `twopcf`. ``thmin``/``thmax``
++        are in arcmin, as in the Euclid LE3 products read by euclidlib.
+     """
+     if software is None:
+         software = "get_cosebis_from_2pcf (cloelib)"
+@@ -468,21 +494,22 @@ def get_cosebis_from_2pcf(twopcf, theta, T_plus, T_minus, ns, software=None):
+     T_minus = np.asarray(T_minus)
+     ns = np.asarray(ns)
+     tomo_cosebis = {}
++    # Shape (n_modes, n_theta): d theta * theta / 2 folded into the kernels
++    theta_weight = quadrature_weights(theta) * theta / 2
++    Tp_w = T_plus[ns] * theta_weight
++    Tm_w = T_minus[ns] * theta_weight
+ 
+     for key, cf_map in twopcf.items():
+-        if (key[0] == "SHE") & (key[1] == "SHE"):
++        if not (key[0] == "SHE" and key[1] == "SHE"):
+             continue
+ 
+         xi_plus = np.interp(theta, cf_map.theta, cf_map.array[0, 0])
+         xi_minus = np.interp(theta, cf_map.theta, cf_map.array[1, 1])
+ 
+-        def compute_cosebi(T_p, T_m):
+-            weights = simpsons_weights_jit(len(theta))
+-            ee = np.sum(xi_plus * T_p * weights) / np.pi
+-            bb = np.sum(xi_minus * T_m * weights) / np.pi
+-            return ee, bb
+-
+-        ee_vals, bb_vals = jax.vmap(compute_cosebi)(T_plus[ns], T_minus[ns])
++        plus = Tp_w @ xi_plus
++        minus = Tm_w @ xi_minus
++        ee_vals = plus + minus
++        bb_vals = plus - minus
+ 
+         arr = np.zeros((2, 2, ns.shape[0]), dtype=np.float64)
+         arr = arr.at[0, 0, :].set(ee_vals)
+@@ -491,8 +518,8 @@ def get_cosebis_from_2pcf(twopcf, theta, T_plus, T_minus, ns, software=None):
+             array=arr,
+             mode=ns,
+             nmodes=int(np.max(ns)),
+-            thmin=np.min(theta),
+-            thmax=np.max(theta),
++            thmin=_rad_to_arcmin(np.min(theta)),
++            thmax=_rad_to_arcmin(np.max(theta)),
+             software=software,
+         )
+ 
+@@ -689,16 +716,7 @@ class AngularTwoPoint:
+         Pkl = self._matter_power_spectrum_limber_grid(
+             zs_calc, ks, self.tracer1.perturbations.z, ells
+         )
+-        # Added the prefactor here as this is where we have access to ells.
+-        # There may be a more efficient way to do the multiplication
+-        prefactor = (
+-            np.sqrt((ells + 2.0) * (ells + 1.0) * ells * (ells - 1.0))
+-            / (ells + 0.5) ** 2
+-        )
+-        # Did it this way to avoid an if statement, but would be good to know how necessary this is
+-        prefactor_cell = (
+-            prefactor * self.tracer1.prefact_toggle + 1 - self.tracer1.prefact_toggle
+-        ) * (prefactor * self.tracer2.prefact_toggle + 1 - self.tracer2.prefact_toggle)
++        prefactor_cell = self._angular_prefactor(ells)
+         # Redshift quadrature of the Limber integral: no alternating Simpson weights, so
+         # the result does not depend on the parity of the number of redshift nodes
+         # (see `simpsons_weights_avg`).
+@@ -746,6 +764,23 @@ class AngularTwoPoint:
+         C_ell_calc = C_ell_calc * prefactor_cell[:, None, None]
+         return C_ell_calc
+ 
++    def _angular_prefactor(self, ells):
++        """Product of field responses, shared by both integration engines."""
++        shear_prefactor = (
++            np.sqrt((ells + 2.0) * (ells + 1.0) * ells * (ells - 1.0))
++            / (ells + 0.5) ** 2
++        )
++        gw_wl_prefactor = ells * (ells + 1.0) / (ells + 0.5) ** 2
++
++        def tracer_prefactor(tracer):
++            return (
++                1.0
++                + getattr(tracer, "prefact_toggle", 0) * (shear_prefactor - 1.0)
++                + getattr(tracer, "gw_prefact_toggle", 0) * (gw_wl_prefactor - 1.0)
++            )
++
++        return tracer_prefactor(self.tracer1) * tracer_prefactor(self.tracer2)
++
+     def _compute_cl_generalized(self, ells, ks, contributions1, contributions2):
+         """Cl via the per-contribution-pair engine (`spectrum_engine.py`).
+ 
+@@ -852,13 +887,7 @@ class AngularTwoPoint:
+ 
+         C_ell_calc = C_ell_calc * c_0 * dz
+ 
+-        prefactor = (
+-            np.sqrt((ells + 2.0) * (ells + 1.0) * ells * (ells - 1.0))
+-            / (ells + 0.5) ** 2
+-        )
+-        prefactor_cell = (
+-            prefactor * self.tracer1.prefact_toggle + 1 - self.tracer1.prefact_toggle
+-        ) * (prefactor * self.tracer2.prefact_toggle + 1 - self.tracer2.prefact_toggle)
++        prefactor_cell = self._angular_prefactor(ells)
+         C_ell_calc = C_ell_calc * prefactor_cell[:, None, None]
+ 
+         # Multiplicative shear calibration (PR #569 review): the legacy path
+@@ -910,13 +939,8 @@ class AngularTwoPoint:
+             return {("POS", "POS", i, j): C[:, i - 1, j - 1]}
+ 
+         def pos_she_rule(C, i, j):
+-            block1 = C[:, i - 1, j - 1]
+-            block2 = C[:, j - 1, i - 1]
+-
+-            return {
+-                ("POS", "SHE", i, j): np.stack([block1, np.zeros_like(block1)]),
+-                ("POS", "SHE", j, i): np.stack([block2, np.zeros_like(block2)]),
+-            }
++            block = C[:, i - 1, j - 1]
++            return {("POS", "SHE", i, j): np.stack([block, np.zeros_like(block)])}
+ 
+         def she_she_rule(C, i, j):
+             block = C[:, i - 1, j - 1]
+@@ -928,13 +952,34 @@ class AngularTwoPoint:
+             return {("CMBL", "CMBL", i, j): C[:, i - 1, j - 1]}
+ 
+         def cmbl_pos_rule(C, i, j):
+-            a, b = sorted((i, j))
+-            return {("CMBL", "POS", a, b): C[:, i - 1, j - 1]}
++            return {("CMBL", "POS", i, j): C[:, i - 1, j - 1]}
+ 
+         def cmbl_she_rule(C, i, j):
+             block = C[:, i - 1, j - 1]
+-            a, b = sorted((i, j))
+-            return {("CMBL", "SHE", a, b): np.stack([block, np.zeros_like(block)])}
++            return {("CMBL", "SHE", i, j): np.stack([block, np.zeros_like(block)])}
++
++        def gwnc_gwnc_rule(C, i, j):
++            return {("GWNC", "GWNC", i, j): C[:, i - 1, j - 1]}
++
++        def gwwl_gwwl_rule(C, i, j):
++            return {("GWWL", "GWWL", i, j): C[:, i - 1, j - 1]}
++
++        def gwnc_gwwl_rule(C, i, j):
++            return {("GWNC", "GWWL", i, j): C[:, i - 1, j - 1]}
++
++        def pos_gwnc_rule(C, i, j):
++            return {("POS", "GWNC", i, j): C[:, i - 1, j - 1]}
++
++        def pos_gwwl_rule(C, i, j):
++            return {("POS", "GWWL", i, j): C[:, i - 1, j - 1]}
++
++        def she_gwnc_rule(C, i, j):
++            block = C[:, i - 1, j - 1]
++            return {("SHE", "GWNC", i, j): np.stack([block, np.zeros_like(block)])}
++
++        def she_gwwl_rule(C, i, j):
++            block = C[:, i - 1, j - 1]
++            return {("SHE", "GWWL", i, j): np.stack([block, np.zeros_like(block)])}
+ 
+         tracer_rules = {
+             (PositionsTracer, PositionsTracer): pos_pos_rule,
+@@ -943,12 +988,23 @@ class AngularTwoPoint:
+             (CMBLensingTracer, PositionsTracer): cmbl_pos_rule,
+             (CMBLensingTracer, ShearTracer): cmbl_she_rule,
+             (CMBLensingTracer, CMBLensingTracer): cmbl_cmbl_rule,
++            (GWNumberCountsTracer, GWNumberCountsTracer): gwnc_gwnc_rule,
++            (GWWeakLensingTracer, GWWeakLensingTracer): gwwl_gwwl_rule,
++            (GWNumberCountsTracer, GWWeakLensingTracer): gwnc_gwwl_rule,
++            (PositionsTracer, GWNumberCountsTracer): pos_gwnc_rule,
++            (PositionsTracer, GWWeakLensingTracer): pos_gwwl_rule,
++            (ShearTracer, GWNumberCountsTracer): she_gwnc_rule,
++            (ShearTracer, GWWeakLensingTracer): she_gwwl_rule,
+         }
+ 
+-        # normalize the key so (A, B) and (B, A) are both supported
++        # Normalize the key so (A, B) and (B, A) are both supported. Keep
++        # track of the reversal because C_ell_calc retains the input tracer
++        # order on its two tomographic-bin axes.
+         key = (type(self.tracer1), type(self.tracer2))
++        key_was_reversed = False
+         if key not in tracer_rules and key[::-1] in tracer_rules:
+             key = key[::-1]
++            key_was_reversed = True
+ 
+         rule_fn = tracer_rules.get(key)
+         if rule_fn is None:
+@@ -956,17 +1012,23 @@ class AngularTwoPoint:
+                 f"No rule defined for tracers {type(self.tracer1)}, {type(self.tracer2)}"
+             )
+ 
+-        # Vectorized update of C_ell_out using dictionary comprehensions
+-        a, b = sorted((n_bin1, n_bin2))
++        if key_was_reversed:
++            C_ell_for_rule = np.swapaxes(C_ell_calc, 1, 2)
++            n_rule_bin1, n_rule_bin2 = n_bin2, n_bin1
++        else:
++            C_ell_for_rule = C_ell_calc
++            n_rule_bin1, n_rule_bin2 = n_bin1, n_bin2
++
++        # Same-observable spectra are symmetric in their tomographic bins and
++        # retain the established upper-triangle output. Cross-observable
++        # spectra use the full Cartesian product; each rule emits one key in
++        # canonical tracer order.
++        symmetric_output = key[0] is key[1]
+         C_ell_out = {
+             k: v
+-            for i in range(1, a + 1)
+-            for j in range(i, b + 1)
+-            for k, v in (
+-                rule_fn(C_ell_calc, i, j)
+-                if n_bin1 <= n_bin2
+-                else rule_fn(C_ell_calc, j, i)
+-            ).items()
++            for i in range(1, n_rule_bin1 + 1)
++            for j in range(i if symmetric_output else 1, n_rule_bin2 + 1)
++            for k, v in rule_fn(C_ell_for_rule, i, j).items()
+         }
+ 
+         # Use dictionary comprehension for cosmolib_Cls creation
+@@ -1014,17 +1076,6 @@ class AngularTwoPoint:
+         n_bin = self.tracer1.n_z_bins
+         C_ell_out = {}
+ 
+-        # Helper for POS-SHE symmetry
+-        def fill_pos_she(i, j):
+-            for a, b in [(i, j), (j, i)]:
+-                arr = np.zeros((2, mixing_matrix[("POS", "SHE", a, b)].ell.shape[0]))
+-                for idx in [0, 1]:
+-                    arr = arr.at[idx].set(
+-                        mixing_matrix[("POS", "SHE", a, b)].array
+-                        @ C_ell_calc[("POS", "SHE", a, b)].array[idx]
+-                    )
+-                C_ell_out[("POS", "SHE", a, b)] = arr
+-
+         # Main logic for each tracer combination
+         if tracer_types == (PositionsTracer, PositionsTracer):
+             for i in range(1, n_bin + 1):
+@@ -1036,9 +1087,22 @@ class AngularTwoPoint:
+             (PositionsTracer, ShearTracer),
+             (ShearTracer, PositionsTracer),
+         ]:
+-            for i in range(1, n_bin + 1):
+-                for j in range(i, n_bin + 1):
+-                    fill_pos_she(i, j)
++            # Cross-correlation: every (POS bin, SHE bin) pair, and the two
++            # tracers can have a different number of bins.
++            if tracer_types[0] is PositionsTracer:
++                n_pos, n_she = self.tracer1.n_z_bins, self.tracer2.n_z_bins
++            else:
++                n_pos, n_she = self.tracer2.n_z_bins, self.tracer1.n_z_bins
++            for i in range(1, n_pos + 1):
++                for j in range(1, n_she + 1):
++                    key = ("POS", "SHE", i, j)
++                    # The same mixing matrix acts on the E and the B part.
++                    C_ell_out[key] = np.stack(
++                        [
++                            mixing_matrix[key].array @ C_ell_calc[key].array[0],
++                            mixing_matrix[key].array @ C_ell_calc[key].array[1],
++                        ]
++                    )
+ 
+         elif tracer_types == (ShearTracer, ShearTracer):
+             for i in range(1, n_bin + 1):
+diff --git a/docs/api.md b/docs/api.md
+index 74b3a94..6055fdd 100644
+--- a/docs/api.md
++++ b/docs/api.md
+@@ -133,6 +133,27 @@ show_root_heading: true
+ show_submodules: false
+ heading_level: 3
+ 
++::: cloelib.observables.gw
++options:
++show_root_toc_entry: true
++show_root_heading: true
++show_submodules: false
++heading_level: 3
++
++::: cloelib.observables.gw.number_counts
++options:
++show_root_toc_entry: true
++show_root_heading: true
++show_submodules: false
++heading_level: 3
++
++::: cloelib.observables.gw.weak_lensing
++options:
++show_root_toc_entry: true
++show_root_heading: true
++show_submodules: false
++heading_level: 3
++
+ ::: cloelib.observables.spectro
+ options:
+ show_root_toc_entry: true
+diff --git a/docs/code_structure/observables/gw.md b/docs/code_structure/observables/gw.md
+new file mode 100644
+index 0000000..f20b1b8
+--- /dev/null
++++ b/docs/code_structure/observables/gw.md
+@@ -0,0 +1,188 @@
++# Gravitational-Wave Observables
++
++Gravitational-wave (GW) tracers describe the radial windows used for angular
++GW number counts and weak lensing. They live in `cloelib.observables.gw` and
++implement the `cloelib.observables.photo.tracer.Tracer` protocol consumed by
++`AngularTwoPoint`.
++
++**Protocol Definition**: `cloelib.observables.photo.tracer.Tracer`
++
++## Required Properties
++
++Like the photometric tracers, both GW tracers provide:
++
++- **`perturbations`**: Perturbations object used for the matter power spectrum
++  and background quantities
++- **`n_z_bins`**: Number of tomographic redshift bins
++- **`z`**: Redshift grid used for the Limber integral
++- **`prefact_toggle`**: Standard Tracer field-response toggle; it is `0` for
++  both GW tracers because neither is a spin-2 shear field
++
++## Required Methods
++
++### `get_window(z)`
++
++Compute the radial window on a redshift grid. The result has shape
++`(n_bins, n_z)`.
++
++## GW-Specific Angular Response
++
++GW tracers also define **`gw_prefact_toggle`**. It is `1` for
++`GWWeakLensingTracer`, which requires the scalar-convergence response
++$\ell(\ell+1)/(\ell+1/2)^2$, and `0` for `GWNumberCountsTracer`.
++This GW-specific attribute remains outside the shared `Tracer` protocol, so
++existing tracer implementations remain compatible. `AngularTwoPoint` treats a
++missing `gw_prefact_toggle` as `0`.
++
++Both tracers require an evenly spaced, strictly increasing redshift grid that
++does not contain zero. The normalized source distribution must have shape
++`(n_bins, n_z)`, with its last dimension matching the redshift grid. Shift and
++width nuisance parameters use one-based bin numbers, such as `dz_gw_1` and
++`width_gw_1`.
++
++## Shared Example Setup
++
++The examples below use one source bin and a linear CAMB matter power spectrum.
++Install cloelib with its `camb` extra, then run the blocks in order.
++
++```python
++import numpy as np
++
++from cloelib.cosmology.camb_cosmology import (
++    CAMBBackground,
++    CAMBLinearPerturbations,
++)
++
++z = np.linspace(0.01, 3.0, 101)
++background = CAMBBackground(
++    H0=67.5,
++    Omega_b0=0.049,
++    Omega_cdm0=0.265,
++    Omega_k0=0.0,
++    As=2.1e-9,
++    ns=0.965,
++    mnu=0.06,
++    w0=-1.0,
++    wa=0.0,
++    gamma_MG=0.545,
++    N_mnu=1,
++)
++perturbations = CAMBLinearPerturbations(background, redshifts=z)
++
++gw_dndz = np.exp(-0.5 * ((z - 1.0) / 0.25) ** 2)[None, :]
++gw_dndz /= np.trapezoid(gw_dndz, z, axis=1)[:, None]
++
++gw_nuisance = {
++    "b1_gw_bin0": 1.5,
++    "dz_gw_1": 0.0,
++    "width_gw_1": 1.0,
++}
++```
++
++## Existing Tracer Implementations
++
++### GWNumberCountsTracer
++
++`GWNumberCountsTracer` represents angular fluctuations in the number density
++of GW sources.
++
++**Location**: `cloelib/observables/gw/number_counts.py`
++
++**What it does**:
++
++- Computes the source-density window $W_i^{\mathrm{GWNC}}(z)$
++- Applies a GW source-bias model
++- Applies redshift-distribution shift and width nuisance parameters
++- Behaves as a scalar field in angular power spectra
++
++Its radial window is
++
++$$
++W_i^{\mathrm{GWNC}}(z) =
++b_i^{\mathrm{GW}}(z)n_i^{\mathrm{GW}}(z)\frac{H(z)}{c}.
++$$
++
++The supported `gw_bias_model` values are:
++
++- `per_bin`: one constant per bin, read from zero-based keys such as
++  `b1_gw_bin0`
++- `per_bin_int`: the per-bin values interpolated between the redshifts where
++  the source distributions peak
++- `poly`: a cubic function with coefficients `b1_gw_poly0` through
++  `b1_gw_poly3`
++
++Missing bias parameters default to `1.0`. Shift and width parameters are
++required for every bin.
++
++**Example**:
++
++```python
++from cloelib.observables.gw import GWNumberCountsTracer
++
++gw_number_counts = GWNumberCountsTracer(
++    perturbations=perturbations,
++    dndz=gw_dndz,
++    z=z,
++    gw_bias_model="per_bin",
++    nuisance_params=gw_nuisance,
++)
++
++number_count_window = gw_number_counts.get_window(z)
++assert number_count_window.shape == (1, len(z))
++```
++
++### GWWeakLensingTracer
++
++`GWWeakLensingTracer` represents weak-lensing convergence inferred from GW
++sources.
++
++**Location**: `cloelib/observables/gw/weak_lensing.py`
++
++**What it does**:
++
++- Computes the GW lensing-efficiency and convergence windows
++- Applies redshift-distribution shift and width nuisance parameters
++- Uses the scalar-convergence angular response
++- Excludes galaxy intrinsic alignment, magnification bias, and multiplicative
++  shear bias
++
++Its radial window is
++
++$$
++W_i^{\mathrm{GWWL}}(z) =
++\frac{3}{2}\left(\frac{H_0}{c}\right)^2
++\Omega_{\mathrm{m},0}(1+z)\chi(z)
++\int_z^{z_{\max}}\!\mathrm{d}z'\,
++n_i^{\mathrm{GW}}(z')
++\frac{\chi(z')-\chi(z)}{\chi(z')}.
++$$
++
++`AngularTwoPoint` applies the scalar-convergence response
++$\ell(\ell+1)/(\ell+1/2)^2$ when forming a power spectrum.
++
++**Example**:
++
++```python
++from cloelib.observables.gw import GWWeakLensingTracer
++
++gw_weak_lensing = GWWeakLensingTracer(
++    perturbations=perturbations,
++    dndz=gw_dndz,
++    z=z,
++    nuisance_params=gw_nuisance,
++)
++
++lensing_window = gw_weak_lensing.get_window(z)
++assert lensing_window.shape == (1, len(z))
++```
++
++Use these tracers with `AngularTwoPoint` as shown in the
++[GW summary-statistics example](../summary_statistics/gw.md).
++
++## Next Steps
++
++- [Gravitational-Wave Summary Statistics](../summary_statistics/gw.md) – Compute angular power spectra
++- [Tracer Extension Guide](photo.md#adding-your-own-tracer) – Implement another `Tracer`
++- [Photometric Observables](photo.md) – Review the photometric tracer implementations
++- [API Reference](../../api.md) – Full class and method details
++- [Back to Observables](index.md) – Review all observable interfaces
+diff --git a/docs/code_structure/observables/halo_abundance.md b/docs/code_structure/observables/halo_abundance.md
+new file mode 100644
+index 0000000..d2e750d
+--- /dev/null
++++ b/docs/code_structure/observables/halo_abundance.md
+@@ -0,0 +1,257 @@
++# HaloAbundance Protocol (Cluster Observables)
++
++**Protocol Definition**: `cloelib.observables.cluster.halo_abundance.halo_abundance.HaloAbundance`
++
++HaloAbundance handles the halo mass and the halo bias.
++
++## Required Attribute
++
++- **`common_halo_properties`**: Reference to common dark matter halo properties object
++
++## Required Methods
++
++## `f_sigma_nu(z, M)`
++
++Compute the halo multiplicity function.
++
++**Inputs**:
++
++- `z`: Redshift points (1D array)
++- `M`: Mass points in h^{-1} Msun (1D array)
++
++**Returns**: f(z, M), shape (len(z), len(M))
++
++## `dn_dm(z, M)`
++
++Derivative of the number density.
++
++**Inputs**:
++
++- `z`: Redshift points (1D array)
++- `M`: Mass points in h^{-1} Msun (1D array)
++
++**Returns**: dn_dm(z, M), shape (len(z), len(M)), units: h^4 Mpc^{-3} Ms^{-1}.
++
++## `bias(z, M)`
++
++Compute the halo bias.
++
++**Inputs**:
++
++- `z`: Redshift points (1D array)
++- `M`: Mass points in h^{-1} Msun (1D array)
++
++**Returns**: b(z, M), shape (len(z), len(M))
++
++## Existing HaloAbundance Implementations
++
++### TinkerHaloAbundance
++
++Tinker et al. 2008 halo mass function and bias.
++
++**Location**: `cloelib/observables/clusters/halo_abundance/tinker_halo_abundance.py`
++
++**Example**:
++
++```python
++from cloelib.cosmology.camb_cosmology import CAMBBackground, CAMBLinearPerturbations
++from cloelib.observables.clusters.halo_abundance import TinkerHaloAbundance
++from cloelib.observables.clusters.common_halo_properties import CommonHaloProperties
++
++
++bg = CAMBBackground(H0=67.5, ...)
++pert = CAMBLinearPerturbations(bg, np.linspace(0.0, 2.0, 100))
++
++common_prop = CommonHaloProperties(perturbations)
++halo_abundance = TinkerHaloAbundance(common_prop)
++
++z = np.linspace(0.01, 1.0, 10)
++M = np.logspace(14, 15, 5) # in Msun
++
++dn_dm_tinker = halo_abundance.dn_dm(z, M) # Shape: (10, 5)
++bias_tinker = halo_abundance.dn_dm(z, M) # Shape: (10, 5)
++```
++
++### CastroHaloAbundance
++
++Castro et al. 2021 halo mass function and bias.
++
++**Location**: `cloelib/observables/clusters/halo_abundance/castro_halo_abundance.py`
++
++**Example**:
++
++```python
++from cloelib.cosmology.camb_cosmology import CAMBBackground, CAMBLinearPerturbations
++from cloelib.observables.clusters.halo_abundance import CastroHaloAbundance
++from cloelib.observables.clusters.common_halo_properties import CommonHaloProperties
++
++
++bg = CAMBBackground(H0=67.5, ...)
++pert = CAMBLinearPerturbations(bg, np.linspace(0.0, 2.0, 100))
++
++common_prop = CommonHaloProperties(perturbations)
++halo_abundance = CastroHaloAbundance(common_prop)
++
++z = np.linspace(0.01, 1.0, 10)
++M = np.logspace(14, 15, 5) # in Msun
++
++dn_dm_castro = halo_abundance.dn_dm(z, M) # Shape: (10, 5)
++bias_castro = halo_abundance.dn_dm(z, M) # Shape: (10, 5)
++```
++
++## Adding Your Own HaloAbundance
++
++To add a new HaloAbundance implementation, follow these steps.
++
++### Step 1: Create Your Class
++
++```python
++# cloelib/observables/clusters/halo_abundance/my_halo_abundance.py
++from .halo_abundance_base import HaloAbundanceBase
++import numpy as np
++
++
++class MyHaloAbundance(HaloAbundanceBase):
++    """My implementation for halo mass abundance models."""
++    def __init__(self, common_halo_properties: CommonHaloProperties):
++        HaloAbundanceBase.__init__(self, common_halo_properties)
++
++    def f_sigma_nu(self, z, M):
++        r"""
++        Computation of the multiplicity function.
++
++        Computes MY multiplicity function at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points.
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun.
++
++        Returns
++        -------
++        f_sigma_nu: numpy.ndarray
++            f_sigma_nu[i,j], where i is the redshift axis and j the mass axis
++        """
++        # add your implementation here
++
++    def bias(self, z, M):
++        r"""
++        Computation of the halo bias.
++
++        Computes MY halo bias at the requested redshift and mass points.
++
++        Parameters
++        ----------
++        z: numpy.ndarray
++            Redshift points
++        M: numpy.ndarray
++            Mass points in h^{-1} Msun
++
++        Returns
++        -------
++        bias: numpy.ndarray
++            bias[i,j], where i is the redshift axis and j the mass axis
++        """
++        # add your implementation here
++```
++
++### Step 2: Handle Different Initialization Styles
++
++As HaloAbundance is an child class of HaloAbundanceBase,
++is also needs `CommonHaloProperties` for initialization,
++but it can also have extra arguments:
++
++```python
++def __init__(self, common_halo_properties: CommonHaloProperties, args):
++    HaloAbundanceBase.__init__(self, common_halo_properties)
++    # do something with args
++    ...
++```
++
++Just make sure it runs `HaloAbundanceBase.__init__` internally.
++
++> Note: If you don't need extra arguments, a `__init__` function
++> does not have to be defined in your class.
++
++### Step 3: Add to Package
++
++Update `cloelib/observables/clusters/halo_abundance/__init__.py`:
++
++```python
++from cloelib.observables.cluster.halo_abundance.my_halo_abundance import MyHaloAbundance
++
++__all__ = [
++    # ... existing exports
++    "MyHaloAbundance",
++]
++```
++
++### Step 4: Write Tests
++
++```python
++# tests/test_my_cluster_halo_abundance.py
++import numpy as np
++from numpy.testing import assert_allclose
++
++from cloelib.cosmology.camb_cosmology import CAMBBackground, CAMBLinearPerturbations
++from cloelib.observables.clusters.halo_abundance import MyHaloAbundance
++from cloelib.observables.clusters.common_halo_properties import CommonHaloProperties
++
++def test_my_halo_abundance():
++    bg = CAMBBackground(H0=67.5, ...)
++    pert = CAMBLinearPerturbations(bg, np.linspace(0.0, 2.0, 100))
++
++    common_prop = CommonHaloProperties(perturbations)
++    halo_abundance = MyHaloAbundance(common_prop)
++
++    z = np.linspace(0.01, 1.0, 10)
++    M = np.logspace(14, 15, 5) # in Msun
++
++    rtol = 5e-7 # add relative precision
++
++    known_dn_dm = ... # add known dn_dm
++    assert_allclose(halo_abundance.dn_dm(z, M), known_dn_dm, rtol=rtol)
++
++    known_bias = ... # add known bias
++    assert_allclose(halo_abundance.bias(z, M), known_bias, rtol=rtol)
++```
++
++## Tips & Tricks
++
++### Protocol Compliance
++
++Always verify your implementation:
++
++```python
++from cloelib.observables.cluster.halo_abundance import HaloAbundance
++
++assert isinstance(my_halo_abundance, HaloAbundance)
++```
++
++### JAX Compatibility
++
++If using JAX, avoid Python control flow:
++
++```python
++# ❌ Bad (won't JIT)
++if z > 1.0:
++    result = compute_high_z(z)
++else:
++    result = compute_low_z(z)
++
++# Good (JIT-able)
++result = jnp.where(z > 1.0, compute_high_z(z), compute_low_z(z))
++```
++
++## Next Steps
++
++Ready to compute final statistics with your observables?
++
++- [Summary Statistics](../summary_statistics/index.md) – Combine tracers into C_ℓ and multipoles
++- [Perturbations](../perturbations.md) – Review structure formation
++- [Background](../background.md) – Review the foundation
++- [API Reference](../../api.md) – Full technical details
++- [Back to Observables](index.md) – Review all oobservables
++- [Back to Overview](../index.md) – Review the architecture
+diff --git a/docs/code_structure/observables/index.md b/docs/code_structure/observables/index.md
+index f72fee0..2d62913 100644
+--- a/docs/code_structure/observables/index.md
++++ b/docs/code_structure/observables/index.md
+@@ -6,29 +6,27 @@ This module handles the transformation from theoretical quantities to observable
+ 
+ ## Overview
+ 
+-This module computes survey-specific quantities including selection functions, window functions, and bias parameters that distinguish real observations from idealized theoretical predictions.
++This module computes survey-specific large scale structure (selection functions, window functions, and bias parameters) and galaxy cluster (halo mass function) quantities that distinguish real observations from idealized theoretical predictions.
+ 
+ This module addresses:
+ 
+ - Window functions for weak lensing surveys and CMB lensing
+ - Galaxy bias modeling and corrections
++- Gravitational-wave source number counts and weak lensing
+ - Redshift-space power spectra P(k, μ)
++- Halo mass function
+ 
+-## Two Flavors of Observables
++## Different Flavors of Observables
+ 
+-**cloelib** has two types of observable protocols, each serving different purposes:
++**cloelib** has different types of observable protocols, each serving different purposes for:
+ 
+-### **Tracer Protocol**
+-
+-For photometric observables (angular correlations, weak lensing)
+-
+-- [Learn more about Tracer Protocol](photo.md)
+-
+-### **SpectroPower Protocol**
+-
+-For spectroscopic observables (3D clustering, redshift-space distortions)
+-
+-- [Learn more about SpectroPower Protocol](spectro.md)
++- Large Scale Structure
++  - **Tracer Protocol**: For photometric and gravitational-wave observables
++    - [Photometric tracers](photo.md)
++    - [Gravitational-wave tracers](gw.md)
++  - [**SpectroPower Protocol**](spectro.md): For spectroscopic observables (3D clustering, redshift-space distortions).
++- Galaxy Clusters
++  - [**HaloAbundance Protocol**](halo_abundance.md): For halo mass function and halo bias.
+ 
+ ## Next Steps
+ 
+diff --git a/docs/code_structure/observables/photo.md b/docs/code_structure/observables/photo.md
+index c5a117e..ae92b87 100644
+--- a/docs/code_structure/observables/photo.md
++++ b/docs/code_structure/observables/photo.md
+@@ -1,14 +1,15 @@
+-# Tracer Protocol (Photometric Observables)
++# Photometric Observables (Tracer Protocol)
+ 
+ **Protocol Definition**: `cloelib.observables.photo.tracer.Tracer`
+ 
+ Tracers define window functions for photometric surveys—how galaxies are distributed in redshift and how they trace the matter field.
+ 
+-## Required Property
++## Required Properties
+ 
+-- **`perturbations`**: Reference to a Perturbations object
+-
+-Tracers need perturbations to compute power spectra and growth.
++- **`perturbations`**: Reference to a Perturbations object. Tracers need perturbations to compute power spectra and growth.
++- **`n_z_bins`**: Number of tomographic redshift bins, used by `AngularTwoPoint.get_Cl` to size its output.
++- **`z`**: Redshift grid the tracer was built on, used by `AngularTwoPoint.get_Cl` as the Limber integration grid.
++- **`prefact_toggle`**: `1` if the spin-2-to-convergence Limber prefactor applies (shear), `0` otherwise (galaxy clustering, CMB lensing convergence).
+ 
+ ## Required Methods
+ 
+@@ -18,18 +19,6 @@ Compute the window function W(z) at given redshifts.
+ 
+ **Returns**: Window function values, shape depends on number of redshift bins
+ 
+-### `_window_integrand(z, zprime)`
+-
+-Window integrand for Limber integration.
+-
+-Used internally by summary statistics calculators.
+-
+-### `_get_prefactor(ell)`
+-
+-Compute prefactor for Limber approximation.
+-
+-Handles different tracer types (shear has extra factors, galaxy clustering doesn't).
+-
+ ## Existing Tracer Implementations
+ 
+ ### ShearTracer
+@@ -212,6 +201,7 @@ class CMBLensingTracer:
+     def __init__(
+         self,
+         perturbations: Perturbations,
++        z: np.ndarray,
+         z_cmb: float = 1100.0,  # CMB redshift
+     ):
+         """
+@@ -219,12 +209,15 @@ class CMBLensingTracer:
+ 
+         Args:
+             perturbations: Perturbations object
++            z: Redshift grid for the Limber integral
+             z_cmb: Redshift of last scattering surface
+         """
+         self.perturbations = perturbations
+         self.background = perturbations.background
++        self.z = z
+         self.z_cmb = z_cmb
+-        self.prefact_toggle = 1  # Include lensing prefactor
++        self.n_z_bins = 1  # A single convergence "bin"
++        self.prefact_toggle = 0  # Convergence: no spin-2 prefactor
+ 
+     def get_window(self, z: np.ndarray) -> np.ndarray:
+         """
+@@ -247,17 +240,6 @@ class CMBLensingTracer:
+         window = 1.5 * self.background.Omega_m(0.0) * (1 + z) * H_z * efficiency
+ 
+         return window
+-
+-    def _window_integrand(self, z: np.ndarray, zprime: np.ndarray) -> np.ndarray:
+-        """Window integrand for Limber integration."""
+-        # This is used by AngularTwoPoint
+-        # Usually just returns get_window for the z argument
+-        return self.get_window(z)
+-
+-    def _get_prefactor(self, ell: np.ndarray) -> np.ndarray:
+-        """Prefactor for Limber approximation."""
+-        # CMB lensing has same prefactor as shear
+-        return ell * (ell + 1)
+ ```
+ 
+ ### Step 2: Add to Package
+@@ -287,9 +269,9 @@ def test_cmb_lensing_tracer():
+     bg = CAMBBackground(H0=67.5, ...)
+     pert = CAMBPerturbations(background=bg)
+ 
+-    tracer = CMBLensingTracer(perturbations=pert)
+-
+     z = np.linspace(0.1, 2.0, 50)
++    tracer = CMBLensingTracer(perturbations=pert, z=z)
++
+     window = tracer.get_window(z)
+ 
+     # Check shape
+@@ -372,5 +354,6 @@ Ready to compute final statistics with your observables?
+ - [Perturbations](../perturbations.md) – Review structure formation
+ - [Background](../background.md) – Review the foundation
+ - [API Reference](../../api.md) – Full technical details
+-- [Back to Observables](index.md) – Review all oobservables
++- [Gravitational-Wave Observables](gw.md) – Compute windows for GW sources
++- [Back to Observables](index.md) – Review all observables
+ - [Back to Overview](../index.md) – Review the architecture
+diff --git a/docs/code_structure/summary_statistics/gw.md b/docs/code_structure/summary_statistics/gw.md
+new file mode 100644
+index 0000000..4cee302
+--- /dev/null
++++ b/docs/code_structure/summary_statistics/gw.md
+@@ -0,0 +1,94 @@
++# Gravitational-Wave Summary Statistics
++
++`AngularTwoPoint` computes Limber angular power spectra from
++`GWNumberCountsTracer` and `GWWeakLensingTracer` in the same way it consumes
++other `Tracer` implementations.
++
++## Angular Power Spectra
++
++**Location**: `cloelib/summary_statistics/angular_two_point.py`
++
++**What it does**:
++
++- Takes two compatible tracer objects
++- Integrates their radial windows against the matter power spectrum
++- Applies the angular response associated with each field
++- Returns one `cosmolib.AngularPowerSpectrum` per tomographic bin pair
++
++The following GW auto- and cross-correlations are supported:
++
++| Tracers                             | Output key prefix  | Spectrum array shape |
++| ----------------------------------- | ------------------ | -------------------- |
++| GW number counts × GW number counts | `("GWNC", "GWNC")` | `(n_ell,)`           |
++| GW weak lensing × GW weak lensing   | `("GWWL", "GWWL")` | `(n_ell,)`           |
++| GW number counts × GW weak lensing  | `("GWNC", "GWWL")` | `(n_ell,)`           |
++| Galaxy positions × GW number counts | `("POS", "GWNC")`  | `(n_ell,)`           |
++| Galaxy positions × GW weak lensing  | `("POS", "GWWL")`  | `(n_ell,)`           |
++| Galaxy shear × GW number counts     | `("SHE", "GWNC")`  | `(2, n_ell)`         |
++| Galaxy shear × GW weak lensing      | `("SHE", "GWWL")`  | `(2, n_ell)`         |
++
++Complete dictionary keys also contain one-based tomographic bin indices. For
++example, `("GWNC", "GWWL", 1, 1)` selects the first number-count bin crossed
++with the first weak-lensing bin. Same-observable spectra contain the upper
++triangle of bin pairs; different-observable spectra contain the full Cartesian
++product. Reversing the two input tracers preserves the canonical key order in
++the table.
++
++## Example
++
++Run the shared setup and both tracer examples on the
++[GW observables page](../observables/gw.md) first. The variables used here are
++the same: `perturbations`, `gw_number_counts`, and `gw_weak_lensing`.
++
++```python
++import numpy as np
++
++from cloelib.summary_statistics.angular_two_point import AngularTwoPoint
++
++ells = np.geomspace(10.0, 1000.0, 20)
++ks = perturbations.k
++
++gwnc_auto = AngularTwoPoint(
++    gw_number_counts, gw_number_counts
++).get_Cl(ells, nl=0, ks=ks)
++
++gwwl_auto = AngularTwoPoint(
++    gw_weak_lensing, gw_weak_lensing
++).get_Cl(ells, nl=0, ks=ks)
++
++gwnc_gwwl = AngularTwoPoint(
++    gw_number_counts, gw_weak_lensing
++).get_Cl(ells, nl=0, ks=ks)
++
++cross_spectrum = gwnc_gwwl[("GWNC", "GWWL", 1, 1)]
++assert cross_spectrum.array.shape == (len(ells),)
++```
++
++The `nl` argument is currently reserved and is set to zero in this example.
++These calculations return signal spectra without adding a noise model.
++
++## GW Weak-Lensing Response
++
++The `GWWeakLensingTracer` radial window contains the scalar convergence
++geometry. For each GWWL field, `AngularTwoPoint` applies
++
++$$
++R_\ell^{\mathrm{GWWL}} =
++\frac{\ell(\ell+1)}{(\ell+1/2)^2}.
++$$
++
++This response appears once in a spectrum containing one GWWL field and is
++squared in a GWWL auto-spectrum. The radial window retains the standard
++$3\Omega_{\mathrm{m},0}H_0^2/(2c^2)$ normalization.
++
++!!! note
++GW tracers are supported by the unmasked Limber `get_Cl` calculation. The
++current `get_pseudo_Cl` mixing-matrix path supports photometric `POS` and
++`SHE` pairs only.
++
++## Next Steps
++
++- [Gravitational-Wave Observables](../observables/gw.md) – Construct the GW tracers
++- [Photometric Summary Statistics](photo.md) – Review galaxy angular statistics
++- [API Reference](../../api.md) – Full technical documentation
++- [Back to Summary Statistics](index.md) – Review all summary statistics
+diff --git a/docs/code_structure/summary_statistics/index.md b/docs/code_structure/summary_statistics/index.md
+index 51abb75..33e35e1 100644
+--- a/docs/code_structure/summary_statistics/index.md
++++ b/docs/code_structure/summary_statistics/index.md
+@@ -12,7 +12,8 @@ To see examples of usage, please check the example notebooks for observable comp
+ 
+ This module computes final statistical quantities for likelihood evaluation, including:
+ 
+-- $C_\ell$: Angular power spectra for photometric surveys, either full sky or convolved with the mask
++- $C_\ell$: Full sky angular power spectra for photometric and gravitational-wave surveys
++- pseudo $C_\ell$: Angular power spectra for photometric surveys, convolved with the mask
+ - $\xi_+(\theta)$, $\xi_-(\theta)$, $w(\theta)$, $\gamma_T$, $\gamma_\times$: Angular two-point photometric correlation functions
+ - COSEBIs: Complete Orthogonal Sets of E/B-Integrals for photometric surveys as in [Asgari et al., 2018.](https://arxiv.org/pdf/1201.2669)
+ - $P_\ell(k)$: Legendre multipoles for spectroscopic surveys, either full sky or convolved with the mask
+@@ -34,6 +35,7 @@ For expensive summary-statistic evaluations, prefer moderate redshift and wavenu
+ ## Available Summary Statistics
+ 
+ - [For Photometric Surveys (Using Tracers)](photo.md)
++- [For Gravitational-Wave Observables (Using Tracers)](gw.md)
+ - [For Spectroscopic Surveys (Using SpectroPower)](spectro.md)
+ 
+ ## Next Steps
+diff --git a/docs/code_structure/summary_statistics/photo.md b/docs/code_structure/summary_statistics/photo.md
+index 8d5167d..4a2e417 100644
+--- a/docs/code_structure/summary_statistics/photo.md
++++ b/docs/code_structure/summary_statistics/photo.md
+@@ -35,7 +35,7 @@ tracer2 = ShearTracer(perturbations=pert, dndz=dndz[np.newaxis, :], z=z, nuisanc
+ two_point = AngularTwoPoint(tracer1=tracer1, tracer2=tracer2)
+ 
+ ells = np.logspace(1, 3, 20)  # ℓ from 10 to 1000
+-C_ell = two_point.get_Cl(ells=ells)  # Shape: (1, 1, 20) for single bins
++C_ell = two_point.get_Cl(ells=ells, nl=0, ks=pert.k)
+ 
+ print(f"C_ℓ at ℓ=100: {C_ell[0, 0, 10]:.2e}")
+ ```
+@@ -47,14 +47,14 @@ You can correlate different tracers to calculate different statistics:
+ ```python
+ # Shear-shear (cosmic shear)
+ shear_tracer = ShearTracer(...)
+-C_shear_shear = AngularTwoPoint(shear_tracer, shear_tracer).get_Cl(ells)
++C_shear_shear = AngularTwoPoint(shear_tracer, shear_tracer).get_Cl(ells, 0, pert.k)
+ 
+ # Position-position (galaxy clustering)
+ pos_tracer = PositionsTracer(...)
+-C_gg = AngularTwoPoint(pos_tracer, pos_tracer).get_Cl(ells)
++C_gg = AngularTwoPoint(pos_tracer, pos_tracer).get_Cl(ells, 0, pert.k)
+ 
+ # Shear-position (galaxy-galaxy lensing)
+-C_g_shear = AngularTwoPoint(pos_tracer, shear_tracer).get_Cl(ells)
++C_g_shear = AngularTwoPoint(pos_tracer, shear_tracer).get_Cl(ells, 0, pert.k)
+ ```
+ 
+ **Tomographic Bins**:
+@@ -74,7 +74,7 @@ tracer = ShearTracer(perturbations=pert, dndz=dndz_bins, z=z, ...)
+ 
+ # Auto and cross-correlations
+ two_point = AngularTwoPoint(tracer, tracer)
+-C_ell = two_point.get_Cl(ells)
++C_ell = two_point.get_Cl(ells, nl=0, ks=pert.k)
+ ```
+ 
+ **COSEBIs**:
+@@ -108,6 +108,22 @@ Only `get_cosebis` is available as a class method. `get_cosebis_from_2pcf` is st
+ 
+ Both interfaces require optional dependencies (`pylevin`, `mpmath`). The COSEBIs kernels (`w_ell`, `T_plus`, `T_minus`) must be precomputed using helpers from `cloelib.auxiliary.cosebi_helpers`.
+ 
++**Output format and units**:
++The output matches the Euclid LE3 COSEBI products read by `euclidlib.le3.twopcf_wl.cosebis`. Each `COSEBI` has an `array` of shape `(2, 2, n_modes)`, with EE in `array[0, 0]` and BB in `array[1, 1]`. The EB/BE entries are zero in the theory output. `thmin`/`thmax` are in **arcmin**.
++
++The inputs are in **radians**: `theta` in `get_cosebis_from_2pcf`, and the `thetagrid` passed to `get_W_ell`, whose `metadata["THMIN"]`/`["THMAX"]` are therefore in radians too. For example, for kernels matching a 1–400 arcmin product:
++
++```python
++import numpy as np
++from cloelib.auxiliary.cosebi_helpers import get_W_ell
++
++thetagrid = np.radians(np.geomspace(1.0, 400.0, 500) / 60)  # arcmin -> rad
++w_ell = get_W_ell(thetagrid, Nmax=20, ells=ells, N_thread=4)
++```
++
++**Integration grids**:
++The integrals over $\ell$ (and over $\theta$ for `get_cosebis_from_2pcf`) use the actual grid spacing, so `ells` and `theta` can be linearly or logarithmically spaced. Simpson's rule is used on linear and log grids, and the trapezoidal rule on any other increasing grid. The `ells` passed to `get_cosebis_from_cl`/`get_cosebis` must be the grid on which `w_ell` was evaluated, and it must be fine enough to resolve the oscillations of the kernels, whose period in $\ell$ is roughly $2\pi/\theta_{\max}$. Check convergence by comparing against a denser grid.
++
+ ## AngularCorrelationFunction
+ 
+ Protocol to set up how to compute real-space angular correlation functions $\xi(\theta)$.
+@@ -126,6 +142,7 @@ The pipeline is now complete.
+ From here:
+ 
+ - [API Reference](../../api.md) – Full technical documentation
++- [Gravitational-Wave Summary Statistics](gw.md) – Compute angular GW correlations
+ - [Contributing Guide](../../contributing.md) – General contribution guidelines
+ - [Playground Examples](https://github.com/cloe-org/playground) – Real usage examples
+ - [Back to Summary Statistics](index.md) – Review all summary statistics
+diff --git a/mkdocs.yml b/mkdocs.yml
+index d4d27b4..34ff889 100644
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -116,10 +116,12 @@ nav:
+       - Observables:
+           - Overview: code_structure/observables/index.md
+           - Tracer Protocol (Photometric): code_structure/observables/photo.md
++          - Tracer Protocol (Gravitational-Wave): code_structure/observables/gw.md
+           - SpectroPower Protocol (Spectroscopic): code_structure/observables/spectro.md
+       - Summary Statistics:
+           - Overview: code_structure/summary_statistics/index.md
+           - Photometric Summary Statistics: code_structure/summary_statistics/photo.md
++          - Gravitational-Wave Summary Statistics: code_structure/summary_statistics/gw.md
+           - Spectroscopic Summary Statistics: code_structure/summary_statistics/spectro.md
+   - Contributing: contributing.md
+   - API Reference: api.md
+diff --git a/pyproject.toml b/pyproject.toml
+index b711e76..2b7c6a2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -74,8 +74,10 @@ python-version = "3.10"
+ [tool.ty.src]
+ # Enforced on the Background/Perturbations protocol implementations in
+ # cloelib/cosmology (see docs/code_structure/background.md and
+-# perturbations.md). Expand this list as other parts of cloelib adopt ty.
+-include = ["cloelib/cosmology"]
++# perturbations.md) and on the observables built on them (Tracer protocol
++# and its implementations in cloelib/observables). Expand this list as
++# other parts of cloelib adopt ty.
++include = ["cloelib/cosmology", "cloelib/observables"]
+ 
+ [tool.ty.rules]
+ # Several backends (CAMB, CLASS, MGCLASS, hi_class, mochi_class, BACCOemu,
+diff --git a/tests/test_HMcode2020Emu_cosmology.py b/tests/test_HMcode2020Emu_cosmology.py
+new file mode 100644
+index 0000000..240e5f3
+--- /dev/null
++++ b/tests/test_HMcode2020Emu_cosmology.py
+@@ -0,0 +1,253 @@
++"""Unit tests for the HMcode2020Emu perturbations backend."""
++
++import numpy as np
++import pytest
++
++from cloelib.cosmology.cosmology import Perturbations  # noqa: E402
++from cloelib.cosmology.camb_cosmology import (  # noqa: E402
++    CAMBBackground,
++    CAMBLinearPerturbations,
++)
++from cloelib.cosmology.HMcode2020Emu_cosmology import (  # noqa: E402
++    HMemuLinearPerturbations,
++    HMemuNonLinearPerturbations,
++)
++
++H0 = 67.7
++h = H0 / 100.0
++
++# HMcode2020Emu only supports one massive neutrino species with
++# N_ur = 2.0308 (N_eff = 3.044), which CAMBBackground infers for N_mnu=1.
++BACKGROUND_KWARGS = dict(
++    H0=H0,
++    Omega_b0=0.022 / h**2,
++    Omega_cdm0=0.12 / h**2,
++    Omega_k0=0.0,
++    As=2e-9,
++    ns=0.96,
++    mnu=0.06,
++    w0=-1.0,
++    wa=0.0,
++    gamma_MG=0.0,
++    N_mnu=1,
++)
++
++
++@pytest.fixture(scope="module")
++def camb_background_instance():
++    """Fixture to create an instance of CAMBBackground."""
++    return CAMBBackground(**BACKGROUND_KWARGS)
++
++
++@pytest.fixture(scope="module")
++def zs():
++    return np.linspace(0, 2, 20)
++
++
++@pytest.fixture(scope="module")
++def ks():
++    return np.logspace(-3, 0.5, 30)
++
++
++@pytest.fixture(scope="module")
++def hmemu_perturbation_instance(camb_background_instance, zs):
++    """Fixture to create the Linear and NonLinear instances of HMemuPerturbations."""
++    hmemu_lin = HMemuLinearPerturbations(
++        background=camb_background_instance, redshifts=zs
++    )
++    hmemu_nonlin = HMemuNonLinearPerturbations(
++        background=camb_background_instance,
++        linearperturbations=hmemu_lin,
++        redshifts=zs,
++    )
++    return {"Linear": hmemu_lin, "NonLinear": hmemu_nonlin}
++
++
++@pytest.fixture(scope="module")
++def camb_linear_instance(camb_background_instance, zs):
++    """Fixture to create a CAMB linear reference for the emulator."""
++    return CAMBLinearPerturbations(background=camb_background_instance, redshifts=zs)
++
++
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_perturbation_implements_protocol(hmemu_perturbation_instance, key):
++    """Test that the Perturbation instances adhere to the protocol."""
++    assert isinstance(hmemu_perturbation_instance[key], Perturbations)
++
++
++@pytest.mark.parametrize(
++    "method",
++    [
++        "matter_power_spectrum",
++        "matter_power_spectrum_cb",
++        "growth_factor",
++        "growth_factor_cb",
++    ],
++)
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_zk_methods_shape(hmemu_perturbation_instance, key, method, zs, ks):
++    """Test that (z, k) methods return finite, positive (nz, nk) arrays."""
++    result = getattr(hmemu_perturbation_instance[key], method)(zs, ks)
++    assert isinstance(result, np.ndarray)
++    assert result.shape == (len(zs), len(ks))
++    assert np.all(np.isfinite(result))
++    assert np.all(result > 0)
++
++
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_growth_factor_normalised_at_z0(hmemu_perturbation_instance, key, ks):
++    """Test that the growth factor is normalised to 1 at z=0 and decreases with z."""
++    perturbations = hmemu_perturbation_instance[key]
++    D0 = perturbations.growth_factor(np.array([0.0]), ks)
++    np.testing.assert_allclose(D0, 1.0, rtol=1e-12)
++    D = perturbations.growth_factor(np.array([0.0, 1.0, 2.0]), np.array([1e-3]))
++    assert np.all(np.diff(D[:, 0]) < 0)
++
++
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_sigma8_0(hmemu_perturbation_instance, camb_linear_instance, key):
++    """Test that sigma8_0 is a float consistent with CAMB."""
++    result = hmemu_perturbation_instance[key].sigma8_0()
++    assert isinstance(result, (float, np.floating))
++    np.testing.assert_allclose(result, camb_linear_instance.sigma8_0(), rtol=5e-3)
++
++
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_growth_rate(hmemu_perturbation_instance, camb_background_instance, key):
++    """Test that the growth rate is close to the Omega_m(z)^0.55 approximation."""
++    perturbations = hmemu_perturbation_instance[key]
++    f = perturbations.growth_rate()
++    assert f.shape == perturbations.z.shape
++    Om_z = camb_background_instance.Omega_m(perturbations.z)
++    np.testing.assert_allclose(f, Om_z**0.55, rtol=2e-2)
++
++
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_growth_rate_at_requested_redshifts(hmemu_perturbation_instance, key, ks):
++    """Test that growth_rate follows the protocol's optional (zs, ks) signature."""
++    perturbations = hmemu_perturbation_instance[key]
++    z_grid = perturbations.z
++    np.testing.assert_allclose(
++        perturbations.growth_rate(z_grid), perturbations.growth_rate()
++    )
++    zs = np.array([0.3, 1.7, 5.0])
++    f = perturbations.growth_rate(zs)
++    assert f.shape == (len(zs),)
++    assert np.all((f > 0) & (f <= 1))
++    f_zk = perturbations.growth_rate(zs, ks)
++    assert f_zk.shape == (len(zs), len(ks))
++    np.testing.assert_allclose(f_zk, np.tile(f[:, None], (1, len(ks))))
++
++
++@pytest.mark.parametrize(
++    "method", ["matter_power_spectrum", "matter_power_spectrum_cb", "growth_factor"]
++)
++@pytest.mark.parametrize("key", ["Linear", "NonLinear"])
++def test_hmemu_single_redshift_keeps_z_axis(
++    hmemu_perturbation_instance, key, method, ks
++):
++    """Test that a length-1 redshift array returns (1, nk), as for CAMB."""
++    result = getattr(hmemu_perturbation_instance[key], method)(np.array([0.5]), ks)
++    assert result.shape == (1, len(ks))
++
++
++def test_hmemu_linear_matches_camb(hmemu_perturbation_instance, camb_linear_instance):
++    """Test that the linear emulator reproduces CAMB within its range of validity."""
++    zs = np.linspace(0, 2, 5)
++    ks = np.logspace(-3, 0.5, 30)
++    lin = hmemu_perturbation_instance["Linear"]
++    np.testing.assert_allclose(
++        lin.matter_power_spectrum(zs, ks),
++        camb_linear_instance.matter_power_spectrum(zs, ks),
++        rtol=1e-2,
++    )
++    np.testing.assert_allclose(
++        lin.matter_power_spectrum_cb(zs, ks),
++        camb_linear_instance.matter_power_spectrum_cb(zs, ks),
++        rtol=1e-2,
++    )
++
++
++def test_hmemu_cb_exceeds_total_with_massive_neutrinos(hmemu_perturbation_instance):
++    """Test that neutrino free-streaming suppresses P_mm relative to P_cb."""
++    lin = hmemu_perturbation_instance["Linear"]
++    ks = np.array([1e-1, 1.0])
++    ratio = lin.matter_power_spectrum_cb(np.array([0.0]), ks) / (
++        lin.matter_power_spectrum(np.array([0.0]), ks)
++    )
++    assert np.all(ratio > 1.0)
++
++
++def test_hmemu_nonlinear_matches_linear_on_large_scales(hmemu_perturbation_instance):
++    """Test that the nonlinear spectrum reduces to linear at low k and is boosted at high k."""
++    lin = hmemu_perturbation_instance["Linear"]
++    nonlin = hmemu_perturbation_instance["NonLinear"]
++    z = np.array([0.0])
++    k_low = np.logspace(-3, -2.5, 5)
++    np.testing.assert_allclose(
++        nonlin.matter_power_spectrum(z, k_low),
++        lin.matter_power_spectrum(z, k_low),
++        rtol=1e-3,
++    )
++    k_high = np.array([1.0, 3.0])
++    assert np.all(
++        nonlin.matter_power_spectrum(z, k_high) > lin.matter_power_spectrum(z, k_high)
++    )
++
++
++def test_hmemu_baryonic_boost_suppresses_small_scales(
++    camb_background_instance, hmemu_perturbation_instance, zs
++):
++    """Test that the log10TAGN baryonic feedback suppresses small-scale power."""
++    lin = hmemu_perturbation_instance["Linear"]
++    nonlin = hmemu_perturbation_instance["NonLinear"]
++    nonlin_baryons = HMemuNonLinearPerturbations(
++        background=camb_background_instance,
++        linearperturbations=lin,
++        redshifts=zs,
++        log10TAGN=7.8,
++    )
++    z = np.array([0.0])
++    ratio_low = nonlin_baryons.matter_power_spectrum(
++        z, np.array([1e-3])
++    ) / nonlin.matter_power_spectrum(z, np.array([1e-3]))
++    np.testing.assert_allclose(ratio_low, 1.0, rtol=1e-3)
++    k_high = np.array([1.0, 3.0])
++    ratio_high = nonlin_baryons.matter_power_spectrum(
++        z, k_high
++    ) / nonlin.matter_power_spectrum(z, k_high)
++    assert np.all(ratio_high < 1.0)
++
++
++def test_hmemu_extrapolates_beyond_emulator_redshift(camb_background_instance, ks):
++    """Test that redshifts above the emulator range (z > 4) are extrapolated."""
++    zs = np.linspace(0, 5, 11)
++    lin = HMemuLinearPerturbations(background=camb_background_instance, redshifts=zs)
++    assert lin.z.max() == pytest.approx(5.0)
++    result = lin.matter_power_spectrum(zs, ks)
++    assert result.shape == (len(zs), len(ks))
++    assert np.all(np.isfinite(result))
++    assert np.all(result > 0)
++
++
++def test_hmemu_out_of_range_raises(zs):
++    """Test that parameters outside the emulator bounds raise a ValueError."""
++    background = CAMBBackground(**{**BACKGROUND_KWARGS, "w0": -3.5})
++    with pytest.raises(ValueError, match="out of range"):
++        HMemuLinearPerturbations(background=background, redshifts=zs)
++
++
++def test_hmemu_multiple_massive_neutrinos_raises(zs):
++    """Test that more than one massive neutrino species is rejected."""
++    background = CAMBBackground(
++        **{**BACKGROUND_KWARGS, "mnu": [0.03, 0.03], "N_mnu": 2}
++    )
++    with pytest.raises(ValueError, match="single species"):
++        HMemuLinearPerturbations(background=background, redshifts=zs)
++
++
++def test_hmemu_non_flat_raises(zs):
++    """Test that non-flat geometries are rejected."""
++    background = CAMBBackground(**{**BACKGROUND_KWARGS, "Omega_k0": 0.01})
++    with pytest.raises(AssertionError, match="Non flat"):
++        HMemuLinearPerturbations(background=background, redshifts=zs)
+diff --git a/tests/test_cosebis.py b/tests/test_cosebis.py
+new file mode 100644
+index 0000000..d161281
+--- /dev/null
++++ b/tests/test_cosebis.py
+@@ -0,0 +1,136 @@
++import numpy as np
++import pytest
++import jax
++import jax.numpy as jnp
++from scipy.special import j0, jv
++from cosmolib.data import AngularPowerSpectrum, TwoPointCorrelationFunction
++
++from cloelib.auxiliary.math_utils import quadrature_weights, simpsons_weights_jit
++from cloelib.summary_statistics.angular_two_point import (
++    get_cosebis_from_cl,
++    get_cosebis_from_2pcf,
++)
++
++pytest.importorskip("pylevin")
++pytest.importorskip("mpmath")
++from cloelib.auxiliary.cosebi_helpers import (  # noqa: E402
++    get_T_plus_minus,
++    get_W_ell,
++    get_roots_and_norms,
++    tm,
++    tp,
++)
++
++jax.config.update("jax_enable_x64", True)
++
++N_MODES = 3
++KEY = ("SHE", "SHE", 1, 1)
++THETA = np.radians(np.geomspace(1.0, 400.0, 400) / 60)
++ELLS_LIN = np.arange(1, 5001).astype(float)
++ELLS_LOG = np.geomspace(1, 5000, 2000)
++
++
++def cl_ee(ells):
++    """Toy E-mode spectrum, damped so the Hankel transforms converge."""
++    return 1e-9 * (ells / 100.0) ** -1.2 * np.exp(-((ells / 1000.0) ** 2))
++
++
++def cosebis_from_cl(ells):
++    w_ell = get_W_ell(THETA, N_MODES, ells, 4)
++    arr = jnp.zeros((2, 2, ells.size)).at[0, 0].set(cl_ee(ells))
++    cells = {KEY: AngularPowerSpectrum(array=arr, ell=jnp.asarray(ells))}
++    ns = jnp.arange(1, N_MODES + 1)
++    return get_cosebis_from_cl(cells, jnp.asarray(ells), w_ell, ns)[KEY]
++
++
++@pytest.fixture(scope="module")
++def cosebis_lin():
++    return cosebis_from_cl(ELLS_LIN)
++
++
++@pytest.fixture(scope="module")
++def xi_and_kernels():
++    """xi_+/- of the toy spectrum and the T_+/- kernels on THETA."""
++    ells = ELLS_LIN
++    lt = np.outer(THETA, ells)
++    weight = ells * cl_ee(ells) / (2 * np.pi)
++    xi_plus = j0(lt) @ weight
++    xi_minus = jv(4, lt) @ weight
++
++    T_plus, T_minus = get_T_plus_minus(THETA, N_MODES)
++    return xi_plus, xi_minus, T_plus, T_minus
++
++
++def test_T_plus_minus_match_mpmath():
++    # Float64 Chebyshev kernels against the full-precision mpmath expressions
++    theta = np.radians(np.geomspace(0.5, 300.0, 50) / 60)
++    nmax = 15
++    T_plus, T_minus = get_T_plus_minus(theta, nmax)
++    assert T_plus.shape == T_minus.shape == (nmax + 1, theta.size)
++    np.testing.assert_array_equal(T_plus[0], 0)
++    rn, nn, coeff_j = get_roots_and_norms(theta[-1], theta[0], nmax)
++    for n in (1, 7, nmax):
++        ref_p = np.array([float(v) for v in tp(n, theta, theta[0], nn, rn)])
++        ref_m = np.array([float(v) for v in tm(n, theta, theta[0], nn, coeff_j)])
++        np.testing.assert_allclose(
++            T_plus[n], ref_p, rtol=0, atol=1e-12 * np.abs(ref_p).max()
++        )
++        np.testing.assert_allclose(
++            T_minus[n], ref_m, rtol=0, atol=1e-12 * np.abs(ref_m).max()
++        )
++
++
++def test_quadrature_weights():
++    # Unit spacing reproduces the plain Simpson weights
++    x = np.arange(1, 101).astype(float)
++    np.testing.assert_array_equal(quadrature_weights(x), simpsons_weights_jit(100))
++
++    f = lambda x: x**-1.5  # noqa: E731
++    exact = lambda a, b: 2 * (a**-0.5 - b**-0.5)  # noqa: E731
++    for x, rel in [
++        (np.linspace(1, 100, 1001), 1e-5),  # linear: Simpson
++        (np.geomspace(1, 100, 1001), 1e-5),  # logarithmic: Simpson in ln x
++        (np.sort(np.random.default_rng(0).uniform(1, 100, 5000)), 1e-3),  # trapezoid
++    ]:
++        integral = np.dot(quadrature_weights(x), f(x))
++        assert integral == pytest.approx(exact(x[0], x[-1]), rel=rel)
++
++
++def test_cosebis_from_cl_independent_of_ell_grid(cosebis_lin):
++    cosebis_log = cosebis_from_cl(ELLS_LOG)
++    np.testing.assert_allclose(
++        cosebis_log.array[0, 0], cosebis_lin.array[0, 0], rtol=1e-4
++    )
++
++
++def test_cosebis_from_cl_thetas_in_arcmin(cosebis_lin):
++    # Same unit as the Euclid LE3 products read by euclidlib
++    assert cosebis_lin.thmin == pytest.approx(1.0)
++    assert cosebis_lin.thmax == pytest.approx(400.0)
++
++
++def test_cosebis_from_2pcf_matches_cl(cosebis_lin, xi_and_kernels):
++    xi_plus, xi_minus, T_plus, T_minus = xi_and_kernels
++    arr = jnp.zeros((2, 2, THETA.size)).at[0, 0].set(xi_plus).at[1, 1].set(xi_minus)
++    twopcf = {
++        KEY: TwoPointCorrelationFunction(array=arr, theta=jnp.asarray(THETA)),
++        ("POS", "POS", 1, 1): TwoPointCorrelationFunction(
++            array=jnp.asarray(xi_plus), theta=jnp.asarray(THETA)
++        ),
++    }
++    out = get_cosebis_from_2pcf(
++        twopcf, jnp.asarray(THETA), T_plus, T_minus, jnp.arange(1, N_MODES + 1)
++    )
++
++    # Only SHE-SHE pairs are processed
++    assert list(out) == [KEY]
++    cosebi = out[KEY]
++    assert cosebi.array.shape == (2, 2, N_MODES)
++    np.testing.assert_array_equal(cosebi.mode, np.arange(1, N_MODES + 1))
++    assert cosebi.thmin == pytest.approx(1.0)  # arcmin
++    assert cosebi.thmax == pytest.approx(400.0)
++
++    # Real- and harmonic-space routes agree; no B-modes from a pure E spectrum
++    ee = np.asarray(cosebi.array[0, 0])
++    np.testing.assert_allclose(ee, cosebis_lin.array[0, 0], rtol=1e-4)
++    np.testing.assert_allclose(np.asarray(cosebi.array[1, 1]) / ee, 0, atol=1e-4)
+diff --git a/tests/test_gw_observable.py b/tests/test_gw_observable.py
+new file mode 100644
+index 0000000..71da5ce
+--- /dev/null
++++ b/tests/test_gw_observable.py
+@@ -0,0 +1,132 @@
++"""Unit tests for gravitational-wave observables."""
++
++import numpy as np
++
++from cloelib.observables.gw import GWNumberCountsTracer, GWWeakLensingTracer
++from cloelib.observables.gw.number_counts import GWSourceBiasContribution
++from cloelib.observables.gw.weak_lensing import GWWeakLensingContribution
++from cloelib.observables.photo.tracer import Tracer
++from cloelib.summary_statistics.angular_two_point import AngularTwoPoint
++
++
++class FakeBackground:
++    """Minimal background implementation needed by the GW tracers."""
++
++    H0 = 70.0
++
++    def Omega_m(self, z):
++        return 0.3 + 0.0 * z
++
++    def hubble_parameter(self, z, units="km/s/Mpc"):
++        return self.H0 * np.sqrt(0.3 * (1.0 + z) ** 3 + 0.7)
++
++    def comoving_distance(self, z):
++        return 3000.0 * z
++
++
++class FakePerturbations:
++    """Minimal perturbation implementation needed by ``AngularTwoPoint``."""
++
++    def __init__(self, z):
++        self.background = FakeBackground()
++        self.z = z
++        self.k = np.geomspace(1.0e-3, 1.0, 32)
++
++    def matter_power_spectrum(self, z, k):
++        return 1.0 / (1.0 + z[:, None]) ** 2 / (1.0 + k[None, :] ** 2)
++
++
++def _tracer_contract(tracer: Tracer) -> Tracer:
++    """Type-check GW tracers against the shared structural protocol."""
++    return tracer
++
++
++def test_gw_windows_and_angular_power_spectra():
++    z = np.linspace(0.1, 1.1, 21)
++    dndz = np.ones((1, len(z)))
++    dndz /= np.trapezoid(dndz, z, axis=1)[:, None]
++    perturbations = FakePerturbations(z)
++    nuisance_gw = {
++        "b1_gw_bin0": 1.7,
++        "dz_gw_1": 0.0,
++        "width_gw_1": 1.0,
++    }
++
++    gw_number_counts = GWNumberCountsTracer(
++        perturbations=perturbations,
++        dndz=dndz,
++        z=z,
++        gw_bias_model="per_bin",
++        nuisance_params=nuisance_gw,
++    )
++    gw_weak_lensing = GWWeakLensingTracer(
++        perturbations=perturbations,
++        dndz=dndz,
++        z=z,
++        nuisance_params=nuisance_gw,
++    )
++
++    _tracer_contract(gw_number_counts)
++    _tracer_contract(gw_weak_lensing)
++
++    contributions = gw_number_counts.get_contributions()
++    assert contributions == (gw_number_counts.bias,)
++    assert isinstance(contributions[0], GWSourceBiasContribution)
++    np.testing.assert_array_equal(
++        np.asarray(contributions[0].compute_kernel(z)),
++        np.asarray(gw_number_counts.get_window_number_counts(z)),
++    )
++
++    contributions = gw_weak_lensing.get_contributions()
++    assert contributions == (gw_weak_lensing.lensing,)
++    assert isinstance(contributions[0], GWWeakLensingContribution)
++    np.testing.assert_array_equal(
++        np.asarray(contributions[0].compute_kernel(z)),
++        np.asarray(gw_weak_lensing.get_window_lensing(z)),
++    )
++
++    window_number_counts = np.asarray(gw_number_counts.get_window(z))
++    window_weak_lensing = np.asarray(gw_weak_lensing.get_window(z))
++    tolerance = 1.0e-12
++
++    assert window_number_counts.shape == dndz.shape
++    assert window_weak_lensing.shape == dndz.shape
++    assert np.all(np.isfinite(window_number_counts))
++    assert np.all(np.isfinite(window_weak_lensing))
++    assert np.all(window_number_counts >= -tolerance)
++    assert np.all(window_weak_lensing >= -tolerance)
++    assert np.any(window_number_counts > tolerance)
++    assert np.any(window_weak_lensing > tolerance)
++
++    nl = 10
++    ells = np.logspace(1.0, np.log10(100), nl)
++
++    cells = {
++        **AngularTwoPoint(gw_number_counts, gw_number_counts).get_Cl(
++            ells, 0, perturbations.k
++        ),
++        **AngularTwoPoint(gw_weak_lensing, gw_weak_lensing).get_Cl(
++            ells, 0, perturbations.k
++        ),
++        **AngularTwoPoint(gw_number_counts, gw_weak_lensing).get_Cl(
++            ells, 0, perturbations.k
++        ),
++    }
++
++    # Check that cells has the right number of elements and right keys
++    assert len(cells.keys()) == 3
++    assert ("GWNC", "GWNC", 1, 1) in cells.keys()
++    assert ("GWWL", "GWWL", 1, 1) in cells.keys()
++    assert ("GWNC", "GWWL", 1, 1) in cells.keys()
++    assert cells[("GWNC", "GWNC", 1, 1)].shape == (nl,)
++    assert cells[("GWWL", "GWWL", 1, 1)].shape == (nl,)
++    assert cells[("GWNC", "GWWL", 1, 1)].shape == (nl,)
++
++    # We also check everything works well if we reverse the order of the probes
++    cells_reverse = AngularTwoPoint(gw_weak_lensing, gw_number_counts).get_Cl(
++        ells, 0, perturbations.k
++    )
++
++    assert len(cells_reverse.keys()) == 1
++    assert ("GWNC", "GWWL", 1, 1) in cells_reverse.keys()
++    assert cells_reverse[("GWNC", "GWWL", 1, 1)].shape == (nl,)
+diff --git a/tests/test_halo_abundance.py b/tests/test_halo_abundance.py
+new file mode 100644
+index 0000000..2a447af
+--- /dev/null
++++ b/tests/test_halo_abundance.py
+@@ -0,0 +1,91 @@
++# import jax.numpy as np
++
++import numpy as np
++from numpy.testing import assert_allclose
++
++from cloelib.cosmology.camb_cosmology import CAMBBackground, CAMBLinearPerturbations
++from cloelib.auxiliary.halo_helpers import convert_to_Delta_crit
++from cloelib.observables.halos.halo_abundance import (
++    CastroHaloAbundance,
++    TinkerHaloAbundance,
++)
++from cloelib.observables.halos.halo_model_properties import HaloModelProperties
++
++
++def test_HaloModelProperties():
++    # Cosmology parameters
++    print("# Cosmology parameters")
++    _H0 = 67.7
++    _h = _H0 / 100.0
++    _omch2 = 0.12
++    _ombh2 = 0.022
++    _cosmo_pars = dict(
++        H0=_H0,
++        Omega_cdm0=_omch2 / _h**2,
++        Omega_b0=_ombh2 / _h**2,
++        Omega_k0=0.0,
++        w0=-1.0,
++        wa=0.0,
++        ns=0.96,
++        mnu=0.06,
++        As=2e-9,
++        gamma_MG=0.0,
++        N_mnu=1,
++    )
++
++    background = CAMBBackground(**_cosmo_pars)
++    perturbations = CAMBLinearPerturbations(background, np.linspace(0.0, 2.0, 100))
++
++    # HaloModelProperties
++    print("# HaloModelProperties")
++    HS = HaloModelProperties(perturbations)
++    HS_tinker = TinkerHaloAbundance(HS)
++    HS_castro = CastroHaloAbundance(HS)
++
++    # tests
++    z_test = np.linspace(0.01, 1.0, 5)
++    k_test = np.logspace(-2, 1, 5)
++    R_test = np.logspace(-1, 1, 5)
++    M_test = np.logspace(14, 15, 5)
++
++    print("    window")
++    W, dWdx = HS_tinker.window(k_test, R_test)
++    _ref = [9.999999e-01, 9.999968e-01, 9.999000e-01, 9.968413e-01, 9.035060e-01]
++    assert_allclose(W[0], _ref)
++    _ref = [-0.0002, -0.001125, -0.006324, -0.035485, -0.186105]
++    assert_allclose(dWdx[0], _ref, atol=5e-07)
++    print("    radius_M")
++    _ref = [6.523691, 7.903632, 9.575468, 11.600945, 14.054865]
++    assert_allclose(HS_tinker.radius_M(M_test), _ref)
++    print("    delta_c")
++    _ref = [1.676099, 1.67969, 1.681921, 1.683324, 1.684226]
++    assert_allclose(HS_tinker.delta_c(z_test), _ref, rtol=5e-7)
++    print("    convert_to_Delta_crit")
++    _ref = [103.349057, 123.372358, 139.008183, 150.092972, 157.673498]
++    assert_allclose(
++        convert_to_Delta_crit("vir", background=background, z=z_test)[:5], _ref
++    )
++    print("    sigma_z_R")
++    _ref = [4.175587, 3.550908, 2.366934, 1.386543, 0.673829]
++    assert_allclose(HS_tinker.sigma_z_R(z_test, R_test)[0, :5], _ref, rtol=5e-3)
++    print("    sigma_z_M")
++    _ref = [0.908559, 0.799362, 0.698348, 0.605542, 0.520909]
++    assert_allclose(HS_tinker.sigma_z_M(z_test, M_test)[0], _ref, rtol=1e-3)
++    print("    nu_z_M")
++    _ref = [1.851075, 2.103741, 2.407783, 2.776472, 3.227135]
++    assert_allclose(HS_tinker.nu_z_M(z_test, M_test)[0], _ref, rtol=5e-3)
++    print("    dlns_dlnR")
++    _ref = [-0.649273, -0.684757, -0.722659, -0.76278, -0.805423]
++    assert_allclose(3 * HS_tinker.dlns_dlnM(z_test, M_test)[0], _ref, rtol=1e-3)
++
++    print("    bias Tinker")
++    _ref = [2.205833, 2.746553, 3.516339, 4.632278, 6.281516]
++    assert_allclose(HS_tinker.bias(z_test, M_test)[0], _ref, rtol=5e-3)
++
++    print("    dn_dm Castro")
++    _ref = [3.887839e-19, 9.699365e-20, 2.072788e-20, 3.521802e-21, 4.244946e-22]
++    assert_allclose(HS_castro.dn_dm(z_test, M_test)[0], _ref, rtol=5e-3)
++
++    print("    bias Castro")
++    _ref = [2.196687, 2.727811, 3.475523, 4.531292, 6.005312]
++    assert_allclose(HS_castro.bias(z_test, M_test)[0], _ref, rtol=5e-3)
+diff --git a/tests/test_pseudo_cl_mixing.py b/tests/test_pseudo_cl_mixing.py
+new file mode 100644
+index 0000000..e83c04b
+--- /dev/null
++++ b/tests/test_pseudo_cl_mixing.py
+@@ -0,0 +1,268 @@
++"""
++Tests for `AngularTwoPoint.get_pseudo_Cl`, i.e. the multiplication of the
++theory Cls by the mixing matrices.
++
++Each test uses tiny, hand-written numbers so the expected result can be
++checked with pen and paper. We do not compute real Cls: `get_Cl` is
++replaced by a fake that returns the numbers we choose, so the only thing
++being tested is the mixing-matrix multiplication.
++
++What `get_pseudo_Cl` should do (euclidlib internal format):
++    - POS-POS: pseudo_Cl = M @ Cl
++    - POS-SHE: the same matrix M multiplies the E and the B part separately.
++    - SHE-SHE: the mixing matrix has three pieces, M_EE, M_BB and M_EB:
++          EE_out = M_EE @ EE + M_BB @ BB
++          BB_out = M_BB @ EE + M_EE @ BB
++          EB_out = M_EB @ EB
++          BE_out = M_EB @ BE
++
++In every test the Cls are given at 3 multipoles (ell = 0, 1, 2) and the
++mixing matrices turn them into 2 output values, so each matrix has
++2 rows and 3 columns.
++"""
++
++import numpy as np
++import pytest
++from cosmolib.data import AngularPowerSpectrum
++
++from cloelib.observables.photo import PositionsTracer, ShearTracer
++from cloelib.summary_statistics.angular_two_point import AngularTwoPoint
++
++# A simple 2x3 mixing matrix: each output is the sum of two neighbouring ells.
++#   output[0] = Cl[0] + Cl[1]
++#   output[1] = Cl[1] + Cl[2]
++SUM_NEIGHBOURS = np.array(
++    [
++        [1.0, 1.0, 0.0],
++        [0.0, 1.0, 1.0],
++    ]
++)
++
++
++# ---------------------------------------------------------------------------
++# Small helpers to set up the calculation
++# ---------------------------------------------------------------------------
++
++
++def make_tracer(tracer_class, n_bins=1):
++    """Create an empty tracer of the given type.
++
++    `get_pseudo_Cl` only needs to know the tracer type (positions or shear)
++    and the number of redshift bins, so nothing else is set.
++    """
++    tracer = object.__new__(tracer_class)
++    tracer.n_z_bins = n_bins
++    return tracer
++
++
++def wrap(array):
++    """Put a plain array into the container used by cloelib/cosmolib."""
++    return AngularPowerSpectrum(
++        array=np.array(array, dtype=float),
++        ell=np.array([10.0, 20.0]),
++        lower=np.array([5.0, 15.0]),
++        upper=np.array([15.0, 25.0]),
++    )
++
++
++def compute_pseudo_cl(tracer1, tracer2, fake_cls, mixing_matrices):
++    """Run `get_pseudo_Cl`, using `fake_cls` instead of real Cls."""
++    calculator = AngularTwoPoint(tracer1, tracer2)
++    calculator.get_Cl = lambda ells, nl, ks: {
++        key: wrap(cl) for key, cl in fake_cls.items()
++    }
++    mixing_matrices = {key: wrap(m) for key, m in mixing_matrices.items()}
++    return calculator.get_pseudo_Cl(nl=None, ks=None, mixing_matrix=mixing_matrices)
++
++
++# ---------------------------------------------------------------------------
++# Tests
++# ---------------------------------------------------------------------------
++
++
++def test_pos_pos():
++    key = ("POS", "POS", 1, 1)
++    cl = [1.0, 2.0, 3.0]
++
++    result = compute_pseudo_cl(
++        make_tracer(PositionsTracer),
++        make_tracer(PositionsTracer),
++        fake_cls={key: cl},
++        mixing_matrices={key: SUM_NEIGHBOURS},
++    )
++
++    # [1 + 2, 2 + 3]
++    np.testing.assert_allclose(result[key].array, [3.0, 5.0])
++
++
++@pytest.mark.parametrize(
++    "tracer1, tracer2",
++    [(PositionsTracer, ShearTracer), (ShearTracer, PositionsTracer)],
++    ids=["POS-SHE", "SHE-POS"],
++)
++def test_pos_she(tracer1, tracer2):
++    key = ("POS", "SHE", 1, 1)
++    E = [1.0, 2.0, 3.0]
++    B = [10.0, 20.0, 30.0]
++
++    result = compute_pseudo_cl(
++        make_tracer(tracer1),
++        make_tracer(tracer2),
++        fake_cls={key: [E, B]},
++        mixing_matrices={key: SUM_NEIGHBOURS},
++    )
++
++    E_out, B_out = result[key].array
++    np.testing.assert_allclose(E_out, [3.0, 5.0])  # [1 + 2, 2 + 3]
++    np.testing.assert_allclose(B_out, [30.0, 50.0])  # [10 + 20, 20 + 30]
++
++
++@pytest.mark.parametrize(
++    "tracer1, n_bins1, tracer2, n_bins2",
++    [
++        (PositionsTracer, 2, ShearTracer, 3),
++        (ShearTracer, 3, PositionsTracer, 2),
++    ],
++    ids=["POS-SHE", "SHE-POS"],
++)
++def test_pos_she_different_number_of_bins(tracer1, n_bins1, tracer2, n_bins2):
++    # 2 POS bins and 3 SHE bins give 2 x 3 = 6 pairs, always named
++    # ("POS", "SHE", POS bin, SHE bin), whatever the order of the tracers.
++    # Each pair gets the same Cl but a different multiple of SUM_NEIGHBOURS,
++    # so we can check that every pair is computed with its own matrix.
++    E = [1.0, 2.0, 3.0]
++    B = [10.0, 20.0, 30.0]
++    factor = {
++        (1, 1): 1, (1, 2): 2, (1, 3): 3,
++        (2, 1): 4, (2, 2): 5, (2, 3): 6,
++    }  # fmt: skip
++    fake_cls = {("POS", "SHE", i, j): [E, B] for (i, j) in factor}
++    mixing_matrices = {
++        ("POS", "SHE", i, j): f * SUM_NEIGHBOURS for (i, j), f in factor.items()
++    }
++
++    result = compute_pseudo_cl(
++        make_tracer(tracer1, n_bins1),
++        make_tracer(tracer2, n_bins2),
++        fake_cls,
++        mixing_matrices,
++    )
++
++    # Exactly the 6 pairs, no pair missing and none extra.
++    assert set(result) == set(fake_cls)
++    for (i, j), f in factor.items():
++        E_out, B_out = result[("POS", "SHE", i, j)].array
++        np.testing.assert_allclose(E_out, [f * 3.0, f * 5.0])
++        np.testing.assert_allclose(B_out, [f * 30.0, f * 50.0])
++
++
++# SHE-SHE: one test per output component (EE, BB, EB, BE), so a failing test
++# tells you directly which multiplication is wrong.
++#
++# The numbers are chosen so that ANY mistake gives a different answer:
++#   - each input component has a very different size (1s, 10s, 100s, 1000s),
++#     so using the wrong component (e.g. BB instead of EE) is visible;
++#   - each mixing matrix picks different ells, so using the wrong matrix
++#     (e.g. M_EE instead of M_BB) is visible too.
++# Every other combination of one or two (matrix @ component) terms gives a
++# result different from the correct one.
++EE = [1.0, 2.0, 3.0]
++BB = [10.0, 20.0, 30.0]
++EB = [100.0, 200.0, 300.0]
++BE = [1000.0, 2000.0, 3000.0]
++
++M_EE = SUM_NEIGHBOURS  # output = [Cl[0] + Cl[1], Cl[1] + Cl[2]]
++M_BB = [[2.0, 0.0, 0.0], [0.0, 0.0, 2.0]]  # output = [2 * Cl[0], 2 * Cl[2]]
++M_EB = [[0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]  # output = [Cl[1], Cl[2]]
++
++
++def she_she_pseudo_cl():
++    """Run `get_pseudo_Cl` for SHE-SHE with the numbers above.
++
++    Returns the output as a 2x2 grid: [[EE, EB], [BE, BB]].
++    """
++    key = ("SHE", "SHE", 1, 1)
++    result = compute_pseudo_cl(
++        make_tracer(ShearTracer),
++        make_tracer(ShearTracer),
++        fake_cls={key: [[EE, EB], [BE, BB]]},
++        mixing_matrices={key: [M_EE, M_BB, M_EB]},
++    )
++    return result[key].array
++
++
++def test_she_she_EE():
++    # EE_out = M_EE @ EE + M_BB @ BB
++    #        = [1 + 2, 2 + 3] + [2 * 10, 2 * 30]
++    EE_out = she_she_pseudo_cl()[0, 0]
++    np.testing.assert_allclose(EE_out, [23.0, 65.0])
++
++
++def test_she_she_BB():
++    # BB_out = M_BB @ EE + M_EE @ BB
++    #        = [2 * 1, 2 * 3] + [10 + 20, 20 + 30]
++    BB_out = she_she_pseudo_cl()[1, 1]
++    np.testing.assert_allclose(BB_out, [32.0, 56.0])
++
++
++def test_she_she_EB():
++    # EB_out = M_EB @ EB = [200, 300]
++    EB_out = she_she_pseudo_cl()[0, 1]
++    np.testing.assert_allclose(EB_out, [200.0, 300.0])
++
++
++def test_she_she_BE():
++    # BE_out = M_EB @ BE = [2000, 3000]
++    BE_out = she_she_pseudo_cl()[1, 0]
++    np.testing.assert_allclose(BE_out, [2000.0, 3000.0])
++
++
++def test_each_bin_pair_uses_its_own_mixing_matrix():
++    # Two redshift bins give three pairs: (1, 1), (1, 2) and (2, 2).
++    # All pairs get the same Cl, but a different mixing matrix
++    # (SUM_NEIGHBOURS times 1, 2 and 3), so each result should be different.
++    cl = [1.0, 2.0, 3.0]
++    fake_cls = {
++        ("POS", "POS", 1, 1): cl,
++        ("POS", "POS", 1, 2): cl,
++        ("POS", "POS", 2, 2): cl,
++    }
++    mixing_matrices = {
++        ("POS", "POS", 1, 1): 1 * SUM_NEIGHBOURS,
++        ("POS", "POS", 1, 2): 2 * SUM_NEIGHBOURS,
++        ("POS", "POS", 2, 2): 3 * SUM_NEIGHBOURS,
++    }
++
++    result = compute_pseudo_cl(
++        make_tracer(PositionsTracer, n_bins=2),
++        make_tracer(PositionsTracer, n_bins=2),
++        fake_cls,
++        mixing_matrices,
++    )
++
++    np.testing.assert_allclose(result[("POS", "POS", 1, 1)].array, [3.0, 5.0])
++    np.testing.assert_allclose(result[("POS", "POS", 1, 2)].array, [6.0, 10.0])
++    np.testing.assert_allclose(result[("POS", "POS", 2, 2)].array, [9.0, 15.0])
++
++
++def test_output_keeps_the_mixing_matrix_ells():
++    # The pseudo-Cl is given at the output multipoles of the mixing matrix,
++    # so the ell values and bin edges must be copied from it.
++    key = ("POS", "POS", 1, 1)
++
++    result = compute_pseudo_cl(
++        make_tracer(PositionsTracer),
++        make_tracer(PositionsTracer),
++        fake_cls={key: [1.0, 2.0, 3.0]},
++        mixing_matrices={key: SUM_NEIGHBOURS},
++    )
++
++    np.testing.assert_array_equal(result[key].ell, [10.0, 20.0])
++    np.testing.assert_array_equal(result[key].lower, [5.0, 15.0])
++    np.testing.assert_array_equal(result[key].upper, [15.0, 25.0])
++
++
++def test_unsupported_tracers_raise_an_error():
++    calculator = AngularTwoPoint(object(), object())
++    with pytest.raises(ValueError, match="Unsupported tracer pair"):
++        calculator.get_pseudo_Cl(nl=None, ks=None, mixing_matrix={})

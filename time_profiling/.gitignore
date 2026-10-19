@@ -1,0 +1,7 @@
+# created by environment/setup_external.sh, environment/setup_envs.sh and the notebooks
+external/
+environment/envs/
+work/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
