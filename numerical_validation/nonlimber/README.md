@@ -1,8 +1,8 @@
 # Beyond-Limber validation of cloelib
 
 Compares the beyond-Limber angular power spectra of cloelib with Blast.jl,
-pyccl and cosmosis on a synthetic setup (three Gaussian redshift bins in `config.toml`, three
-Smail bins with photo-z errors in `config_smail.toml`), for
+pyccl and cosmosis on a synthetic Euclid-like setup (three equipopulated Smail
+redshift bins with photo-z errors and outliers, `config.toml`), for
 five 3x2pt setups, and plots the comparison. The cloelib under test is the
 beyond-Limber branch (`feature/no-limber`) at commit `f7bfbdc`, pinned in
 `[setup] cloelib`.
@@ -12,28 +12,28 @@ beyond-Limber branch (`feature/no-limber`) at commit `f7bfbdc`, pinned in
 | path | what |
 |---|---|
 | `nonlimber_validation.py` | everything: setup, shared inputs, the four codes, plots (standard library only) |
-| `config.toml`, `config_smail.toml` | physics, setups, numerical settings of each code, environments: Gaussian and Smail bins |
+| `config.toml` | physics, setups, numerical settings of each code, environments |
 | `local.toml` | optional, your machine only (git-ignored): overrides of `[environment]` |
 | `environment/` | `cloelib.yml`, `ccl.yml`, `cosmosis.yml` (conda), `blast/` (Julia project, pinned by its `Manifest.toml`) |
 | `data/<name>/` | the Cl of every code and the shared inputs (`*.npz`, in git) |
 | `results/<name>/` | tables (`summary.md`, in git) and figures (`*.png`, not in git: `plots` redoes them) |
 | `logs/<name>/` | the log of every task of the committed run |
-| `nonlimber_validation.ipynb` | analysis and figures of the committed results, both configs (reads `data/`, computes nothing; figures to `figures/`, not in git) |
+| `nonlimber_validation.ipynb` | analysis and figures of the committed results (reads `data/`, computes nothing; figures to `figures/`, not in git) |
 | `external/`, `.work/` | (git-ignored) the cosmosis standard library cloned by `setup`, helper files of Blast and cosmosis |
 
 ## Findings
 
 Full analysis and figures: `nonlimber_validation.ipynb`. cloelib `f7bfbdc`, non-linear $P(k)$, beyond Limber for $\ell \leq 200$; $\sigma_\ell$ is the Gaussian error with noise ($f_{\rm sky} = 0.36$, 30 gal/arcmin$^2$, $\sigma_e = 0.3$), $\Delta\chi^2$ is for the whole 3x2pt (Knox).
 
-1. **The beyond-Limber correction matters.** Using Limber instead changes the 3x2pt $\chi^2$ by 10–17 (Gaussian bins) and 6–10 (Smail bins) for $\ell \leq 200$.
-2. **cloelib agrees with Blast.jl and pyccl for every term and both $n(z)$.** The terms are density, magnification, RSD, shear and NLA.
-   - The largest difference is $\leq 1.0 \times 10^{-2}\,\sigma_\ell$ for $\ell \leq 200$.
-   - $\Delta\chi^2_{\ell \leq 200} \leq 0.015$ in every setup, about a thousandth of the correction.
-3. **Above $\ell = 200$, cloelib keeps RSD in its Limber spectra.** CosmoSIS does not, and pyccl's Limber RSD is about 60x smaller.
-   - This, not the beyond-Limber part, is why pyccl's $\Delta\chi^2$ up to $\ell = 1000$ is 0.19 (Gaussian bins) in the setups with RSD.
-   - At $\ell = 206$ Blast is still beyond Limber, and its RSD effect agrees with cloelib's (0.51% vs 0.40% of $C_\ell$ in bin 3).
+1. **The beyond-Limber correction matters.** Using Limber instead changes the 3x2pt $\chi^2$ by 6–10 for $\ell \leq 200$.
+2. **cloelib agrees with Blast.jl and pyccl for every term.** The terms are density, magnification, RSD, shear and NLA.
+   - The largest difference is $\leq 5 \times 10^{-3}\,\sigma_\ell$ for $\ell \leq 200$.
+   - $\Delta\chi^2_{\ell \leq 200} \leq 0.002$ in every setup, about a thousandth of the correction.
+3. **Above $\ell = 200$, cloelib keeps RSD in its Limber spectra.** CosmoSIS does not, and pyccl almost does not.
+   - This, not the beyond-Limber part, is why pyccl's $\Delta\chi^2$ up to $\ell = 1000$ is 0.025 in the setups with RSD.
+   - At $\ell = 206$ Blast is still beyond Limber, and its RSD effect agrees with cloelib's (0.08% of $C_\ell$ in bin 3 for both).
 4. **Blast.jl uses its own Limber above $\ell = 220$.** That accounts for all of its $\Delta\chi^2_{\ell \leq 1000}$ = 0.01–0.03.
-5. **CosmoSIS is a reference only for galaxy density and RSD.** POS-POS agrees to $\leq 1.7 \times 10^{-2}\,\sigma$. Its shear, magnification and IA are low at $\ell \lesssim 20$, up to $0.31\,\sigma$, because it puts Limber lensing kernels inside the exact integral.
+5. **CosmoSIS is a reference only for galaxy density and RSD.** POS-POS agrees to $\leq 1.7 \times 10^{-2}\,\sigma$. Its shear, magnification and IA are low at $\ell \lesssim 20$, up to $0.16\,\sigma$, because it puts Limber lensing kernels inside the exact integral.
 
 ## Requirements
 
@@ -55,7 +55,7 @@ python3 nonlimber_validation.py setup             # environments, cloelib, cosmo
 python3 nonlimber_validation.py run               # inputs, cloelib, ccl, blast, cosmosis, plots (~10 min)
 python3 nonlimber_validation.py run --codes cloelib  # recompute only some codes, then the plots
 python3 nonlimber_validation.py plots             # only plots and tables, from the saved Cl
-python3 nonlimber_validation.py run config_smail.toml  # another config: three Smail bins (results/smail/)
+python3 nonlimber_validation.py run other.toml    # another config (results/<name>/)
 ```
 
 `setup` creates three conda environments (`nlv-cloelib`, `nlv-ccl`,
@@ -142,9 +142,8 @@ Known limitations of the references: cosmosis puts the Limber lensing kernels
 inside its exact integral (low at ell < ~20 for shear, magnification and IA:
 not a beyond-Limber reference for them), and cannot compute RSD x
 magnification, galaxy RSD x shear and magnification x IA (left out, with the
-reason in the plots); CCL's FKEM has a known error at the lowest ells for the
-z = 1.5 bin, and its Limber with RSD is NaN at the lowest ells for the highest-z bin
-(ell = 2 with the Gaussian bins, ell <= 7 with the Smail bins: those ells are
-left out of CCL's residuals and marked in the plots);
+reason in the plots); CCL's Limber with RSD is NaN at the lowest ells for the
+highest-z bin (ell <= 7: those ells are left out of CCL's residuals and marked
+in the plots);
 Blast's non-linear shear departs from the others above ell = 220 (its Limber
 part).

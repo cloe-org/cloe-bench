@@ -212,7 +212,6 @@ def load_cls(cfg, code):
 def redshift_bins(nz):
     """(z, n_i(z)) of the [nz] config, each bin normalized to 1.
 
-    kind "gaussian": n_i ∝ exp(-(z - mean_i)^2 / 2 sigma_i^2), sigma_i = sigma0 (1 + mean_i).
     kind "smail": parent n(z) ∝ (z/z0)^alpha exp(-(z/z0)^beta), z0 = z_m / sqrt(2), cut in
     photometric redshift between the `edges` (a list, or "equipopulated" with `n_bins`) and
     convolved with the photo-z error p(z_p|z): a Gaussian of width sigma (1 + z), plus a
@@ -222,9 +221,7 @@ def redshift_bins(nz):
     from scipy.special import erf
 
     z = np.linspace(nz["z_min"], nz["z_max"], nz["n_z"])
-    if nz["kind"] == "gaussian":
-        bins = np.array([np.exp(-0.5 * ((z - m) / (nz["sigma0"] * (1 + m))) ** 2) for m in nz["means"]])
-    elif nz["kind"] == "smail":
+    if nz["kind"] == "smail":
         z0 = nz["z_m"] / np.sqrt(2.0)
         parent = (z / z0) ** nz["alpha"] * np.exp(-((z / z0) ** nz["beta"]))
         edges = nz["edges"]
@@ -246,7 +243,7 @@ def redshift_bins(nz):
         ])
         print(f"[inputs] Smail bins, photometric edges {np.round(edges, 4).tolist()}", flush=True)
     else:
-        raise ValueError(f"Unsupported n(z) kind {nz['kind']!r}: 'gaussian' or 'smail'.")
+        raise ValueError(f"Unsupported n(z) kind {nz['kind']!r}: only 'smail'.")
     return z, bins / np.trapezoid(bins, z, axis=1)[:, None]
 
 

@@ -7,7 +7,7 @@
 # background, n(z)) are computed once from [cosmology], [tables], [nz] and
 # [galaxies] (data/<name>/inputs.npz).
 
-name = "gaussian"
+name = "smail"
 
 # Codes run by `nonlimber_validation.py run`, in this order (cloelib is the
 # reference of the plots).
@@ -36,13 +36,23 @@ k_max = 50.0
 n_k = 600
 
 [nz]
-# Three Gaussian bins, the same for lenses and sources: sigma_i = sigma0 (1 + mean_i).
-kind = "gaussian"
+# Three Smail bins, the same for lenses and sources (Euclid-like): parent
+# n(z) ∝ (z/z0)^alpha exp(-(z/z0)^beta), z0 = z_m / sqrt(2), cut in photometric
+# redshift between equipopulated edges and convolved with a Gaussian photo-z
+# error sigma (1 + z), plus a fraction f_out of outliers shifted by z_out.
+kind = "smail"
 z_min = 0.001
 z_max = 3.0
 n_z = 1000
-means = [0.3, 0.8, 1.5]
-sigma0 = 0.05
+n_bins = 3
+edges = "equipopulated"
+z_m = 0.9
+alpha = 2.0
+beta = 1.5
+sigma = 0.05
+f_out = 0.1
+z_out = 0.1
+sigma_out = 0.05
 
 [galaxies]
 # Linear galaxy bias, constant within each bin.
