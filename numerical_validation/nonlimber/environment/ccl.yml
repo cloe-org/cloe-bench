@@ -1,0 +1,8 @@
+# pyccl (FKEM beyond Limber).
+name: nlv-ccl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - numpy=2.5
+  - pyccl=3.3.6
