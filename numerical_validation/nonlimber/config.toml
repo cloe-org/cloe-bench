@@ -1,0 +1,164 @@
+# Beyond-Limber validation of cloelib: the single configuration of every code.
+#
+# nonlimber_validation.py reads this file (and, if present, local.toml next to
+# it, for machine-specific overrides of [environment]) and passes it to every
+# code, so that all codes see the same physics, multipoles and setups; their
+# own numerical settings are in [codes.*]. The shared inputs (P(k, z),
+# background, n(z)) are computed once from [cosmology], [tables], [nz] and
+# [galaxies] (data/<name>/inputs.npz).
+
+name = "smail"
+
+# Codes run by `nonlimber_validation.py run`, in this order (cloelib is the
+# reference of the plots).
+run = ["cloelib", "ccl", "blast", "cosmosis"]
+
+[cosmology]
+h = 0.67
+Omega_b = 0.049
+Omega_c = 0.268
+n_s = 0.96
+A_s = 2.1e-9
+# Massless neutrinos: the linear P(k, z) is separable, P_lin(k, 0) D(z)^2, and
+# P_cb = P_mm (the total-matter / cb distinction plays no role).
+mnu = 0.0
+w0 = -1.0
+wa = 0.0
+tau = 0.07
+halofit = "mead2020"
+
+[tables]
+# Shared P(k, z) and background tables (CAMB), k in 1/Mpc.
+z_max = 4.0
+n_z = 200
+k_min = 1e-5
+k_max = 50.0
+n_k = 600
+
+[nz]
+# Three Smail bins, the same for lenses and sources (Euclid-like): parent
+# n(z) ∝ (z/z0)^alpha exp(-(z/z0)^beta), z0 = z_m / sqrt(2), cut in photometric
+# redshift between equipopulated edges and convolved with a Gaussian photo-z
+# error sigma (1 + z), plus a fraction f_out of outliers shifted by z_out.
+kind = "smail"
+z_min = 0.001
+z_max = 3.0
+n_z = 1000
+n_bins = 3
+edges = "equipopulated"
+z_m = 0.9
+alpha = 2.0
+beta = 1.5
+sigma = 0.05
+f_out = 0.1
+z_out = 0.1
+sigma_out = 0.05
+
+[galaxies]
+# Linear galaxy bias, constant within each bin.
+bias = [1.3, 1.6, 2.0]
+# Number-count slope s = dlog10 N / dm: magnification prefactor 5 s - 2
+# (cloelib `magnification_bias`); 2 (alpha - 1) with alpha = 2.5 s (cosmosis);
+# `mag_bias = s` (CCL); `s` (Blast).
+s = [0.3, 0.4, 0.5]
+
+[intrinsic_alignments]
+# NLA without redshift evolution: A(z) = A_IA.
+A_IA = 1.0
+# 5e-14 rho_crit (CCL convention); cosmosis' own value is compensated in A.
+C1_rhocrit = 0.0138768
+
+[ells]
+# Integer multipoles, log-spaced between ell_min and ell_max.
+ell_min = 2
+ell_max = 1000
+n_ell = 60
+# Beyond Limber for ell <= ell_nonlimber_max, Limber above (cloelib, CCL,
+# cosmosis; Blast has its own fixed transition at ell = 220).
+ell_nonlimber_max = 200
+
+# The setups: each is a full 3x2pt (gg, gs, ss) with the given terms. In order,
+# the steps of the validation: base, one extra contribution at a time, then the
+# full model of the analysis. Terms: galaxy "density", "magnification", "rsd";
+# shear "shear", "ia".
+[[setups]]
+galaxy = ["density"]
+shear = ["shear"]
+
+[[setups]]
+galaxy = ["density", "magnification"]
+shear = ["shear"]
+
+[[setups]]
+galaxy = ["density", "rsd"]
+shear = ["shear"]
+
+[[setups]]
+galaxy = ["density"]
+shear = ["shear", "ia"]
+
+[[setups]]
+galaxy = ["density", "magnification", "rsd"]
+shear = ["shear", "ia"]
+
+[codes.cloelib]
+# T-tilde dataset: the standard one (T_tildes_128_64_161, Zenodo 21717794),
+# downloaded by cloelib on the first run (1.8 GB).
+
+[codes.ccl]
+# Radial samples of the tracer kernels: with CCL's default (256) the FKEM shear
+# is low by up to 0.5% at every ell < l_limber.
+n_samples = 2000
+# FKEM: number of (log-spaced) chi points and their minimum (Mpc, CCL default).
+fkem_nchi = 8000
+fkem_chi_min = 1e-6
+limber_integration_method = "spline"
+
+[codes.blast]
+# Blast switches to Limber at its own fixed ell = 220 (not configurable) and
+# extrapolates the n(z) beyond their table: they are padded with zeros.
+pad_nz_with_zeros = true
+
+[codes.cosmosis]
+# structure/projection/project_2d.py of the standard library, exact integral.
+sig_over_dchi_exact = 20.0
+# Padding of the FFTLog chi range: the default (2) is not converged at ell = 2
+# for the high-z clustering bin.
+chi_pad_lower = 3.0
+chi_pad_upper = 3.0
+# Linear ell grid of project_2d, from which the config ells are taken.
+ell_max_linspaced = 1000
+
+[plots]
+# Modes: "nonlimber" (non-linear P, beyond Limber up to ell_nonlimber_max,
+# Limber above: what a likelihood uses); also "nonlimber_lin", "limber",
+# "limber_lin".
+modes = ["nonlimber"]
+reference = "cloelib"
+# Survey of sigma (Gaussian error, with noise in the auto spectra) and of
+# Delta chi^2; maer uses the noiseless cosmic-variance error.
+f_sky = 0.36
+n_gal = 30.0          # galaxies / arcmin^2, split equally among the bins
+sigma_e = 0.3
+
+[environment]
+# Where each code runs: {conda = "<env name>"} or {python = "<path of a python
+# executable>"}. The defaults are the environments `setup` creates from
+# environment/*.yml. Override them for your machine in local.toml.
+conda = "auto"        # conda / mamba / micromamba executable; "auto": $CONDA_EXE, then PATH
+julia = "julia"       # Julia >= 1.10 (Blast), with environment/blast as project
+cloelib = { conda = "nlv-cloelib" }    # cloelib, CAMB (inputs), Blast driver, plots
+ccl = { conda = "nlv-ccl" }
+cosmosis = { conda = "nlv-cosmosis" }
+# The cosmosis standard library (cloned by `setup`), relative to this file.
+cosmosis_standard_library = "external/cosmosis-standard-library"
+# Optional: a cloelib source tree to import instead of the installed package
+# (development), relative to this file or absolute. Empty: the installed one.
+cloelib_path = ""
+
+[setup]
+# What `setup` installs. cloelib: anything pip accepts (a git URL with the
+# branch or commit to validate, or a local path).
+cloelib = "git+https://github.com/cloe-org/cloelib.git@f7bfbdccf95172ab4fe29073f37f6a7c94a7549e"  # feature/no-limber
+cosmosis_standard_library_url = "https://github.com/cosmosis-developers/cosmosis-standard-library"
+cosmosis_standard_library_commit = "f461f7181f8a2599536b4ceee2efda13437b61dc"

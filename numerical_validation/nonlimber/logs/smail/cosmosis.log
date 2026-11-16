@@ -1,0 +1,692 @@
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal/limber: 0.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal/nonlimber: 2.6 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal/limber_lin: 0.3 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal/nonlimber_lin: 2.6 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear/limber: 0.5 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-shear
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear/nonlimber: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear/limber_lin: 0.5 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-shear
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear/nonlimber_lin: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'source'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] shear-shear/limber: 0.3 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name shear-shear
+Calculating Limber: Kernel 1 = ('W', 'source'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] shear-shear/nonlimber: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'source'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] shear-shear/limber_lin: 0.3 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name shear-shear
+Calculating Limber: Kernel 1 = ('W', 'source'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] shear-shear/nonlimber_lin: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_magnification_cl
+Will project these spectra into 2D:
+    -  magnification_cl
+    -  galaxy_cl
+    -  galaxy_magnification_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+lingal-magnification+magnification-magnification/limber: 0.7 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name magnification-magnification
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_cl
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+doing exact for option_name lingal-magnification
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_magnification_cl
+Will project these spectra into 2D:
+    -  magnification_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_magnification_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+lingal-magnification+magnification-magnification/nonlimber: 14.9 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_magnification_cl
+Will project these spectra into 2D:
+    -  magnification_cl
+    -  galaxy_cl
+    -  galaxy_magnification_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+lingal-magnification+magnification-magnification/limber_lin: 0.7 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name magnification-magnification
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_cl
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+doing exact for option_name lingal-magnification
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_magnification_cl
+Will project these spectra into 2D:
+    -  magnification_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_magnification_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+lingal-magnification+magnification-magnification/nonlimber_lin: 14.9 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_shear_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  magnification_shear_cl
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear+magnification-shear/limber: 0.8 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name magnification-shear
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_shear_cl
+doing exact for option_name lingal-shear
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  magnification_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear+magnification-shear/nonlimber: 17.6 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_shear_cl
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  magnification_shear_cl
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear+magnification-shear/limber_lin: 0.8 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name magnification-shear
+Calculating Limber: Kernel 1 = ('W', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: magnification_shear_cl
+doing exact for option_name lingal-shear
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('W', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  magnification_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-shear+magnification-shear/nonlimber_lin: 17.6 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+rsd/nonlimber: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name lingal-lingal
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('N', 'lens'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_cl
+Will project these spectra into 2D:
+    -  galaxy_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] lingal-lingal+rsd/nonlimber_lin: 6.4 s
+[cosmosis] 3_density-rsd_x_shear__gs: not computed (no galaxy RSD x shear in project_2d)
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-lingal-shear-ia/limber: 0.5 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name fast-lingal-shear-ia
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-lingal-shear-ia/nonlimber: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-lingal-shear-ia/limber_lin: 0.5 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name fast-lingal-shear-ia
+Calculating Limber: Kernel 1 = ('N', 'lens'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: galaxy_shear_cl
+Will project these spectra into 2D:
+    -  galaxy_shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-lingal-shear-ia/nonlimber_lin: 6.4 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('F', 'source'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-shear-shear-ia/limber: 0.3 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name fast-shear-shear-ia
+Calculating Limber: Kernel 1 = ('F', 'source'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-shear-shear-ia/nonlimber: 7.2 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+Calculating Limber: Kernel 1 = ('F', 'source'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+**** WARNING: Parameter 'sig_over_dchi_exact' in the [project] section never used!
+
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-shear-shear-ia/limber_lin: 0.3 s
+
+Setting up module load_inputs
+------------------------------
+
+Setting up module project
+--------------------------
+doing exact for option_name fast-shear-shear-ia
+Calculating Limber: Kernel 1 = ('F', 'source'), Kernel 2 = ('F', 'source'), P_3D = MatterPower3D, section = matter_power_nl --> Output: shear_cl
+Will project these spectra into 2D:
+    -  shear_cl
+Doing exact calculation for 198 ells
+between 2.0 and 199.0
+Setup all pipeline modules
+
+
+Parameter Priors
+----------------
+intrinsic_alignment_parameters--a      ~ delta(1.000268603001537)
+intrinsic_alignment_parameters--alpha  ~ delta(0.0)
+intrinsic_alignment_parameters--z0     ~ delta(0.62)
+
+[cosmosis] fast-shear-shear-ia/nonlimber_lin: 7.2 s
+[cosmosis] 5_density-magnification-rsd_x_shear-ia__gg: not computed (no RSD x magnification in project_2d)
+[cosmosis] 5_density-magnification-rsd_x_shear-ia__gs: not computed (no galaxy RSD x shear in project_2d)
+[cosmosis] saved 46 spectra to /home/teob97/documents/phd_2025/cloe_beyondL/cloe-bench/numerical_validation/nonlimber/data/smail/cosmosis.npz

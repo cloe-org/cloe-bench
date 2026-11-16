@@ -1,0 +1,17 @@
+# cosmosis with project_2d of the standard library (cloned at a fixed commit by
+# `nonlimber_validation.py setup`). fast-pt must be 3.2: with 4.x project_2d
+# does not import (and mixing the two installs breaks fastpt).
+name: nlv-cosmosis
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy=2.5
+  - scipy=1.17
+  - astropy-base
+  - pyyaml
+  - gsl=2.8
+  - cosmosis=3.26
+  - pip
+  - pip:
+      - fast-pt==3.2
